@@ -19,7 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <Route path='/' component={JoinRoom} />
+        <Route path='/join' component={JoinRoom} />
       </Router>
     )
   }
