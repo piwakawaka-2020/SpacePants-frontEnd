@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {joinRoom} from '../actions/users'
 
 
 class JoinRoom extends React.Component {
@@ -12,8 +13,8 @@ class JoinRoom extends React.Component {
     onSubmit = (e) => {
         e.preventDefault()
         userData = {
-            "userName": this.state.userName,
-            "roomCode": this.state.userName
+            "name": this.state.name,
+            "room": this.state.room
             
         }
         this.props.dispatch(joinRoom(userData))
@@ -27,8 +28,8 @@ class JoinRoom extends React.Component {
                 <h1>Join a game!</h1>
                 <div>
                     <form id="roomJoin" onSubmit={this.onSubmit}>
-                        <input type="text" name="userName" value={this.state.userName} onChange={this.handleChange}/>
-                        <input type="text" name="roomCode" value={this.state.roomCode} onChange ={this.handleChange}/>
+                        <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
+                        <input type="text" name="room" value={this.state.room} onChange ={this.handleChange}/>
                         <input type="submit" value="submit"/>
                     </form>
                 </div>
@@ -36,3 +37,6 @@ class JoinRoom extends React.Component {
         )
     }
 }
+
+
+export default connect(mapStateToProps) (JoinRoom)
