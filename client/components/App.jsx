@@ -4,12 +4,18 @@ import { HashRouter as Router, Route } from 'react-router-dom'
 import LandingPage from './LandingPage'
 
 import io from 'socket.io-client'
+import { connect } from 'react-redux'
+import { createUser } from '../actions/users'
 
 const socket = io('http://localhost:4000')
 
 class App extends React.Component {
+
+  componentDidMount() {
+    this.props.dispatch(createUser(socket))
+  }
+
   render() {
-    console.log(socket.id)
     return (
       <Router>
         <Route path='/' component={LandingPage} />
@@ -18,4 +24,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default connect()(App)
