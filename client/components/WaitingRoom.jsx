@@ -1,8 +1,12 @@
 import React from 'react'
 
-import { connect } from 
+import { connect } from 'react-redux'
 
 class WaitingRoom extends React.Component {
+
+  // componentDidMount() {
+  //   socket.
+  // }
 
   startGame = e = {
     //start game here

@@ -5,7 +5,7 @@ const users = (state = [], action) => {
     case SET_SOCKET :
       return [{socket: action.socket}]
 
-    case SET_USER_DETAILS :
+    case 'SET_USER_DETAILS' :
       state[0].name = action.name,
       state[0].room = action.room
       return state
