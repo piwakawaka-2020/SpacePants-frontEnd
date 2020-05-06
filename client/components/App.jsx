@@ -1,7 +1,7 @@
 import React from 'react'
 import { HashRouter as Router, Route } from 'react-router-dom'
-
-import LandingPage from './LandingPage'
+import { connect } from 'react-redux'
+import {  } from "module";
 
 import io from 'socket.io-client'
 
@@ -13,9 +13,16 @@ class App extends React.Component {
     return (
       <Router>
         <Route path='/' component={LandingPage} />
+        <Route path='/createRoom' component={createRoom} />
       </Router>
     )
   }
 }
 
-export default App
+const mapStateToProps = ({createRoom}) => {
+  return {
+    socket.emit('a')
+  }
+}
+export default connect(mapStateToProps)(App) 
+
