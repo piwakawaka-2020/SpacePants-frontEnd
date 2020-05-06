@@ -1,4 +1,5 @@
 import { SET_SOCKET } from '../actions/users'
+import { SET_USER_DETAILS } from '../actions/users'
 
 const users = (state = [], action) => {
   switch(action.type) {
