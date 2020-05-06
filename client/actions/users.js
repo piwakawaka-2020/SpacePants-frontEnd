@@ -35,8 +35,10 @@ export const createUser = socket => {
       // })
   }
 }
-export function joinRoom(userData) {
+export function joinRoom(userData, socket) {
   return (dispatch) => {
+
+    
     socket.emit('user', (userData))
     .then(() => {
       dispatch(setUserDetails(userData))
@@ -44,5 +46,6 @@ export function joinRoom(userData) {
 
   }
 }
+
 
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { HashRouter as Router, Route } from 'react-router-dom'
 
 import LandingPage from './LandingPage'
+import JoinRoom from './JoinRoom'
 
 import io from 'socket.io-client'
 import { connect } from 'react-redux'
@@ -18,7 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <Route path='/' component={LandingPage} />
+        <Route path='/' component={JoinRoom} />
       </Router>
     )
   }
