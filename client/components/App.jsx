@@ -1,14 +1,15 @@
 import React from 'react'
 import { HashRouter as Router, Route } from 'react-router-dom'
 
+import io from 'socket.io-client'
+import { connect } from 'react-redux'
+
+import { createUser } from '../actions/users'
+
 import LandingPage from './LandingPage'
 import JoinRoom from './JoinRoom'
 
-import io from 'socket.io-client'
-import { connect } from 'react-redux'
-import { createUser } from '../actions/users'
-
-const socket = io('http://localhost:4000')
+const socket = io('http://localhost:3000')
 
 class App extends React.Component {
 
@@ -19,6 +20,8 @@ class App extends React.Component {
   render() {
     return (
       <Router>
+        <Route path='/' component={LandingPage} />
+        {/* <Route path='/create' component={CreateRoom} /> */}
         <Route path='/join' component={JoinRoom} />
       </Router>
     )

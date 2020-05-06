@@ -1,49 +1,26 @@
-export const CREATE_USER = 'CREATE_USER'
 export const SET_SOCKET = 'SET_SOCKET'
-
-import { openSocket } from '../apis/users'
-
-
-
-export function setUserDetails(userData)  {
-  return {
-    type: "SET_USER_DETAILS",
-    name: userData.name,
-    room: userData.room
-  }
-}
-
-
-
-
-
-
-
-
-
-
+export const SET_USER_DETAILS = 'SET_USER_DETAILS'
 
 export const createUser = socket => {
-  
+
   return dispatch => {
-    // return dispatch(openSocket(socket.id))
-    //   .then(() => {
-        return dispatch({
-          type: SET_SOCKET,
-          socket: socket
-        })
-      // })
+    return dispatch({
+      type: SET_SOCKET,
+      socket: socket
+    })
   }
 }
+
 export function joinRoom(userData, socket) {
-  return (dispatch) => {
+  socket.emit('user', (userData))
 
-    
-    socket.emit('user', (userData))
-    .then(() => {
-      dispatch(setUserDetails(userData))
+  console.log('yes')
+  return dispatch => {
+    return dispatch({
+      type: SET_USER_DETAILS,
+      name: userData.name,
+      room: userData.room
     })
-
   }
 }
 
