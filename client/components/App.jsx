@@ -5,6 +5,7 @@ import io from 'socket.io-client'
 import { connect } from 'react-redux'
 
 import { createUser } from '../actions/users'
+import WaitingRoom from './WaitingRoom'
 
 import LandingPage from './LandingPage'
 import JoinRoom from './JoinRoom'
@@ -21,6 +22,7 @@ class App extends React.Component {
     return (
       <Router>
         <Route path='/' component={LandingPage} />
+        <Route path='/waiting' component={WaitingRoom} />
         {/* <Route path='/create' component={CreateRoom} /> */}
         <Route path='/join' component={JoinRoom} />
       </Router>
