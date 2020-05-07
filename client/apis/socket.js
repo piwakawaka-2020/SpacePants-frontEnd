@@ -11,4 +11,4 @@ export function subscriptions(socket, props) {
   socket.on('task', task => {
     props.dispatch(doTask(task))
   })
- 
+}
