@@ -14,11 +14,10 @@ const socket = io('http://localhost:3000')
 
 class App extends React.Component {
 
-  componentDidMount() {
-    this.props.dispatch(createUser(socket))
-    socket.on('users', user => )
-  
-('user')
+
+
+
+
   }
 
   render() {
