@@ -11,4 +11,7 @@ export function subscriptions(socket, props) {
   socket.on('task', task => {
     props.dispatch(doTask(task))
   })
+  socket.on('role', role => {
+    props.dispatch(addRole(role))
+  })
 }

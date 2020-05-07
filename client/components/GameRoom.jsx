@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { render } from 'enzyme'
+import { doVote, doSkip, doComplete } from '../actions/localUser'
 
 class GameRoom extends React.Component {
 
