@@ -5,6 +5,12 @@ import { doVote, doSkip, doComplete } from '../actions/localUser'
 
 class GameRoom extends React.Component {
 
+  componentDidMount() {
+    if(user.role === 'Alien') {
+      this.props.socket.emit('tasks')
+    }
+  }
+
   handleVote = e => {
     this.props.dispatch(doVote())
     //switch to vote

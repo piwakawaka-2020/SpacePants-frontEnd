@@ -9,11 +9,11 @@ export function subscriptions(socket, props) {
   //   props.dispatch(addRole(role))
   // })
   socket.on('hint', hint => {
-    props.dispatch(recieveHint(hint))
+    props.dispatch(receiveHint(hint))
   })
-  socket.on('task', task => {
-    props.dispatch(recieveTask(task))
-  })
+  // socket.on('task', task => {
+  //   props.dispatch(receiveTask(task))
+  // })
   socket.on('skip', () => {
     //do something regarding skip penalty
   })
