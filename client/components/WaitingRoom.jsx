@@ -1,11 +1,20 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
+import { addRole } from '../actions/localUser'
 
 class WaitingRoom extends React.Component {
 
   state = {
     users: []
+  }
+
+  componentDidMount() {
+    this.props.socket.on('role', role => {
+      this.props.dispatch(addRole(role))
+      this.props.history.replace('/game')
+    })
+
   }
 
   startGame = e => {
