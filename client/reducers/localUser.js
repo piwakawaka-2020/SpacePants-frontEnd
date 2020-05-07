@@ -16,6 +16,9 @@ const localUser = (state = {}, action) => {
     case SET_TASK:
       state.task = action.task
       return state
+    case SET_TOTAL_TASK_COMPLETE:
+      state.completedTasks = state.CompletedTasks++
+      return state
       default: 
         return state
   }

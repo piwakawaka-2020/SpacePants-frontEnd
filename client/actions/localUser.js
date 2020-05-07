@@ -39,4 +39,17 @@ export function doTask(task) {
   }
 }
 
+export function doComplete() {
+  socket.emit('taskComplete')
+  return dispatch => {
+    return dispatch({
+      type: SET_TOTAL_TASK_COMPLETE,
+    })
+  }
+}
+
+export function doSkip() {
+  socket.emit('skip')
+}
+
 
