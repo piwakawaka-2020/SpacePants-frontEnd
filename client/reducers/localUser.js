@@ -1,4 +1,4 @@
-import { SET_LOCAL_SOCKET, SET_LOCAL_USER, SET_HINT, SET_TOTAL_TASK_COMPLETE, SET_ROLE} from '../actions/localUser'
+import { SET_LOCAL_SOCKET, SET_LOCAL_USER, SET_HINT, SET_TASK, SET_TOTAL_TASK_COMPLETE, SET_ROLE} from '../actions/localUser'
 
 const localUser = (state = {}, action) => {
   switch(action.type) {
