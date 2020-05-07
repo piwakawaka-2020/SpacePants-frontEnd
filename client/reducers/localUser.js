@@ -10,6 +10,9 @@ const localUser = (state = {}, action) => {
       state.name = action.name
       state.room = action.room
       return state
+    case SET_HINT:
+      state.hint = action.hint
+      return state
     
       default: 
         return state

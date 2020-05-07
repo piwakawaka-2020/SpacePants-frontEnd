@@ -22,5 +22,13 @@ export function joinRoom(userData, socket) {
   }
 }
 
+export function doHint(hint) {
+  return dispatch => {
+    return dispatch({
+      type: SET_HINT,
+      hint: hint
+    })
+  }
+}
 
 
