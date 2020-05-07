@@ -8,7 +8,3 @@ export const addExternalUsers = user => {
     })
   }
 }
-
-
-
-

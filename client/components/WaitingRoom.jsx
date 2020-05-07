@@ -13,24 +13,27 @@ class WaitingRoom extends React.Component {
   }
 
   render() {
+
     return (
       <div>
-        {/* {
+        
+        {
           this.props.users.map(user => {
-            return (<p>{user.name}</p>)
+            return (<p>{user}</p>)
           })
-        } */}
+        }
 
-        <button onClick={this.startGame} />
+        <button onClick={this.startGame}>Start Game</button>
       </div>
     )
   }
 }
 
 function mapStateToProps(globalState) {
+
   return {
     socket: globalState.localUser.socket,
-    users: globalState.users
+    users: globalState.externalUsers
   }
 }
 

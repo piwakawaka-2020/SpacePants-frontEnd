@@ -9,6 +9,7 @@ import WaitingRoom from './WaitingRoom'
 
 import LandingPage from './LandingPage'
 import JoinRoom from './JoinRoom'
+import CreateRoom from './CreateRoom'
 
 import {subscriptions} from '../apis/socket'
 
