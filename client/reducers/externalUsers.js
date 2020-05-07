@@ -4,7 +4,7 @@ const externalUsers = (state = [], action) => {
   switch(action.type) {
 
     case ADD_EXTERNAL_USERS :
-      return [...state, action.name]
+      return action.name
 
     default:
       return state
