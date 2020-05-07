@@ -9,6 +9,7 @@ import WaitingRoom from './WaitingRoom'
 
 import LandingPage from './LandingPage'
 import JoinRoom from './JoinRoom'
+import CreateRoom from './CreateRoom'
 
 import {subscriptions} from '../apis/socket'
 
@@ -27,7 +28,7 @@ class App extends React.Component {
       <Router>
         <Route path='/' component={LandingPage} />
         <Route path='/waiting' component={WaitingRoom} />
-        {/* <Route path='/create' component={CreateRoom} /> */}
+        <Route path='/create' component={CreateRoom} />
         <Route path='/join' component={JoinRoom} />
       </Router>
     )
