@@ -30,8 +30,9 @@ class App extends React.Component {
       <Router>
         <Route path='/' component={LandingPage} />
         <Route path='/waiting' component={WaitingRoom} />
-        {/* <Route path='/create' component={CreateRoom} /> */}
+        <Route path='/create' component={CreateRoom} />
         <Route path='/join' component={JoinRoom} />
+        
       </Router>
     )
   }
