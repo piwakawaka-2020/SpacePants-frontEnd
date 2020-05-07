@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { joinRoom } from '../actions/users'
+import { joinRoom } from '../actions/localUser'
 
 class JoinRoom extends React.Component {
 
@@ -24,6 +24,7 @@ class JoinRoom extends React.Component {
     }
 
     this.props.dispatch(joinRoom(userData, this.props.socket))
+    this.props.history.replace('/waiting')
   }
 
   render() {
@@ -45,7 +46,7 @@ class JoinRoom extends React.Component {
 }
 const mapStateToProps = (globalState) => {
   return {
-    socket: globalState.users[0].socket
+    socket: globalState.localUser.socket
   }
 }
 

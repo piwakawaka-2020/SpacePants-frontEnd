@@ -4,22 +4,22 @@ import { connect } from 'react-redux'
 
 class WaitingRoom extends React.Component {
 
-  // componentDidMount() {
-  //   socket.
-  // }
+  state = {
+    users: []
+  }
 
-  startGame = e = {
+  startGame = e => {
     //start game here
   }
 
   render() {
     return (
       <div>
-        {
+        {/* {
           this.props.users.map(user => {
-            return (<p>user.name</p>)
+            return (<p>{user.name}</p>)
           })
-        }
+        } */}
 
         <button onClick={this.startGame} />
       </div>
@@ -29,7 +29,7 @@ class WaitingRoom extends React.Component {
 
 function mapStateToProps(globalState) {
   return {
-    socket: globalState.users[0].socket,
+    socket: globalState.localUser.socket,
     users: globalState.users
   }
 }
