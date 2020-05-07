@@ -4,25 +4,36 @@ import { connect } from 'react-redux'
 import {  } from "module";
 
 import io from 'socket.io-client'
+import { connect } from 'react-redux'
 
-const socket = io('http://localhost:4000')
+import { createUser } from '../actions/localUser'
+import WaitingRoom from './WaitingRoom'
+
+import LandingPage from './LandingPage'
+import JoinRoom from './JoinRoom'
+
+import {subscriptions} from '../apis/socket'
+
+const socket = io('http://localhost:3000')
 
 class App extends React.Component {
+
+  componentDidMount() {
+    this.props.dispatch(createUser(socket))
+
+    subscriptions(socket, this.props)
+  }
+
   render() {
-    console.log(socket.id)
     return (
       <Router>
         <Route path='/' component={LandingPage} />
-        <Route path='/createRoom' component={createRoom} />
+        <Route path='/waiting' component={WaitingRoom} />
+        {/* <Route path='/create' component={CreateRoom} /> */}
+        <Route path='/join' component={JoinRoom} />
       </Router>
     )
   }
 }
 
-const mapStateToProps = ({createRoom}) => {
-  return {
-    socket.emit('a')
-  }
-}
-export default connect(mapStateToProps)(App) 
-
+export default connect()(App)
