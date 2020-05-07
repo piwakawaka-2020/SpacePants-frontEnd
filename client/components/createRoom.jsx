@@ -1,65 +1,78 @@
 import React from 'react'
-import { joinRoom } from '../actions/users'
+import { joinRoom } from '../actions/localUser'
 import { connect } from 'react-redux'
-
-
 
 class CreateRoom extends React.Component {
 
+  componentDidMount() {
+    var min = 1;
+    var max = 100;
+    var rand =  min + Math.ceil((Math.random() * (max-min)));
 
-    handleSubmit = (event) => {
-      event.preventDefault()
-        const min = 1;
-        const max = 100;
-        const rand = min + Math.random() * (max - min);
-        this.setState({ room: this.state.room + rand });
+    this.setState({
+      room: rand
+    })
+  }
 
-        data = {
-            name: this.state.name,
-            room: this.state.room
 
-        }
-        this.props.dispatch(joinRoom(data, this.props.socket))
+  state = {
+    name: "",
+    room: ''
 
-        
+  }
+
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+  
+
+    const userData = {
+      "name": this.state.name,
+      "room": this.state.room
+
     }
-    state = {
-
-        name: "name",
-        room: ''
-
-
-    }
-    handleChange = (event) => {
-        this.setstate({
-            [event.target.name]: event.target.value
-        })
-    }
+    this.props.dispatch(joinRoom(userData, this.props.socket))
+    this.props.history.replace('/waiting')
+  }
 
 
-    render() {
-        return (
-            <>
-                <form id="Create" onSubmit={this.onSubmit}>
-                    <label>
-                        Name of person:
-                    <input type="text" value={this.state.name} onChange={this.handleChange} name="name" />
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
 
-                    </label>
-                    <input type="submit" value="submit" />
-                </form>
-            </>
-        )}
+
+  render() {
+
+
+    console.log(this.props)
+    return (
+      <>
+      <h1>{this.state.room}</h1>
+      
+      <form id="Create" onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          </label>
+    <input type="text" value={this.state.name} onChange={this.handleChange} name="name" />
+
+      
+        <input type="submit" value="submit" />
+      </form>
+      </>
+    )
+  }
 }
-
 
 const mapStateToProps = (globalState) => {
-    return {
-        socket: globalState.users[0].socket
-    }
+  return {
+    socket: globalState.localUser.socket
+  }
 }
-export default connect(mapStateToProps)(createRoom)
 
+export default connect(mapStateToProps)(CreateRoom)
 
-
-
+//if vote passes and is right = go back to end  screen
+// if vote passes its wrong go to end game 
+//if vote doesnt pass you go back to game screen

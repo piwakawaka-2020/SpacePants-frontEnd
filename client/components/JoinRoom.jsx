@@ -33,9 +33,9 @@ class JoinRoom extends React.Component {
         <h1>Join a game!</h1>
         <div>
           <form id="roomJoin" onSubmit={this.handleSubmit}>
-            <label>Enter Name: </label>
+            <label>Enter your Name: </label>
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
-            <label>Room Id: </label>
+            <label>Enter game Room Id: </label>
             <input type="text" name="room" value={this.state.room} onChange={this.handleChange} />
             <input type="submit" value="submit" />
           </form>

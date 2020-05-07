@@ -22,8 +22,6 @@ class App extends React.Component {
     this.props.dispatch(createUser(socket))
 
     subscriptions(socket, this.props)
-
-    subscriptions(socket, this.props)
   }
 
   render() {
