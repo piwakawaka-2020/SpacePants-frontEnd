@@ -1,29 +1,27 @@
 import React from 'react'
-import { joinRoom } from '../actions/users'
+import { joinRoom } from '../actions/localUser'
 import { connect } from 'react-redux'
 
+class CreateRoom extends React.Component {
 
+  handleSubmit = e => {
+    e.preventDefault()
 
-class createRoomm extends React.Component {
-
-  handleSubmit = (event) => {
     data = {
       "name": this.state.name,
 
     }
     this.props.dispatch(joinRoom(data, this.props.socket))
-    this.props.socket.emit('user', (userData))
   }
 
 
-  handleChange = (event) => {
+  handleChange = e => {
     this.setstate({
-      [event.target.name]: event.target.value
+      [e.target.name]: e.target.value
     })
   }
 
   state = {
-
     name: "name",
 
   }
@@ -44,10 +42,11 @@ class createRoomm extends React.Component {
 
 const mapStateToProps = (globalState) => {
   return {
-    socket: globalState.users[0].socket
+    socket: globalState.localUser.socket
   }
 }
-export default connect(mapStateToProps)(createRoom)
+
+export default connect(mapStateToProps)(CreateRoom)
 
 
 
