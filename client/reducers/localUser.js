@@ -1,6 +1,14 @@
 import { SET_LOCAL_SOCKET, SET_LOCAL_USER, SET_HINT, SET_TASK, SET_TOTAL_TASK_COMPLETE, SET_ROLE} from '../actions/localUser'
 
-const localUser = (state = {}, action) => {
+const initialState = {
+  name: '',
+  room: '',
+  role: '',
+  task: '',
+  hint: ''
+}
+
+const localUser = (state = initialState, action) => {
   switch(action.type) {
     case SET_LOCAL_SOCKET :
       state.socket = action.socket
