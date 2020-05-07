@@ -14,22 +14,20 @@ class WaitingRoom extends React.Component {
       this.props.dispatch(addRole(role))
       this.props.history.replace('/game')
     })
-
   }
 
   startGame = e => {
-    console.log('start game')
     this.props.socket.emit('startGame', this.props.room)
-    // this.props.history.replace('/game')
   }
 
   render() {
 
     return (
       <div>
+        <p>Room Code: {this.props.room}</p>
         {
-          this.props.users.map(user => {
-            return (<p>{user}</p>)
+          this.props.users.map((user, i) => {
+            return (<p key={i}>{user}</p>)
           })
         }
         <button onClick={this.startGame} disabled={this.props.users.length < 4}>Start Game</button>
