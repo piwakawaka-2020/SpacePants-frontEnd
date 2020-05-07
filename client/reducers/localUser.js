@@ -13,7 +13,9 @@ const localUser = (state = {}, action) => {
     case SET_HINT:
       state.hint = action.hint
       return state
-    
+    case SET_TASK:
+      state.task = action.task
+      return state
       default: 
         return state
   }

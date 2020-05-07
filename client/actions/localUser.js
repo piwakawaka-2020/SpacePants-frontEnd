@@ -30,5 +30,13 @@ export function doHint(hint) {
     })
   }
 }
+export function doTask(task) {
+  return dispatch => {
+    return dispatch({
+      type: SET_TASK,
+      task:task
+    })
+  }
+}
 
 

@@ -57,7 +57,7 @@ function mapStateToProps(globalState) {
     return {
       socket: globalState.localUser.socket,
       user: globalState.localUser,
-      hint: globalState.hint
+      
     }
   }
 

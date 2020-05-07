@@ -8,4 +8,7 @@ export function subscriptions(socket, props) {
   socket.on('hint', hint => {
     props.dispatch(doHint(hint))
   })
+  socket.on('task', task => {
+    props.dispatch(doTask(task))
+  })
 }
