@@ -7,4 +7,4 @@ export const addExternalUsers = user => {
       name: user
     })
   }
-}git 
+}
