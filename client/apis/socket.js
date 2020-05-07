@@ -15,7 +15,7 @@ export function subscriptions(socket, props) {
     props.dispatch(addRole(role))
   })
   socket.on('skip', () => {
-    //do something
+    //do something regarding skip penalty
   })
   socket.on('commenceVote', () => {
     //dispatch to switch to vote screen and use saved externalUsers to display a list of people to vote for

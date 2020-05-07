@@ -25,7 +25,7 @@ class GameRoom extends React.Component {
     render(){
         // if (this.props.vote == true){
         //     return <Vote/>
-        // }
+        // } else { do below}
         let display;
         if (this.props.localUser.role == 'alien') {
             //Alien display
