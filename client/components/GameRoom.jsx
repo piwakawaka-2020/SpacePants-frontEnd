@@ -7,7 +7,7 @@ class GameRoom extends React.Component {
 
     handleVote = e => {
         this.props.dispatch(doVote())
-        //switch to
+        //switch to vote
     }
 
     handleSkip = e => {
@@ -26,6 +26,9 @@ class GameRoom extends React.Component {
         // if (this.props.vote == true){
         //     return <Vote/>
         // } else { do below}
+
+
+        //task and hint display
         let display;
         if (this.props.localUser.role == 'alien') {
             //Alien display
