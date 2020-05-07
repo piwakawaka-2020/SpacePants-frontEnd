@@ -14,10 +14,13 @@ import {subscriptions} from '../apis/socket'
 
 const socket = io('http://localhost:3000')
 
+
 class App extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(createUser(socket))
+
+    subscriptions(socket, this.props)
 
     subscriptions(socket, this.props)
   }
@@ -34,4 +37,5 @@ class App extends React.Component {
   }
 }
 
+//emit room code to server, 
 export default connect()(App)
