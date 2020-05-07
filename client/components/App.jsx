@@ -4,13 +4,13 @@ import { HashRouter as Router, Route } from 'react-router-dom'
 import io from 'socket.io-client'
 import { connect } from 'react-redux'
 
-import { createUser } from '../actions/users'
+import { createUser } from '../actions/localUser'
 import WaitingRoom from './WaitingRoom'
 
 import LandingPage from './LandingPage'
 import JoinRoom from './JoinRoom'
 
-import { subscriptions } from '../apis/socket'
+import {subscriptions} from '../apis/socket'
 
 const socket = io('http://localhost:3000')
 
@@ -19,8 +19,7 @@ class App extends React.Component {
   componentDidMount() {
     this.props.dispatch(createUser(socket))
 
-    subscriptions(socket)
-    // socket.on('user', user => this.props.dispatch(addExternalUser(user)))
+    subscriptions(socket, this.props)
   }
 
   render() {

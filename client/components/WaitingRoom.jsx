@@ -15,11 +15,11 @@ class WaitingRoom extends React.Component {
   render() {
     return (
       <div>
-        {
+        {/* {
           this.props.users.map(user => {
             return (<p>{user.name}</p>)
           })
-        }
+        } */}
 
         <button onClick={this.startGame} />
       </div>

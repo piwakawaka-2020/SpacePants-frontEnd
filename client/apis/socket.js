@@ -1,5 +1,7 @@
-import { addExternalUsers} from '../actions/users'
+import { addExternalUsers } from '../actions/externalUsers'
 
-export function subscriptions(socket) {
-  socket.on('user', user => addExternalUsers(user))
+export function subscriptions(socket, props) {
+  socket.on('user', user => {
+    props.dispatch(addExternalUsers(user))
+  })
 }

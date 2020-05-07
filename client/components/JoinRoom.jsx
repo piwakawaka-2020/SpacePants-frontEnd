@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { joinRoom } from '../actions/users'
+import { joinRoom } from '../actions/localUser'
 
 class JoinRoom extends React.Component {
 
