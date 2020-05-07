@@ -26,8 +26,16 @@ export function joinRoom(userData, socket) {
   }
 }
 
+export function addRole(role) {
+  return dispatch => {
+    return dispatch({
+      type: SET_ROLE,
+      role: role
+    })
+  }
+}
 
-export function recieveHint(hint) {
+export function receiveHint(hint) {
   return dispatch => {
     return dispatch({
       type: SET_HINT,
@@ -36,8 +44,7 @@ export function recieveHint(hint) {
   }
 }
 
-
-export function recieveTask(task) {
+export function receiveTask(task) {
   return dispatch => {
     return dispatch({
       type: SET_TASK,
@@ -45,7 +52,6 @@ export function recieveTask(task) {
     })
   }
 }
-
 
 //sends info that task is complete
 export function doComplete() {
@@ -56,24 +62,16 @@ export function doComplete() {
     })
   }
 }
+
 //sends info that user has skipped
 export function doSkip() {
   socket.emit('skip')
 }
-
 
 // sends info that user wants to do a vote
 export function doVote() {
   socket.emit('vote')
 }
 
-export function addRole(role) {
-  return dispatch => {
-    return dispatch({
-      type: SET_ROLE,
-      role: role
-    })
-  }
-}
 
 

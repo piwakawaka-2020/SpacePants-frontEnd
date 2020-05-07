@@ -5,6 +5,12 @@ import { doVote, doSkip, doComplete } from '../actions/localUser'
 
 class GameRoom extends React.Component {
 
+  componentDidMount() {
+    if(user.role === 'Alien') {
+      this.props.socket.emit('tasks')
+    }
+  }
+
   handleVote = e => {
     this.props.dispatch(doVote())
     //switch to vote
@@ -24,29 +30,29 @@ class GameRoom extends React.Component {
     // } else { do below}
 
     //task and hint display
-    this.props.localUser.role == 'alien' && 
-      //Alien display
-      <div>
-        <p>{this.props.localUser.task}</p>
-        <button onCick={this.handleSkip}>skip</button>
-        <button onClick={this.handleComplete}>complete</button>
-        <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
-      </div>
-   
-    { this.props.localUser.role == 'human' &&
-      //Human display
-      <div>
-        <p>{this.props.localUser.hint}</p>
-      </div>
-    }
+    // this.props.localUser.role == 'alien' && 
+    //Alien display
+    //   <div>
+    //     <p>{this.props.localUser.task}</p>
+    //     <button onCick={this.handleSkip}>skip</button>
+    //     <button onClick={this.handleComplete}>complete</button>
+    //     <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
+    //   </div>
+
+    // { this.props.localUser.role == 'human' &&
+    //Human display
+    //   <div>
+    //     <p>{this.props.localUser.hint}</p>
+    //   </div>
+    // }
 
     return (
       <div>
-        <h1>you are a ${this.props.localUser.role}</h1>
+        <h1>You are {this.props.user.role}</h1>
 
-        {display}
+        {/* {display}
 
-        <button onClick={this.handleVote}>Vote!</button>
+        <button onClick={this.handleVote}>Vote!</button> */}
 
       </div>
     )
