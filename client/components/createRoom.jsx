@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 
 
-class createRoom extends React.Component {
+class CreateRoom extends React.Component {
 
 
     handleSubmit = (event) => {
