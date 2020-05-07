@@ -1,12 +1,22 @@
-export const SET_SOCKET = 'SET_SOCKET'
-export const SET_USER_DETAILS = 'SET_USER_DETAILS'
+export const SET_LOCAL_SOCKET = 'SET_SOCKET'
+export const SET_LOCAL_USER = 'SET_USER_DETAILS'
+export const GET_EXTERNAL_USERS = 'GET_EXTERNAL_USERS'
 
 export const createUser = socket => {
 
   return dispatch => {
     return dispatch({
-      type: SET_SOCKET,
+      type: SET_LOCAL_SOCKET,
       socket: socket
+    })
+  }
+}
+
+export const addExternalUsers = user => {
+  return dispatch => {
+    return dispatch({
+      type: GET_EXTERNAL_USERS,
+      user
     })
   }
 }
@@ -17,7 +27,7 @@ export function joinRoom(userData, socket) {
   console.log('yes')
   return dispatch => {
     return dispatch({
-      type: SET_USER_DETAILS,
+      type: SET_LOCAL_USER,
       name: userData.name,
       room: userData.room
     })

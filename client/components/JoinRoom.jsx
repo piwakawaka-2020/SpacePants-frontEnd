@@ -24,6 +24,7 @@ class JoinRoom extends React.Component {
     }
 
     this.props.dispatch(joinRoom(userData, this.props.socket))
+    this.props.history.replace('/waiting')
   }
 
   render() {
@@ -45,7 +46,7 @@ class JoinRoom extends React.Component {
 }
 const mapStateToProps = (globalState) => {
   return {
-    socket: globalState.users[0].socket
+    socket: globalState.localUser.socket
   }
 }
 

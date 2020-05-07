@@ -10,12 +10,17 @@ import WaitingRoom from './WaitingRoom'
 import LandingPage from './LandingPage'
 import JoinRoom from './JoinRoom'
 
+import { subscriptions } from '../apis/socket'
+
 const socket = io('http://localhost:3000')
 
 class App extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(createUser(socket))
+
+    subscriptions(socket)
+    // socket.on('user', user => this.props.dispatch(addExternalUser(user)))
   }
 
   render() {
