@@ -68,6 +68,7 @@ class CreateRoom extends React.Component {
 const mapStateToProps = (globalState) => {
   return {
     socket: globalState.localUser.socket
+    
   }
 }
 
@@ -75,4 +76,8 @@ export default connect(mapStateToProps)(CreateRoom)
 
 //if vote passes and is right = go back to end  screen
 // if vote passes its wrong go to end game 
+// what if everyone votes yes every time 
 //if vote doesnt pass you go back to game screen
+
+//person who got vote wrong cant vote for x amount of time,
+//The whole group loses x amount of time,

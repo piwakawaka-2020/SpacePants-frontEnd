@@ -5,7 +5,8 @@ class Voting extends React.Component {
 
 state = {
 
-  users: []
+  users: [],
+  array: []
 
 }
     render() {
@@ -17,7 +18,12 @@ state = {
    
         {
           this.props.users.map(user => {
-            return (<p>{user}</p>)
+            return (
+              // this.setState({users: name})
+              // <button onClick={user.name}>{user.name}</button>
+              // <button onClick={user.name}>{user.name}</button>
+            <p>{user.name}</p>
+            )
               
           })
         }
