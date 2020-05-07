@@ -6,8 +6,8 @@ import { joinRoom } from '../actions/localUser'
 class JoinRoom extends React.Component {
 
   state = {
-    name: 'Type Name',
-    room: 'Type Room'
+    name: '',
+    room: ''
   }
 
   handleChange = (e) => {
@@ -34,9 +34,9 @@ class JoinRoom extends React.Component {
         <div>
           <form id="roomJoin" onSubmit={this.handleSubmit}>
             <label>Enter Name: </label>
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+            <input type="text" name="name" placeholder='Name' value={this.state.name} onChange={this.handleChange} />
             <label>Room Id: </label>
-            <input type="text" name="room" value={this.state.room} onChange={this.handleChange} />
+            <input type="text" name="room" placeholder='Room code' value={this.state.room} onChange={this.handleChange} />
             <input type="submit" value="submit" />
           </form>
         </div>
