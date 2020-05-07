@@ -107,13 +107,15 @@ Will figure this out when we understand how socket.io works
 | task | string |
 | hint | string |
 
-### RoomData
+### Users
 
 | Column Name | Data Type |
 | --- | --- |
 | id | increments |
+| name | string |
+| role | string |
 | roomCode | string |
-| numPlayers | integer |
+| socketId | string |
 
 The back end repo can be found here:
-https://github.com/daniel-windsor/SpacePants-BackEnd
+https://github.com/piwakawaka/SpacePants-BackEnd

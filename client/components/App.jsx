@@ -13,6 +13,7 @@ import CreateRoom from './CreateRoom'
 import Voting from './Voting'
 import {subscriptions} from '../apis/socket'
 
+
 const socket = io('http://localhost:3000')
 
 
@@ -27,12 +28,13 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <Route path='/' component={LandingPage} />
+        <Route exact path='/' component={LandingPage} />
         <Route path='/waiting' component={WaitingRoom} />
         <Route path='/create' component={CreateRoom} />
         <Route path='/join' component={JoinRoom} />
         <Route path='/vote' component={Voting} />
         
+        <Route path='/game' component={GameRoom} />
       </Router>
     )
   }
