@@ -6,15 +6,15 @@ import { doVote, doSkip, doComplete, receiveTask } from '../actions/localUser'
 class GameRoom extends React.Component {
 
   componentDidMount() {
-    if(this.props.user.role === 'Alien') {
-      this.props.socket.on('tasks', task => {
-        props.dispatch(receiveTask(task))
+    if(this.props.localUser.role === 'Alien') {
+      this.props.socket.on('task', task => {
+        this.props.dispatch(receiveTask(task))
       })
-      this.props.socket.emit('tasks')
+      this.props.socket.emit('task')
       
     } else {
-      socket.on('hint', hint => {
-        props.dispatch(receiveHint(hint))
+      this.props.socket.on('hint', hint => {
+        this.props.dispatch(receiveHint(hint))
       })
     }
   }
@@ -36,17 +36,18 @@ class GameRoom extends React.Component {
     
     return (
       <div>
-        <h1>You are {this.props.user.role}</h1>
+        <h1>You are {this.props.localUser.role}</h1>
 
         {/* Timer goes here */}
 
 
         {/* Alien screen */}
         {
-          this.props.user.role === 'Alien' &&
+          this.props.localUser.role === 'Alien' &&
           <div>
-           <p>{this.props.localUser.task}</p>
-            <button onCick={this.handleSkip}>skip</button>
+            {console.log(this.props.localUser.task)}
+            <p>{this.props.localUser.task}</p>
+            <button onClick={this.handleSkip}>skip</button>
             <button onClick={this.handleComplete}>complete</button>
             <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
           </div>
@@ -55,7 +56,7 @@ class GameRoom extends React.Component {
 
         {/* Human screen */}
         {
-          this.props.user.role ===  'Human' &&
+          this.props.localUser.role ===  'Human' &&
           <div>
             <p>{this.props.localUser.hint}</p>
           </div>
@@ -72,7 +73,7 @@ class GameRoom extends React.Component {
 function mapStateToProps(globalState) {
   return {
     socket: globalState.localUser.socket,
-    user: globalState.localUser,
+    localUser: globalState.localUser,
   }
 }
 
