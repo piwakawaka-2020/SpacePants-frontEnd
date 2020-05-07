@@ -18,7 +18,6 @@ class CreateRoom extends React.Component {
     this.props.dispatch(joinRoom(data, this.props.socket))
   }
 
-
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value

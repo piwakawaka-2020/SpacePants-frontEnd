@@ -9,7 +9,9 @@ class WaitingRoom extends React.Component {
   }
 
   startGame = e => {
-    this.props.history.replace('/game')
+    console.log('start game')
+    this.props.socket.emit('startGame', this.props.room)
+    // this.props.history.replace('/game')
   }
 
   render() {
@@ -31,7 +33,8 @@ function mapStateToProps(globalState) {
 
   return {
     socket: globalState.localUser.socket,
-    users: globalState.externalUsers
+    users: globalState.externalUsers,
+    room: globalState.localUser.room
   }
 }
 
