@@ -23,7 +23,7 @@ class WaitingRoom extends React.Component {
           })
         }
 
-        <button onClick={this.startGame}>Start Game</button>
+        <button onClick={this.startGame} disabled={this.props.users.length < 4}>Start Game</button>
       </div>
     )
   }

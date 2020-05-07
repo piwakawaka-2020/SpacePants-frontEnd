@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 
 class CreateRoom extends React.Component {
 
+  state = {
+    name: '',
+  }
+
   handleSubmit = e => {
     e.preventDefault()
 
@@ -16,14 +20,9 @@ class CreateRoom extends React.Component {
 
 
   handleChange = e => {
-    this.setstate({
+    this.setState({
       [e.target.name]: e.target.value
     })
-  }
-
-  state = {
-    name: "name",
-
   }
 
   render() {
