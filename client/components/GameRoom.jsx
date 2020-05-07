@@ -7,6 +7,7 @@ class GameRoom extends React.Component {
 
     handleVote = e => {
         this.props.dispatch(doVote())
+        //switch to
     }
 
     handleSkip = e => {
@@ -22,15 +23,20 @@ class GameRoom extends React.Component {
 
 
     render(){
-
+        // if (this.props.vote == true){
+        //     return <Vote/>
+        // }
         let display;
         if (this.props.localUser.role == 'alien') {
+            //Alien display
             display =   <div>
                             <p>{this.props.localUser.task}</p>
                             <button onCick={this.handleSkip}>skip</button>
                             <button onClick={this.handleComplete}>complete</button>
+                            <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
                         </div>
         } else {
+            //Human display
             display = <div>
                         <p>{this.props.localUser.hint}</p>
                         </div>

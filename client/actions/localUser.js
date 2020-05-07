@@ -24,7 +24,7 @@ export function joinRoom(userData, socket) {
   }
 }
 
-export function doHint(hint) {
+export function recieveHint(hint) {
   return dispatch => {
     return dispatch({
       type: SET_HINT,
@@ -32,7 +32,7 @@ export function doHint(hint) {
     })
   }
 }
-export function doTask(task) {
+export function recieveTask(task) {
   return dispatch => {
     return dispatch({
       type: SET_TASK,
@@ -53,5 +53,11 @@ export function doComplete() {
 export function doSkip() {
   socket.emit('skip')
 }
+
+export function doVote() {
+  socket.emit('vote')
+}
+
+
 
 
