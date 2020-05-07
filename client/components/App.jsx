@@ -16,6 +16,9 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(createUser(socket))
+    socket.on('users', user => )
+  
+('user')
   }
 
   render() {
