@@ -65,7 +65,7 @@ export function doComplete() {
 
 //sends info that user has skipped
 export function doSkip() {
-  socket.emit('skip')
+  socket.emit('skipTask')
 }
 
 // sends info that user wants to do a vote
