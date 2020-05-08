@@ -19,8 +19,8 @@ class JoinRoom extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const userData = {
-      "name": this.state.name,
-      "room": this.state.room,
+      name: this.state.name,
+      room: this.state.room,
     }
 
     this.props.dispatch(joinRoom(userData, this.props.socket))

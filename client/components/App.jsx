@@ -11,6 +11,8 @@ import LandingPage from './LandingPage'
 import JoinRoom from './JoinRoom'
 import CreateRoom from './CreateRoom'
 import Voting from './Voting'
+import GameRoom from './GameRoom'
+
 import {subscriptions} from '../apis/socket'
 
 
@@ -40,5 +42,4 @@ class App extends React.Component {
   }
 }
 
-//emit room code to server, 
 export default connect()(App)

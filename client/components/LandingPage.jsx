@@ -2,14 +2,17 @@ import React from "react"
 import Modal from "./Modal"
 import "../../public/styles.css"
 class LandingPage extends React.Component {
+
   state = {
     show: false
   }
+
   showModal = evt => {
     this.setState({
       show: !this.state.show
     })
   }
+  
   render() {
     return (
       <>
@@ -17,7 +20,7 @@ class LandingPage extends React.Component {
             <button onClick={() => this.props.history.push('/create')}>Create Game</button>
             <button onClick={() => this.props.history.push('/join')}>Join Game</button>
         <button
-          class="toggle-button"
+          className="toggle-button"
           id="centered-toggle-button"
           onClick={evt => {
             this.showModal(evt)
