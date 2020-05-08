@@ -29,7 +29,7 @@ class GameRoom extends React.Component {
         this.props.dispatch(receiveTask(task))
 
         this.setState({
-          task: this.props.localUser.task,
+          task: this.props.localUser.tasks[0].task,
           disabled: false
         });
       })
