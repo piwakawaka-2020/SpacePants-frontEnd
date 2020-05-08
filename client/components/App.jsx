@@ -13,6 +13,9 @@ import JoinRoom from './JoinRoom'
 import WaitingRoom from './WaitingRoom'
 import GameRoom from './GameRoom'
 import Voting from './Voting'
+import EndRoom from './EndRoom'
+
+import {subscriptions} from '../apis/socket'
 
 const socket = io('http://localhost:3000')
 
@@ -34,6 +37,7 @@ class App extends React.Component {
         <Route path='/waiting' component={WaitingRoom} />
         <Route path='/game' component={GameRoom} />
         <Route path='/vote' component={Voting} />
+        <Route path='/end' component={EndRoom} />
       </Router>
     )
   }
