@@ -66,19 +66,19 @@ class GameRoom extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>You are {this.props.localUser.role}</h1>
+      <div class="align">
+        <h1 class="heading">You are {this.props.localUser.role}</h1>
 
-        <p>{this.state.time}</p>
+        <p class="heading">{this.state.time}</p>
 
         {/* Alien screen */}
         {
           this.props.localUser.role === 'Alien' &&
-          <div>
-            <p>{this.state.task}</p>
+          <div class="btton">
+            <p class="text">{this.state.task}</p>
             <button onClick={this.handleSkip} disabled={this.state.disabled}>skip</button>
             <button onClick={this.handleComplete} disabled={this.state.disabled}>complete</button>
-            <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
+            <p class="text">Number of Tasks completed: {this.props.localUser.completedTasks}</p>
           </div>
         }
 
@@ -86,11 +86,11 @@ class GameRoom extends React.Component {
         {
           this.props.localUser.role === 'Human' &&
           <div>
-            <p>{this.state.hint}</p>
+            <p class="text">{this.state.hint}</p>
           </div>
         }
 
-        <button onClick={this.handleVote}>Vote!</button>
+        <button class="button" onClick={this.handleVote}>Vote!</button>
 
       </div>
     )

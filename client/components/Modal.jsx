@@ -1,5 +1,5 @@
 import React from "react"
-import "../../public/styles.css"
+
 import PropTypes from "prop-types"
 
 export default class Modal extends React.Component {
@@ -16,9 +16,9 @@ export default class Modal extends React.Component {
         <>
         
         <h2>How to play</h2>
-        <div className="content">{this.props.children}</div>
-        <div className="actions">
-          <button className="toggle-button" onClick={this.onClose}>
+        <div class="text">{this.props.children}</div>
+        <div>
+          <button class="button" onClick={this.onClose}>
             Close
           </button>
         </div>
