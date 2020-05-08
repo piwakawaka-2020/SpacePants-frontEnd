@@ -8,6 +8,7 @@ class GameRoom extends React.Component {
     task: '',
     hint: 'No leads recieved yet'
   }
+
   componentDidMount() {
     if(this.props.localUser.role === 'Alien') {
       this.props.socket.on('task', task => {
@@ -24,13 +25,6 @@ class GameRoom extends React.Component {
       })
     }
   }
-
-  // componentDidUpdate(prevProps) {
-  //   if(prevProps.localUser.task !== this.props.localUser.task) {
-  //     this.setState({task: this.props.localUser.task});
-  //   }
-  // }
-
 
   handleVote = e => {
     this.props.dispatch(doVote())
@@ -71,7 +65,7 @@ class GameRoom extends React.Component {
         {
           this.props.localUser.role ===  'Human' &&
           <div>
-            <p>{this.state.localUser.hint}</p>
+            <p>{this.state.hint}</p>
           </div>
         }
 
