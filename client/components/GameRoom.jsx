@@ -6,14 +6,18 @@ import { doVote, doSkip, doComplete, receiveTask, receiveHint } from '../actions
 class GameRoom extends React.Component {
   state = {
     task: '',
-    hint: 'No leads recieved yet'
+    hint: 'No leads recieved yet',
+    disabled: 'false'
   }
   componentDidMount() {
     if(this.props.localUser.role === 'Alien') {
       this.props.socket.on('task', task => {
         this.props.dispatch(receiveTask(task))
         console.log('recieved task')
-        this.setState({task: this.props.localUser.task});
+        this.setState({
+          task: this.props.localUser.task,
+          disabled: 'false'
+        });
       })
       this.props.socket.emit('getTask')
       
@@ -38,6 +42,10 @@ class GameRoom extends React.Component {
   }
 
   handleSkip = e => {
+    this.setState({
+      task: 'tasks are disabled for 30 seconds',
+      disabled: 'true'
+    })
     this.props.dispatch(doSkip())
   }
 
@@ -61,7 +69,7 @@ class GameRoom extends React.Component {
             {console.log(this.props.localUser)}
             <p>{this.state.task}</p>
             <button onClick={this.handleSkip}>skip</button>
-            <button onClick={this.handleComplete}>complete</button>
+            <button onClick={this.handleComplete} disabled={this.state.disabled}>complete</button>
             <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
           </div>
         }
@@ -71,7 +79,7 @@ class GameRoom extends React.Component {
         {
           this.props.localUser.role ===  'Human' &&
           <div>
-            <p>{this.state.localUser.hint}</p>
+            <p>{this.state.hint}</p>
           </div>
         }
 
