@@ -5,7 +5,8 @@ import { doVote, doSkip, doComplete, receiveTask, receiveHint } from '../actions
 
 class GameRoom extends React.Component {
   state = {
-    task: ''
+    task: '',
+    hint: 'No leads recieved yet'
   }
   componentDidMount() {
     if(this.props.localUser.role === 'Alien') {
@@ -19,6 +20,7 @@ class GameRoom extends React.Component {
     } else {
       this.props.socket.on('hint', hint => {
         this.props.dispatch(receiveHint(hint))
+        this.setState({hint: this.props.localUser.hint});
       })
     }
   }
@@ -69,7 +71,7 @@ class GameRoom extends React.Component {
         {
           this.props.localUser.role ===  'Human' &&
           <div>
-            <p>{this.props.localUser.hint}</p>
+            <p>{this.state.localUser.hint}</p>
           </div>
         }
 
