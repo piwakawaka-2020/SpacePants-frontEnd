@@ -50,6 +50,10 @@ class GameRoom extends React.Component {
   }
 
   handleComplete = e => {
+    this.setState({
+      task: 'waiting for next task...',
+      disabled: 'true'
+    })
     this.props.dispatch(doComplete(this.props.socket))
   }
 
@@ -68,7 +72,7 @@ class GameRoom extends React.Component {
           <div>
             {console.log(this.props.localUser)}
             <p>{this.state.task}</p>
-            <button onClick={this.handleSkip}>skip</button>
+            <button onClick={this.handleSkip } disabled={this.state.disabled}>skip</button>
             <button onClick={this.handleComplete} disabled={this.state.disabled}>complete</button>
             <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
           </div>
