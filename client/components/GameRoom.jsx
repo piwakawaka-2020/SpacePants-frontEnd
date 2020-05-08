@@ -4,11 +4,15 @@ import { connect } from 'react-redux'
 import { doVote, doSkip, doComplete, receiveTask } from '../actions/localUser'
 
 class GameRoom extends React.Component {
-
+  state = {
+    task: ''
+  }
   componentDidMount() {
     if(this.props.localUser.role === 'Alien') {
       this.props.socket.on('task', task => {
         this.props.dispatch(receiveTask(task))
+        console.log('recieved task')
+        this.setState({task: this.props.localUser.task});
       })
       this.props.socket.emit('task')
       
@@ -18,6 +22,13 @@ class GameRoom extends React.Component {
       })
     }
   }
+
+  // componentDidUpdate(prevProps) {
+  //   if(prevProps.localUser.task !== this.props.localUser.task) {
+  //     this.setState({task: this.props.localUser.task});
+  //   }
+  // }
+
 
   handleVote = e => {
     this.props.dispatch(doVote())
@@ -33,7 +44,7 @@ class GameRoom extends React.Component {
   }
 
   render() {
-    
+    console.log('here is' + this.props.localUser.task)
     return (
       <div>
         <h1>You are {this.props.localUser.role}</h1>
@@ -45,8 +56,8 @@ class GameRoom extends React.Component {
         {
           this.props.localUser.role === 'Alien' &&
           <div>
-            {console.log(this.props.localUser.task)}
-            <p>{this.props.localUser.task}</p>
+            {console.log(this.props.localUser)}
+            <p>{this.state.task}</p>
             <button onClick={this.handleSkip}>skip</button>
             <button onClick={this.handleComplete}>complete</button>
             <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
