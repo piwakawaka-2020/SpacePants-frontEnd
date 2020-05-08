@@ -40,7 +40,7 @@ class GameRoom extends React.Component {
   }
 
   handleComplete = e => {
-    this.props.dispatch(doComplete())
+    this.props.dispatch(doComplete(this.props.socket))
   }
 
   render() {
