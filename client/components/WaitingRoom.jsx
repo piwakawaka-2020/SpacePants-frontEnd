@@ -30,7 +30,7 @@ class WaitingRoom extends React.Component {
             return (<p key={i}>{user}</p>)
           })
         }
-        <button onClick={this.startGame} disabled={this.props.users.length < 4}>Start Game</button>
+        <button onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
       </div>
     )
   }

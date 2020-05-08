@@ -8,8 +8,8 @@ class GameRoom extends React.Component {
   state = {
     task: '',
     hint: 'No leads recieved yet',
-    disabled: 'false',
-    time: ""
+    disabled: false,
+    time: '5:00'
   }
 
   componentDidMount() {
@@ -22,7 +22,7 @@ class GameRoom extends React.Component {
         console.log('recieved task')
         this.setState({
           task: this.props.localUser.task,
-          disabled: 'false'
+          disabled: false
         });
       })
       this.props.socket.emit('getTask')
@@ -43,7 +43,7 @@ class GameRoom extends React.Component {
   handleSkip = e => {
     this.setState({
       task: 'tasks are disabled for 30 seconds',
-      disabled: 'true'
+      disabled: true
     })
     this.props.dispatch(doSkip())
   }
@@ -51,9 +51,9 @@ class GameRoom extends React.Component {
   handleComplete = e => {
     this.setState({
       task: 'waiting for next task...',
-      disabled: 'true'
+      disabled: true
     })
-    this.props.dispatch(doComplete(this.props.socket))
+    this.props.dispatch(doComplete(this.props.socket, this.props.room))
   }
 
   render() {
@@ -96,6 +96,7 @@ function mapStateToProps(globalState) {
   return {
     socket: globalState.localUser.socket,
     localUser: globalState.localUser,
+    room: globalState.localUser.room
   }
 }
 
