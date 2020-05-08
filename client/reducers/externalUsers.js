@@ -1,17 +1,10 @@
+
 import { ADD_EXTERNAL_USERS } from '../actions/externalUsers'
 
-const users = [{
-  name: 'user1',
-},
-{
-  name: 'user2'
-}
-]
+const externalUsers = (state = [], action) => {
+  switch (action.type) {
 
-const externalUsers = (state = users, action) => {
-  switch(action.type) {
-
-    case ADD_EXTERNAL_USERS :
+    case ADD_EXTERNAL_USERS:
       return action.name
 
     default:
