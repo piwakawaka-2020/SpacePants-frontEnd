@@ -9,4 +9,10 @@ export function subscriptions(socket, props) {
     //dispatch to switch to vote screen and use saved externalUsers to display a list of people to vote for
   })
 
+  socket.on('gameOver', () => {
+    if(props.localUser.role === 'Alien') {
+      socket.emit('alienHistory', props.localUser.tasks)
+    }
+  })
+
 }
