@@ -8,7 +8,7 @@ class GameRoom extends React.Component {
   state = {
     task: '',
     hint: 'No leads recieved yet',
-    disabled: 'false',
+    disabled: false,
     time: ""
   }
 
@@ -22,7 +22,7 @@ class GameRoom extends React.Component {
         console.log('recieved task')
         this.setState({
           task: this.props.localUser.task,
-          disabled: 'false'
+          disabled: false
         });
       })
       this.props.socket.emit('getTask')
@@ -43,7 +43,7 @@ class GameRoom extends React.Component {
   handleSkip = e => {
     this.setState({
       task: 'tasks are disabled for 30 seconds',
-      disabled: 'true'
+      disabled: 'false'
     })
     this.props.dispatch(doSkip())
   }
@@ -51,7 +51,7 @@ class GameRoom extends React.Component {
   handleComplete = e => {
     this.setState({
       task: 'waiting for next task...',
-      disabled: 'true'
+      disabled: 'false'
     })
     this.props.dispatch(doComplete(this.props.socket))
   }
