@@ -1,4 +1,5 @@
 import React from 'react'
+import Voting from './Voting'
 
 import { connect } from 'react-redux'
 import { doVote, doSkip, doComplete, receiveTask, receiveHint } from '../actions/localUser'
@@ -9,7 +10,8 @@ class GameRoom extends React.Component {
     task: '',
     hint: 'No leads received yet',
     disabled: false,
-    time: '5:00'
+    time: '5:00',
+    vote: false
   }
 
   componentDidMount() {
@@ -37,6 +39,7 @@ class GameRoom extends React.Component {
 
     } else {
       this.props.socket.on('hint', hint => {
+        // console.log(hint)
         this.props.dispatch(receiveHint(hint))
         this.setState({ hint: this.props.localUser.hint });
       })
@@ -44,7 +47,11 @@ class GameRoom extends React.Component {
   }
 
   handleVote = e => {
-    this.props.dispatch(doVote())
+    this.setState({
+      vote: true
+    })
+    
+    // this.props.dispatch(doVote(this.props.socket))
     //switch to vote
   }
 
@@ -95,12 +102,18 @@ class GameRoom extends React.Component {
 
         <button onClick={this.handleVote}>Vote!</button>
 
+        {
+          this.state.vote &&
+          <Voting/>
+        }
+
       </div>
     )
   }
 }
 
 function mapStateToProps(globalState) {
+  console.log(globalState)
   return {
     socket: globalState.localUser.socket,
     localUser: globalState.localUser,
