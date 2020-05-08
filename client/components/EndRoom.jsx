@@ -26,6 +26,9 @@ class EndRoom extends React.Component {
                 {/* <ul>ALIEN TASKS GO HERE</ul> */}
             </div>
 
+            <div>
+                {/* END TIMER DISPLAY */}
+            </div>
         <button onClick={() => this.props.history.push('/waiting')}>Another game?</button>
       </>
     )
