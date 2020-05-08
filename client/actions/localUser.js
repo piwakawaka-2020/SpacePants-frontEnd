@@ -64,7 +64,7 @@ export function doComplete(socket, room) {
 }
 
 //sends info that user has skipped
-export function doSkip() {
+export function doSkip(socket) {
   socket.emit('skipTask')
 }
 

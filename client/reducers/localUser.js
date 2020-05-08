@@ -26,7 +26,6 @@ const localUser = (state = initialState, action) => {
 
     case SET_TASK:
       state.task = action.task
-      console.log('the state is' + state.task)
       return state
 
     case SET_TOTAL_TASK_COMPLETE:

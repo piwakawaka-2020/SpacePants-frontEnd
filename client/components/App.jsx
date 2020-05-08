@@ -17,7 +17,6 @@ import EndRoom from './EndRoom'
 
 const socket = io('http://localhost:3000')
 
-
 class App extends React.Component {
 
   componentDidMount() {
