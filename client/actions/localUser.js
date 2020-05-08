@@ -54,8 +54,8 @@ export function receiveTask(task) {
 }
 
 //sends info that task is complete
-export function doComplete(socket) {
-  socket.emit('completeTask')
+export function doComplete(socket, room) {
+  socket.emit('completeTask', room)
   return dispatch => {
     return dispatch({
       type: SET_TOTAL_TASK_COMPLETE,
