@@ -1,19 +1,37 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {doVote} from '../actions/localUser'
+import { doVote } from '../actions/localUser'
 
 class Voting extends React.Component {
   state = {
-    voteFor: ''
+    voteFor: '',
+    voteScreen: false
+  }
+
+  componentDidMount(){
+    // subscribe voteCommence
+    this.props.socket.on('receiveVote', voteData =>{
+      
+      this.setState({
+        voteScreen: true,
+        voter: voteData.voter,
+        vote: voteData.vote 
+      })
+    })
   }
 
   handleVote = (event) =>{
     event.preventDefault()
     this.setState({
       voteFor: event.target.name
+    }, () =>  {
+      this.props.dispatch(doVote({
+        voter: this.props.localUser.name,
+        vote: this.state.voteFor
+      }, this.props.socket))
     })
-    this.props.dispatch(doVote(this.state.voteFor, this.props.socket))
   }
+
   render() {
     return (
       <div>
@@ -33,6 +51,25 @@ class Voting extends React.Component {
             )
           })
         }
+
+        {
+          this.state.voteScreen &&
+          <div>
+            <h1>{this.state.voter} voted for {this.state.vote}</h1>
+            <p>Do you agree?</p>
+            <button>Yes</button>
+            <button>No</button>
+          </div>
+        }
+
+        {/* {
+          (typeof this.state.voteFor == 'string') &&
+            <div>
+              <h3>Someone has voted for {this.state.voteFor}</h3>
+              <button>Agree</button>
+              <button>Disagree</button>
+            </div>
+        } */}
       </div>
     )
   }
@@ -42,7 +79,8 @@ function mapStateToProps(globalState) {
   console.log(globalState)
   return {
     socket: globalState.localUser.socket,
-    users: globalState.externalUsers
+    users: globalState.externalUsers,
+    localUser: globalState.localUser
   }
 }
 
