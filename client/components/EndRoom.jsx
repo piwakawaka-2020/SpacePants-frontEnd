@@ -9,26 +9,25 @@ class EndRoom extends React.Component {
   }
 
   componentDidMount() {
-    
-    }
-  
-  render() {
 
+  }
+
+  render() {
     return (
       <>
-            <div>
-                <h1>The winner is -</h1>
-                {/* WINNER NAME */}
-            </div>
+        <div>
+          <h1>The winner is -</h1>
+          {/* WINNER NAME */}
+        </div>
 
-            <div>
-                <h2>The alien completed these tasks-</h2>
-                {/* <ul>ALIEN TASKS GO HERE</ul> */}
-            </div>
+        <div>
+          <h2>The alien completed these tasks-</h2>
+          {/* <ul>ALIEN TASKS GO HERE</ul> */}
+        </div>
 
-            <div>
-                {/* END TIMER DISPLAY */}
-            </div>
+        <div>
+          {/* END TIMER DISPLAY */}
+        </div>
         <button onClick={() => this.props.history.push('/waiting')}>Another game?</button>
       </>
     )

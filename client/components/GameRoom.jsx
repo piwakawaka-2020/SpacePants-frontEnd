@@ -19,7 +19,7 @@ class GameRoom extends React.Component {
       })
 
       const seconds = Number(time.split(':')[1])
-      if (seconds % 15 === 0 && this.props.localUser.role == 'Human') {
+      if (seconds % 30 === 0 && this.props.localUser.role == 'Human') {
         this.props.socket.emit('getFakeHint')
       }
     })
@@ -75,14 +75,12 @@ class GameRoom extends React.Component {
         {
           this.props.localUser.role === 'Alien' &&
           <div>
-            {/* {console.log(this.props.localUser)} */}
             <p>{this.state.task}</p>
             <button onClick={this.handleSkip} disabled={this.state.disabled}>skip</button>
             <button onClick={this.handleComplete} disabled={this.state.disabled}>complete</button>
             <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
           </div>
         }
-
 
         {/* Human screen */}
         {
@@ -91,7 +89,6 @@ class GameRoom extends React.Component {
             <p>{this.state.hint}</p>
           </div>
         }
-
 
         <button onClick={this.handleVote}>Vote!</button>
 
