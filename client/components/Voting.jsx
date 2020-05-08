@@ -11,8 +11,8 @@ class Voting extends React.Component {
   render() {
 
     return (
-      <div>
-        <h1> Who do you think is the Alien? </h1>
+      <div class="align">
+        <h1 class="heading"> Who do you think is the Alien? </h1>
 
         {
           this.props.users.map(user => {
@@ -20,7 +20,7 @@ class Voting extends React.Component {
               // this.setState({users: name})
               // <button onClick={user.name}>{user.name}</button>
               // <button onClick={user.name}>{user.name}</button>
-              <p>{user.name}</p>
+              <p class="text">{user.name}</p>
             )
 
           })

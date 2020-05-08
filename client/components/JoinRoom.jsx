@@ -29,9 +29,9 @@ class JoinRoom extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Join a game!</h1>
-        <div>
+      <div class="align">
+        <h1 class="heading">Join a game!</h1>
+        <div class="text">
           <form id="roomJoin" onSubmit={this.handleSubmit}>
             <label>Enter Name: </label>
             <input type="text" name="name" placeholder='Name' value={this.state.name} maxLength='20' onChange={this.handleChange} />

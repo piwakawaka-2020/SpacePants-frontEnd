@@ -39,17 +39,17 @@ class CreateRoom extends React.Component {
 
   render() {
     return (
-      <>
-        <h1>{this.state.room}</h1>
+      <div class="align">
+        <h1 class="heading">{this.state.room}</h1>
 
-        <form id="Create" onSubmit={this.handleSubmit}>
+        <form class="text" id="Create" onSubmit={this.handleSubmit}>
           <label>
             Name:
           </label>
           <input type="text" value={this.state.name} onChange={this.handleChange} name="name" />
           <input type="submit" value="submit" />
         </form>
-      </>
+      </div>
     )
   }
 }

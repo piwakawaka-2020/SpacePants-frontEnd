@@ -1,6 +1,6 @@
 import React from "react"
 import Modal from "./Modal"
-import "../../public/styles.css"
+
 class LandingPage extends React.Component {
 
   state = {
@@ -15,13 +15,13 @@ class LandingPage extends React.Component {
   
   render() {
     return (
-      <>
+      <div class="align">
       
-        <h1>SpacePants</h1>
-            <button onClick={() => this.props.history.push('/create')}>Create Game</button>
-            <button onClick={() => this.props.history.push('/join')}>Join Game</button>
+        <h1 class='heading'>SpacePants</h1>
+            <button class='button' onClick={() => this.props.history.push('/create')}>Create Game</button>
+            <button class='button' onClick={() => this.props.history.push('/join')}>Join Game</button>
         <button
-          className="toggle-button"
+          class="button"
           id="centered-toggle-button"
           onClick={evt => {
             this.showModal(evt)
@@ -37,7 +37,7 @@ class LandingPage extends React.Component {
             <br></br> Use the hints. Be careful though!
             <br></br> Work out who the alien is before they take over!
         </Modal>
-      </>
+      </div>
     )
   }
 }
