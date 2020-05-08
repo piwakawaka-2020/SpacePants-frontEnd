@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { doVote, doSkip, doComplete, receiveTask } from '../actions/localUser'
+import { doVote, doSkip, doComplete, receiveTask, receiveHint } from '../actions/localUser'
 
 class GameRoom extends React.Component {
   state = {
@@ -14,7 +14,7 @@ class GameRoom extends React.Component {
         console.log('recieved task')
         this.setState({task: this.props.localUser.task});
       })
-      this.props.socket.emit('task')
+      this.props.socket.emit('getTask')
       
     } else {
       this.props.socket.on('hint', hint => {
