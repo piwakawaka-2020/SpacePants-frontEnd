@@ -5,12 +5,15 @@ import { connect } from 'react-redux'
 class CreateRoom extends React.Component {
 
   componentDidMount() {
-    var min = 1;
-    var max = 100;
-    var rand = min + Math.ceil((Math.random() * (max - min)));
+    let code = []
+
+    while(code.length < 4) {
+      var rand = Math.floor(65 + Math.random() * (90 - 65));
+      code.push(String.fromCharCode(rand))
+    }
 
     this.setState({
-      room: rand
+      room: code.join('')
     })
   }
 
@@ -35,7 +38,6 @@ class CreateRoom extends React.Component {
       [e.target.name]: e.target.value
     })
   }
-
 
   render() {
     return (
