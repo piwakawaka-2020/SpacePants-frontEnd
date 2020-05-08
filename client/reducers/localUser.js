@@ -5,7 +5,8 @@ const initialState = {
   room: '',
   role: '',
   task: '',
-  hint: ''
+  hint: '',
+  completedTasks: 0
 }
 
 const localUser = (state = initialState, action) => {
@@ -23,9 +24,10 @@ const localUser = (state = initialState, action) => {
       return state
     case SET_TASK:
       state.task = action.task
+      console.log('the state is' + state.task)
       return state
     case SET_TOTAL_TASK_COMPLETE:
-      state.completedTasks = state.CompletedTasks++
+      state.completedTasks++
       return state
     case SET_ROLE:
       state.role = action.role

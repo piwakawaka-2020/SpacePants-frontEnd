@@ -54,8 +54,8 @@ export function receiveTask(task) {
 }
 
 //sends info that task is complete
-export function doComplete() {
-  socket.emit('taskComplete')
+export function doComplete(socket) {
+  socket.emit('completeTask')
   return dispatch => {
     return dispatch({
       type: SET_TOTAL_TASK_COMPLETE,
@@ -65,7 +65,7 @@ export function doComplete() {
 
 //sends info that user has skipped
 export function doSkip() {
-  socket.emit('skip')
+  socket.emit('skipTask')
 }
 
 // sends info that user wants to do a vote
