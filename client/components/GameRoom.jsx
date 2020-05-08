@@ -19,7 +19,7 @@ class GameRoom extends React.Component {
     if(this.props.localUser.role === 'Alien') {
       this.props.socket.on('task', task => {
         this.props.dispatch(receiveTask(task))
-        console.log('recieved task')
+
         this.setState({
           task: this.props.localUser.task,
           disabled: false
@@ -45,7 +45,7 @@ class GameRoom extends React.Component {
       task: 'tasks are disabled for 30 seconds',
       disabled: true
     })
-    this.props.dispatch(doSkip())
+    this.props.dispatch(doSkip(this.props.socket))
   }
 
   handleComplete = e => {
@@ -67,7 +67,7 @@ class GameRoom extends React.Component {
         {
           this.props.localUser.role === 'Alien' &&
           <div>
-            {console.log(this.props.localUser)}
+            {/* {console.log(this.props.localUser)} */}
             <p>{this.state.task}</p>
             <button onClick={this.handleSkip } disabled={this.state.disabled}>skip</button>
             <button onClick={this.handleComplete} disabled={this.state.disabled}>complete</button>
