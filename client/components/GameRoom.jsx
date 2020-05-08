@@ -14,7 +14,6 @@ class GameRoom extends React.Component {
       
     } else {
       this.props.socket.on('hint', hint => {
-        console.log(hint)
         this.props.dispatch(receiveHint(hint))
       })
     }

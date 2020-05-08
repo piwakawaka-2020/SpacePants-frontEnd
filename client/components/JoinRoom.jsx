@@ -44,11 +44,11 @@ class JoinRoom extends React.Component {
     )
   }
 }
+
 const mapStateToProps = (globalState) => {
   return {
     socket: globalState.localUser.socket
   }
 }
-
 
 export default connect(mapStateToProps)(JoinRoom)

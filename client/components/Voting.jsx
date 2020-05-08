@@ -3,46 +3,38 @@ import { connect } from 'react-redux'
 
 class Voting extends React.Component {
 
-state = {
+  state = {
+    users: [],
+    array: []
+  }
 
-  users: [],
-  array: []
+  render() {
 
-}
-    render() {
-  
-    
-      return(
-    <div>
+    return (
+      <div>
         <h1> Who do you think is the Alien? </h1>
-   
+
         {
           this.props.users.map(user => {
             return (
               // this.setState({users: name})
               // <button onClick={user.name}>{user.name}</button>
               // <button onClick={user.name}>{user.name}</button>
-            <p>{user.name}</p>
+              <p>{user.name}</p>
             )
-              
+
           })
         }
-        
-            
-       
-   </div>
-
-    )}
-
-
+      </div>
+    )
+  }
 }
 
 function mapStateToProps(globalState) {
-
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers
   }
 }
-  
+
 export default connect(mapStateToProps)(Voting)

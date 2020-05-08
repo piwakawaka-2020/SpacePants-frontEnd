@@ -5,16 +5,14 @@ import io from 'socket.io-client'
 import { connect } from 'react-redux'
 
 import { createUser } from '../actions/localUser'
-import WaitingRoom from './WaitingRoom'
-
-import LandingPage from './LandingPage'
-import JoinRoom from './JoinRoom'
-import CreateRoom from './CreateRoom'
-import Voting from './Voting'
-import GameRoom from './GameRoom'
-
 import {subscriptions} from '../apis/socket'
 
+import LandingPage from './LandingPage'
+import CreateRoom from './CreateRoom'
+import JoinRoom from './JoinRoom'
+import WaitingRoom from './WaitingRoom'
+import GameRoom from './GameRoom'
+import Voting from './Voting'
 
 const socket = io('http://localhost:3000')
 
@@ -31,12 +29,11 @@ class App extends React.Component {
     return (
       <Router>
         <Route exact path='/' component={LandingPage} />
-        <Route path='/waiting' component={WaitingRoom} />
         <Route path='/create' component={CreateRoom} />
         <Route path='/join' component={JoinRoom} />
-        <Route path='/vote' component={Voting} />
-        
+        <Route path='/waiting' component={WaitingRoom} />
         <Route path='/game' component={GameRoom} />
+        <Route path='/vote' component={Voting} />
       </Router>
     )
   }
