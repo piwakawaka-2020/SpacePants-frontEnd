@@ -4,8 +4,12 @@ import { connect } from 'react-redux'
 import { doVote, doSkip, doComplete, receiveTask, receiveHint } from '../actions/localUser'
 
 class GameRoom extends React.Component {
+  state ={time: ""}
 
   componentDidMount() {
+    this.props.socket.on('timer', time => 
+    this.setState({time}))
+
     if(this.props.localUser.role === 'Alien') {
       this.props.socket.on('task', task => {
         this.props.dispatch(receiveTask(task))
@@ -34,12 +38,12 @@ class GameRoom extends React.Component {
 
   render() {
     
+
     return (
       <div>
         <h1>You are {this.props.localUser.role}</h1>
 
-        {/* Timer goes here */}
-
+        <p>{this.state.time}</p>
 
         {/* Alien screen */}
         {
