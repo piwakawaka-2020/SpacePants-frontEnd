@@ -15,8 +15,6 @@ import GameRoom from './GameRoom'
 import Voting from './Voting'
 import EndRoom from './EndRoom'
 
-import {subscriptions} from '../apis/socket'
-
 const socket = io('http://localhost:3000')
 
 

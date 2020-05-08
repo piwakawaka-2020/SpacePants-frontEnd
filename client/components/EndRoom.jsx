@@ -1,9 +1,8 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { addRole } from '../actions/localUser'
 
-class WaitingRoom extends React.Component {
+class EndRoom extends React.Component {
 
   state = {
     users: []
@@ -13,14 +12,22 @@ class WaitingRoom extends React.Component {
     
     }
   
-
   render() {
 
     return (
-      <div>
-        
-        <button onClick={this.startGame} disabled={this.props.users.length < 4}>New Game</button>
-      </div>
+      <>
+            <div>
+                <h1>The winner is -</h1>
+                {/* WINNER NAME */}
+            </div>
+
+            <div>
+                <h2>The alien completed these tasks-</h2>
+                {/* <ul>ALIEN TASKS GO HERE</ul> */}
+            </div>
+
+        <button onClick={() => this.props.history.push('/waiting')}>Another game?</button>
+      </>
     )
   }
 }
@@ -30,8 +37,7 @@ function mapStateToProps(globalState) {
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers,
-    room: globalState.localUser.room
   }
 }
 
-export default connect(mapStateToProps)(WaitingRoom)
+export default connect(mapStateToProps)(EndRoom)
