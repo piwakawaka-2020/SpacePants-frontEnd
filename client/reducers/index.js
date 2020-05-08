@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
 
-export default combineReducers({
+import localUser  from './localUser'
+import externalUsers from './externalUsers'
 
+export default combineReducers({
+  localUser,
+  externalUsers
 })

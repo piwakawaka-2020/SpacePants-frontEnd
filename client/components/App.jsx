@@ -1,16 +1,42 @@
 import React from 'react'
 import { HashRouter as Router, Route } from 'react-router-dom'
 
+import io from 'socket.io-client'
+import { connect } from 'react-redux'
+
+import { createUser } from '../actions/localUser'
+import {subscriptions} from '../apis/socket'
+
 import LandingPage from './LandingPage'
+import CreateRoom from './CreateRoom'
+import JoinRoom from './JoinRoom'
+import WaitingRoom from './WaitingRoom'
+import GameRoom from './GameRoom'
+import Voting from './Voting'
+
+const socket = io('http://localhost:3000')
+
 
 class App extends React.Component {
+
+  componentDidMount() {
+    this.props.dispatch(createUser(socket))
+
+    subscriptions(socket, this.props)
+  }
+
   render() {
     return (
       <Router>
-        <Route path='/' component={LandingPage} />
+        <Route exact path='/' component={LandingPage} />
+        <Route path='/create' component={CreateRoom} />
+        <Route path='/join' component={JoinRoom} />
+        <Route path='/waiting' component={WaitingRoom} />
+        <Route path='/game' component={GameRoom} />
+        <Route path='/vote' component={Voting} />
       </Router>
     )
   }
 }
 
-export default App
+export default connect()(App)
