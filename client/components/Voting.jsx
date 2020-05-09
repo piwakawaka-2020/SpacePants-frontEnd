@@ -3,31 +3,27 @@ import { connect } from 'react-redux'
 import { doVote } from '../actions/localUser'
 
 class Voting extends React.Component {
+
   state = {
-    voteFor: '',
+    vote: '',
     voteScreen: false
   }
 
-  componentDidMount(){
-    // subscribe voteCommence
-    this.props.socket.on('receiveVote', voteData =>{
-      
-      this.setState({
-        voteScreen: true,
-        voter: voteData.voter,
-        vote: voteData.vote 
-      })
-    })
-  }
+  // componentDidMount() {
+  //   // subscribe voteCommence
 
-  handleVote = (event) =>{
+  //   })
+  // }
+
+  handleVote = (event) => {
     event.preventDefault()
     this.setState({
-      voteFor: event.target.name
-    }, () =>  {
+      vote: event.target.name
+    }, () => {
       this.props.dispatch(doVote({
         voter: this.props.localUser.name,
-        vote: this.state.voteFor
+        vote: this.state.vote,
+        room: this.props.localUser.room
       }, this.props.socket))
     })
   }
@@ -36,40 +32,37 @@ class Voting extends React.Component {
     return (
       <div>
         {
-          (this.state.voteFor == '') ?
-          <h1>Who do you think is the Alien?</h1> :
-          <h1>You voted for {this.state.voteFor}</h1>
+          this.props.castVote &&
+          <>
+            <h1>Who do you think is the Alien?</h1>
+            {this.props.users.map((user, index) => {
+              return (
+                <span key={index}>
+                  <button onClick={this.handleVote} name={user} key={index}>{user}</button>
+                </span>
+              )
+            })
+            }
+          </>
         }
-
         {
-          (this.state.voteFor == '') && 
-            this.props.users.map((user, index) => {
-            return (
-              <span key={index}>
-                <button onClick={this.handleVote} name={user} key={index}>{user}</button>
-              </span>
-            )
-          })
-        }
-
-        {
-          this.state.voteScreen &&
+          this.props.receiveVote &&
           <div>
-            <h1>{this.state.voter} voted for {this.state.vote}</h1>
-            <p>Do you agree?</p>
-            <button>Yes</button>
-            <button>No</button>
+            {this.props.voter === this.props.localUser.name ?
+              <>
+                <h1>You voted for {this.props.vote}</h1>
+                <p>Now you need to convince everyone else!</p>
+              </>
+              :
+              <>
+                <h1>{this.props.voter} voted for {this.props.vote}</h1>
+                <p>Do you agree?</p>
+                <button>Yes</button>
+                <button>No</button>
+              </>
+            }
           </div>
         }
-
-        {/* {
-          (typeof this.state.voteFor == 'string') &&
-            <div>
-              <h3>Someone has voted for {this.state.voteFor}</h3>
-              <button>Agree</button>
-              <button>Disagree</button>
-            </div>
-        } */}
       </div>
     )
   }
