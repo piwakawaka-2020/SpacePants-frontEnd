@@ -74,7 +74,10 @@ class GameRoom extends React.Component {
     })
 
     this.props.socket.on('taskList', tasks => {
-      this.props.history.replace('/end')
+      this.props.history.push({
+        pathname: '/end',
+        state: { taskList: tasks}
+      })
     })
   }
 
