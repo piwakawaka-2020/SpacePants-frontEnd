@@ -75,7 +75,7 @@ class GameRoom extends React.Component {
       task: 'The humans are on to you!  Do nothing for 30 seconds!',
       disabled: true
     })
-    this.props.dispatch(doSkip(this.props.socket))
+    this.props.socket.emit('skipTask')
   }
 
   handleComplete = e => {

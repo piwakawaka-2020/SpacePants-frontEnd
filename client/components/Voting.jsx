@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { doVote } from '../actions/localUser'
+import { useVote } from '../actions/localUser'
 
 class Voting extends React.Component {
 
@@ -11,14 +11,20 @@ class Voting extends React.Component {
 
   handleVote = (event) => {
     event.preventDefault()
+    
     this.setState({
       vote: event.target.name
     }, () => {
-      this.props.dispatch(doVote({
+      this.props.dispatch(useVote())
+
+      const voteData ={
         voter: this.props.localUser.name,
         vote: this.state.vote,
         room: this.props.localUser.room
-      }, this.props.socket))
+      }
+
+      this.props.socket.emit('triggerVote', voteData)
+      this.props.socket.emit('sendVote', { room: voteData.room, vote: true })
     })
   }
 
