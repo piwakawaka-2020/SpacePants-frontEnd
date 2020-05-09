@@ -22,6 +22,13 @@ class Voting extends React.Component {
     })
   }
 
+  sendVote = vote => {
+    this.props.socket.emit('sendVote', {
+      vote: vote,
+      room: this.props.localUser.room
+    })
+  }
+
   render() {
     return (
       <div>
@@ -50,9 +57,15 @@ class Voting extends React.Component {
               :
               <>
                 <h1>{this.props.voter} voted for {this.props.vote}</h1>
-                <p>Do you agree?</p>
-                <button>Yes</button>
-                <button>No</button>
+
+                {
+                  this.props.localUser.role != 'Alien' &&
+                  <>
+                    <p>Do you agree?</p>
+                    <button onClick={() => this.sendVote(true)}>Yes</button>
+                    <button onClick={() => this.sendVote(false)}>No</button>
+                  </>
+                }
               </>
             }
           </div>
