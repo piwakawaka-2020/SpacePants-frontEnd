@@ -18,7 +18,7 @@ class JoinRoom extends React.Component {
     socket.on('roomList', room => this.setState({roomList: room})) //get room lis
 
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value.toUpperCase()
     },
 
     () => {
