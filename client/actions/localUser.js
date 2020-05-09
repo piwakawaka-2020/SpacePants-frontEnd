@@ -49,6 +49,13 @@ export function useVote() {
   }
 }
 
+export function checkVoteResult(result){
+  return {
+    type: 'CHECK_RESULT',
+    result: result
+  }
+}
+
 export function completeTask(socket, room) {
   socket.emit('completeTask', room)
   return {
