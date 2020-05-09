@@ -8,7 +8,4 @@ export function subscriptions(socket, props) {
   socket.on('voteResult', result => {
     console.log('voteResult:', result)
   })
-
-
-
 }
