@@ -7,14 +7,25 @@ class CreateRoom extends React.Component {
   componentDidMount() {
     const socket = this.props.socket
     socket.emit('getRoomList')
-    const roomList = socket.on('roomList', rooms => rooms)
-    var min = 1;
-    var max = 100;
-    var rand = () => {min + Math.ceil((Math.random() * (max - min)))}
+    const roomList = socket.on('roomList', rooms => rooms) //get room list
     
+    generateRoomCode = () => {    
+      let code = []
+      while(code.length < 4) {
+        var rand = Math.floor(65 + Math.random() * (90 - 65));
+        code.push(String.fromCharCode(rand))
+      }
+      return code.join('')
+    }
 
+    let roomCode = () => {
+      let room = this.generateRoomCode()
+      if (roomList.includes(room)){roomCode()} //if room already exists run the function again to get a new random code.
+      else {return room}
+    }
+    
     this.setState({
-      room: rand
+      room: roomCode
     })
   }
 
@@ -22,7 +33,6 @@ class CreateRoom extends React.Component {
     name: "",
     room: ''
   }
-
 
   
   handleSubmit = (e) => {
@@ -42,20 +52,19 @@ class CreateRoom extends React.Component {
     })
   }
 
-
   render() {
     return (
-      <>
-        <h1>{this.state.room}</h1>
+      <div class="align">
+        <h1 class="heading">{this.state.room}</h1>
 
-        <form id="Create" onSubmit={this.handleSubmit}>
+        <form class="text" id="Create" onSubmit={this.handleSubmit}>
           <label>
             Name:
           </label>
           <input type="text" value={this.state.name} onChange={this.handleChange} name="name" />
           <input type="submit" value="submit" />
         </form>
-      </>
+      </div>
     )
   }
 }

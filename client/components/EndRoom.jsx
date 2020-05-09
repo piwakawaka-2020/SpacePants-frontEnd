@@ -5,15 +5,20 @@ import { connect } from 'react-redux'
 class EndRoom extends React.Component {
 
   state = {
-    users: []
+    users: [],
+    time: ""
   }
 
   componentDidMount() {
-    
+    this.props.socket.on('timer', time  => 
+    this.setState({time})) 
     }
   
   render() {
 
+  }
+
+  render() {
     return (
       <>
             <div>
@@ -27,7 +32,7 @@ class EndRoom extends React.Component {
             </div>
 
             <div>
-                {/* END TIMER DISPLAY */}
+                <p>{this.state.time}</p>
             </div>
         <button onClick={() => this.props.history.push('/waiting')}>Another game?</button>
       </>
@@ -40,6 +45,7 @@ function mapStateToProps(globalState) {
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers,
+    localUser: globalState.localUser
   }
 }
 
