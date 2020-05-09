@@ -9,12 +9,6 @@ class Voting extends React.Component {
     voteScreen: false
   }
 
-  // componentDidMount() {
-  //   // subscribe voteCommence
-
-  //   })
-  // }
-
   handleVote = (event) => {
     event.preventDefault()
     this.setState({
@@ -69,7 +63,6 @@ class Voting extends React.Component {
 }
 
 function mapStateToProps(globalState) {
-  console.log(globalState)
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers,

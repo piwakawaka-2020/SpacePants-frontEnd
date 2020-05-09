@@ -1,10 +1,10 @@
-import { SET_LOCAL_SOCKET, SET_LOCAL_USER, SET_HINT, SET_TASK, SET_TOTAL_TASK_COMPLETE, SET_ROLE } from '../actions/localUser'
+import { SET_LOCAL_SOCKET, SET_LOCAL_USER, SET_HINT, SET_TASK, SET_TASK_COMPLETE, SET_ROLE } from '../actions/localUser'
 
 const initialState = {
   name: '',
   room: '',
   role: '',
-  task: '',
+  tasks: [],
   hint: '',
   completedTasks: 0
 }
@@ -25,10 +25,11 @@ const localUser = (state = initialState, action) => {
       return state
 
     case SET_TASK:
-      state.task = action.task
+      state.tasks = [{ task: action.task, complete: false }, ...state.tasks]
       return state
 
-    case SET_TOTAL_TASK_COMPLETE:
+    case SET_TASK_COMPLETE:
+      state.tasks[0].complete = true
       state.completedTasks++
       return state
 

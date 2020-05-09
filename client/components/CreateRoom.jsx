@@ -5,12 +5,15 @@ import { connect } from 'react-redux'
 class CreateRoom extends React.Component {
 
   componentDidMount() {
-    var min = 1;
-    var max = 100;
-    var rand = min + Math.ceil((Math.random() * (max - min)));
+    let code = []
+
+    while(code.length < 4) {
+      var rand = Math.floor(65 + Math.random() * (90 - 65));
+      code.push(String.fromCharCode(rand))
+    }
 
     this.setState({
-      room: rand
+      room: code.join('')
     })
   }
 
@@ -36,20 +39,19 @@ class CreateRoom extends React.Component {
     })
   }
 
-
   render() {
     return (
-      <>
-        <h1>{this.state.room}</h1>
+      <div class="align">
+        <h1 class="heading">{this.state.room}</h1>
 
-        <form id="Create" onSubmit={this.handleSubmit}>
+        <form class="text" id="Create" onSubmit={this.handleSubmit}>
           <label>
             Name:
           </label>
           <input type="text" value={this.state.name} onChange={this.handleChange} name="name" />
           <input type="submit" value="submit" />
         </form>
-      </>
+      </div>
     )
   }
 }

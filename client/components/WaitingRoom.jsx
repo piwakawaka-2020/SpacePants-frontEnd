@@ -23,14 +23,14 @@ class WaitingRoom extends React.Component {
   render() {
 
     return (
-      <div>
-        <p>Room Code: {this.props.room}</p>
+      <div class="align">
+        <p class="heading">Room Code: {this.props.room}</p>
         {
           this.props.users.map((user, i) => {
-            return (<p key={i}>{user}</p>)
+            return (<p  class="text" key={i}>{user}</p>)
           })
         }
-        <button onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
+        <button class="button" onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
       </div>
     )
   }

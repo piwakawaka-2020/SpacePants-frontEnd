@@ -26,7 +26,7 @@ class GameRoom extends React.Component {
       })
 
       const seconds = Number(time.split(':')[1])
-      if (seconds % 15 === 0 && this.props.localUser.role == 'Human') {
+      if (seconds % 30 === 0 && this.props.localUser.role == 'Human') {
         this.props.socket.emit('getFakeHint')
       }
     })
@@ -36,7 +36,7 @@ class GameRoom extends React.Component {
         this.props.dispatch(receiveTask(task))
 
         this.setState({
-          task: this.props.localUser.task,
+          task: this.props.localUser.tasks[0].task,
           disabled: false
         });
       })
@@ -88,10 +88,10 @@ class GameRoom extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>You are {this.props.localUser.role}</h1>
+      <div class="align">
+        <h1 class="heading">You are {this.props.localUser.role}</h1>
 
-        <p>{this.state.time}</p>
+        <p class="heading">{this.state.time}</p>
 
         {
           !this.state.voteData.receiveVote &&
