@@ -49,9 +49,9 @@ export function useVote() {
   }
 }
 
-export function checkVoteResult(result){
+export function setVoteResult(result){
   return {
-    type: 'CHECK_RESULT',
+    type: 'SET_RESULT',
     result: result
   }
 }

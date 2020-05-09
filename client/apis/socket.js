@@ -1,5 +1,4 @@
 import { addExternalUsers } from '../actions/externalUsers'
-import { checkVoteResult } from '../actions/localUser'
 
 export function subscriptions(socket, props) {
   socket.on('user', user => {
@@ -11,7 +10,6 @@ export function subscriptions(socket, props) {
   })
 
   socket.on('voteResult', result => {
-    props.dispatch(checkVoteResult(result))
     console.log('voteResult:', result)
   })
 
