@@ -6,36 +6,28 @@ class EndRoom extends React.Component {
 
   state = {
     users: [],
-    time: ""
-  }
-
-  componentDidMount() {
-    this.props.socket.on('timer', time  => 
-    this.setState({time})) 
-    }
-  
-  render() {
-
+    time: "",
+    alienHistory: []
   }
 
   render() {
     return (
-      <>
+      <div class='align'>
             <div>
-                <h1>The winner is -</h1>
+                <h1 class='heading'>The winner is -</h1>
                 {/* WINNER NAME */}
             </div>
 
             <div>
-                <h2>The alien completed these tasks-</h2>
+                <h2 class='text'>The alien completed these tasks-</h2>
                 {/* <ul>ALIEN TASKS GO HERE</ul> */}
             </div>
 
             <div>
-                <p>{this.state.time}</p>
+                <p class='text'>{this.state.time}</p>
             </div>
-        <button onClick={() => this.props.history.push('/waiting')}>Another game?</button>
-      </>
+        <button class='button' onClick={() => this.props.history.push('/waiting')}>Another game?</button>
+      </div>
     )
   }
 }

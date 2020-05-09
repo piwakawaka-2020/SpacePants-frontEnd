@@ -25,6 +25,10 @@ class GameRoom extends React.Component {
         time
       })
 
+      if(time === '0:00') {
+        this.props.history.push('/end')
+      }
+      
       const seconds = Number(time.split(':')[1])
       if (seconds % 30 === 0 && this.props.localUser.role == 'Human') {
         this.props.socket.emit('getFakeHint')
