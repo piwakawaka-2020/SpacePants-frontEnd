@@ -57,7 +57,7 @@ class Voting extends React.Component {
           </>
         }
         {
-          this.props.receiveVote && this.props.localUser.role != 'Alien' &&
+          this.props.receiveVote &&
           <div>
             {this.props.voter === this.props.localUser.name ?
               <>
@@ -67,38 +67,16 @@ class Voting extends React.Component {
               :
               <>
                 <h1><strong>{this.props.voter}</strong> thinks <strong>{this.props.vote}</strong> is an <strong>Alien!</strong> How shall we proceed?</h1>
-
-                {
-                  this.props.localUser.role != 'Alien' &&
-                  <>
-                    <h3>{this.state.vote}</h3>
-                    <button onClick={() => this.sendVote(true)}>Alien Autopsy!</button>
-                    <button onClick={() => this.sendVote(false)}>{this.props.vote} is one of us!</button>
-                  </>
-                }
-              </>
-            }
-          </div>
-        }
-
-        {
-          this.props.receiveVote && this.props.localUser.role === 'Alien' &&
-          <div>
-            {this.props.vote === this.props.localUser.name ?
-              <>
-                <h1><strong>{this.props.voter}</strong> has accused <strong>you</strong> of being an <strong>Alien!</strong></h1>
-                <p>Defend yourself!</p>
-              </>
-              :
-              <>
-                <h1><strong>{this.props.voter}</strong> has accused <strong>{this.props.vote}</strong> of being an <strong>Alien!</strong></h1>
-                <p>This should be interesting!</p>
+                <h3>{this.state.vote}</h3>
+                <button onClick={() => this.sendVote(true)}>Alien Autopsy!</button>
+                <button onClick={() => this.sendVote(false)}>{this.props.vote} is a human!</button>
               </>
             }
           </div>
         }
       </div>
-    )}
+    )
+  }
 }
 
 function mapStateToProps(globalState) {
