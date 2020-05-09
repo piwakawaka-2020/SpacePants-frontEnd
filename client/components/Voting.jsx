@@ -20,11 +20,12 @@ class Voting extends React.Component {
       const voteData = {
         voter: this.props.localUser.name,
         vote: this.state.voteName,
-        room: this.props.localUser.room
       }
 
-      this.props.socket.emit('triggerVote', voteData)
-      this.props.socket.emit('sendVote', { room: voteData.room, vote: true })
+      let room = this.props.localUser.room
+
+      this.props.socket.emit('triggerVote', { room, voteData })
+      this.props.socket.emit('sendVote', { room, voteData: { motion: true, person: voteData.vote } })
     })
   }
 
@@ -34,8 +35,8 @@ class Voting extends React.Component {
     })
 
     this.props.socket.emit('sendVote', {
-      vote: vote,
-      room: this.props.localUser.room
+      room: this.props.localUser.room,
+      voteData: { motion: vote, person: this.props.vote }
     })
   }
 

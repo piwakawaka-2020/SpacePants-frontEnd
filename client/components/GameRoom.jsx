@@ -25,9 +25,9 @@ class GameRoom extends React.Component {
         time
       })
 
-      if (time === '0:00') {
-        this.props.history.replace('/end')
-      }
+      // if (time === '0:00') {
+      //   this.props.history.replace('/end')
+      // }
 
       const seconds = Number(time.split(':')[1])
       if ((seconds + 10) % 30 === 0 && this.props.localUser.role == 'Human') {
@@ -61,6 +61,22 @@ class GameRoom extends React.Component {
           voter: voteData.voter,
           vote: voteData.vote
         }
+      })
+    })
+
+    this.props.socket.on('gameOver', () => {
+      if (this.props.localUser.role === 'Alien') {
+        this.props.socket.emit('alienHistory', {
+          tasks: this.props.localUser.tasks,
+          room: this.props.localUser.room 
+        })
+      }
+    })
+
+    this.props.socket.on('taskList', tasks => {
+      this.props.history.replace({
+        pathname: '/end',
+        state: { taskList: tasks}
       })
     })
   }
