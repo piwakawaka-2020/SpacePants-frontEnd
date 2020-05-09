@@ -5,21 +5,21 @@ import { useVote } from '../actions/localUser'
 class Voting extends React.Component {
 
   state = {
+    voteName: '',
     vote: '',
-    voteScreen: false
   }
 
   handleVote = (event) => {
     event.preventDefault()
-    
+
     this.setState({
-      vote: event.target.name
+      voteName: event.target.name
     }, () => {
       this.props.dispatch(useVote())
 
-      const voteData ={
+      const voteData = {
         voter: this.props.localUser.name,
-        vote: this.state.vote,
+        vote: this.state.voteName,
         room: this.props.localUser.room
       }
 
@@ -29,6 +29,10 @@ class Voting extends React.Component {
   }
 
   sendVote = vote => {
+    this.setState({
+      vote: vote ? 'Affirmative' : 'Negative'
+    })
+
     this.props.socket.emit('sendVote', {
       vote: vote,
       room: this.props.localUser.room
@@ -53,32 +57,48 @@ class Voting extends React.Component {
           </>
         }
         {
-          this.props.receiveVote &&
+          this.props.receiveVote && this.props.localUser.role != 'Alien' &&
           <div>
             {this.props.voter === this.props.localUser.name ?
               <>
-                <h1>You voted for {this.props.vote}</h1>
-                <p>Now you need to convince everyone else!</p>
+                <h1>You accused <strong>{this.props.vote}</strong> of being an <strong>Alien!</strong></h1>
+                <p>Who will agree with you?</p>
               </>
               :
               <>
-                <h1>{this.props.voter} voted for {this.props.vote}</h1>
+                <h1><strong>{this.props.voter}</strong> thinks <strong>{this.props.vote}</strong> is an <strong>Alien!</strong> How shall we proceed?</h1>
 
                 {
                   this.props.localUser.role != 'Alien' &&
                   <>
-                    <p>Do you agree?</p>
-                    <button onClick={() => this.sendVote(true)}>Yes</button>
-                    <button onClick={() => this.sendVote(false)}>No</button>
+                    <h3>{this.state.vote}</h3>
+                    <button onClick={() => this.sendVote(true)}>Alien Autopsy!</button>
+                    <button onClick={() => this.sendVote(false)}>{this.props.vote} is one of us!</button>
                   </>
                 }
               </>
             }
           </div>
         }
+
+        {
+          this.props.receiveVote && this.props.localUser.role === 'Alien' &&
+          <div>
+            {this.props.vote === this.props.localUser.name ?
+              <>
+                <h1><strong>{this.props.voter}</strong> has accused <strong>you</strong> of being an <strong>Alien!</strong></h1>
+                <p>Defend yourself!</p>
+              </>
+              :
+              <>
+                <h1><strong>{this.props.voter}</strong> has accused <strong>{this.props.vote}</strong> of being an <strong>Alien!</strong></h1>
+                <p>This should be interesting!</p>
+              </>
+            }
+          </div>
+        }
       </div>
-    )
-  }
+    )}
 }
 
 function mapStateToProps(globalState) {

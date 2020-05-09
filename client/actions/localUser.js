@@ -43,15 +43,13 @@ export function receiveTask(task) {
   }
 }
 
-
 export function useVote() {
   return {
     type: USE_VOTE
   }
 }
 
-//sends info that task is complete
-export function doComplete(socket, room) {
+export function completeTask(socket, room) {
   socket.emit('completeTask', room)
   return {
     type: SET_TASK_COMPLETE,
