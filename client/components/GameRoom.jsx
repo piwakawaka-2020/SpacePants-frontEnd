@@ -72,6 +72,10 @@ class GameRoom extends React.Component {
         })
       }
     })
+
+    this.props.socket.on('taskList', tasks => {
+      this.props.history.replace('/end')
+    })
   }
 
   handleVote = e => {

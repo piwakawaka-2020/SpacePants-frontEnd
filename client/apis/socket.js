@@ -11,9 +11,4 @@ export function subscriptions(socket, props) {
 
 
 
-  socket.on('taskList', tasks => {
-    console.log(tasks)
-    // this.props.history.replace('/end')
-  })
-
 }
