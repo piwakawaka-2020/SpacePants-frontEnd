@@ -1,4 +1,5 @@
 import React from 'react'
+import Voting from './Voting'
 
 import { connect } from 'react-redux'
 import { doVote, doSkip, doComplete, receiveTask, receiveHint } from '../actions/localUser'
@@ -9,7 +10,13 @@ class GameRoom extends React.Component {
     task: '',
     hint: 'No leads received yet',
     disabled: false,
-    time: '5:00'
+    time: '5:00',
+    voteData: {
+      castVote: false,
+      receiveVote: false,
+      vote: '',
+      voter: ''
+    }
   }
 
   componentDidMount() {
@@ -41,11 +48,26 @@ class GameRoom extends React.Component {
         this.setState({ hint: this.props.localUser.hint });
       })
     }
+
+    this.props.socket.on('receiveVote', voteData => {
+      this.setState({
+        voteData: {
+          castVote: false,
+          receiveVote: true,
+          voter: voteData.voter,
+          vote: voteData.vote
+        }
+      })
+    })
   }
 
   handleVote = e => {
-    this.props.dispatch(doVote())
-    //switch to vote
+    this.setState(prevState => ({
+      voteData: {
+        ...prevState.voteData,
+        castVote: true
+      }
+    }))
   }
 
   handleSkip = e => {
@@ -71,27 +93,34 @@ class GameRoom extends React.Component {
 
         <p class="heading">{this.state.time}</p>
 
-        {/* Alien screen */}
         {
-          this.props.localUser.role === 'Alien' &&
-          <div class="btton">
-            <p class="text">{this.state.task}</p>
-            <button onClick={this.handleSkip} disabled={this.state.disabled}>skip</button>
-            <button onClick={this.handleComplete} disabled={this.state.disabled}>complete</button>
-            <p class="text">Number of Tasks completed: {this.props.localUser.completedTasks}</p>
-          </div>
+          !this.state.voteData.receiveVote &&
+          <>
+
+            {/* Alien screen */}
+            {
+              this.props.localUser.role === 'Alien' &&
+              <div>
+                <p>{this.state.task}</p>
+                <button onClick={this.handleSkip} disabled={this.state.disabled}>skip</button>
+                <button onClick={this.handleComplete} disabled={this.state.disabled}>complete</button>
+                <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
+              </div>
+            }
+
+            {/* Human screen */}
+            {
+              this.props.localUser.role === 'Human' &&
+              <div>
+                <p>{this.state.hint}</p>
+              </div>
+            }
+
+            <button onClick={this.handleVote}>Vote</button>
+          </>
         }
 
-        {/* Human screen */}
-        {
-          this.props.localUser.role === 'Human' &&
-          <div>
-            <p class="text">{this.state.hint}</p>
-          </div>
-        }
-
-        <button class="button" onClick={this.handleVote}>Vote!</button>
-
+        <Voting {...this.state.voteData} />
       </div>
     )
   }

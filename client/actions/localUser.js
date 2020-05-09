@@ -69,8 +69,15 @@ export function doSkip(socket) {
 }
 
 // sends info that user wants to do a vote
-export function doVote() {
-  socket.emit('vote')
+export function doVote(voteData, socket) {
+  console.log(voteData)
+  socket.emit('sendVote', voteData)
+  return dispatch =>{
+    return dispatch({
+      type: 'SET_VOTE',
+      vote: voteData
+    })
+  }
 }
 
 
