@@ -1,24 +1,41 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { doVote } from '../actions/localUser'
+import { useVote } from '../actions/localUser'
 
 class Voting extends React.Component {
 
   state = {
+    voteName: '',
     vote: '',
-    voteScreen: false
   }
 
   handleVote = (event) => {
     event.preventDefault()
+
     this.setState({
-      vote: event.target.name
+      voteName: event.target.name
     }, () => {
-      this.props.dispatch(doVote({
+      this.props.dispatch(useVote())
+
+      const voteData = {
         voter: this.props.localUser.name,
-        vote: this.state.vote,
+        vote: this.state.voteName,
         room: this.props.localUser.room
-      }, this.props.socket))
+      }
+
+      this.props.socket.emit('triggerVote', voteData)
+      this.props.socket.emit('sendVote', { room: voteData.room, vote: true })
+    })
+  }
+
+  sendVote = vote => {
+    this.setState({
+      vote: vote ? 'Affirmative' : 'Negative'
+    })
+
+    this.props.socket.emit('sendVote', {
+      vote: vote,
+      room: this.props.localUser.room
     })
   }
 
@@ -44,15 +61,15 @@ class Voting extends React.Component {
           <div>
             {this.props.voter === this.props.localUser.name ?
               <>
-                <h1>You voted for {this.props.vote}</h1>
-                <p>Now you need to convince everyone else!</p>
+                <h1>You accused <strong>{this.props.vote}</strong> of being an <strong>Alien!</strong></h1>
+                <p>Who will agree with you?</p>
               </>
               :
               <>
-                <h1>{this.props.voter} voted for {this.props.vote}</h1>
-                <p>Do you agree?</p>
-                <button>Yes</button>
-                <button>No</button>
+                <h1><strong>{this.props.voter}</strong> thinks <strong>{this.props.vote}</strong> is an <strong>Alien!</strong> How shall we proceed?</h1>
+                <h3>{this.state.vote}</h3>
+                <button onClick={() => this.sendVote(true)}>Alien Autopsy!</button>
+                <button onClick={() => this.sendVote(false)}>{this.props.vote} is a human!</button>
               </>
             }
           </div>

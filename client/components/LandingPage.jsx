@@ -49,7 +49,7 @@ export default LandingPage
 
 // export default LandingPage
 
-// class LandingPage extends React.Component {
+// className LandingPage extends React.Component {
 //   state = { show: false }
 
 //   showModal = () => {

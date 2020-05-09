@@ -1,3 +1,7 @@
+
+body {
+  color: white
+}
 .background {
   background-image: url("placeholder.jpg"); /* The image used */
   background-color: black; /* Used if the image is unavailable */

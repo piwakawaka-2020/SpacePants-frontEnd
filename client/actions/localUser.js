@@ -4,81 +4,58 @@ export const SET_TASK = 'SET_TASK'
 export const SET_HINT = 'SET_HINT'
 export const SET_TASK_COMPLETE = 'SET_TASK_COMPLETE'
 export const SET_ROLE = 'SET_ROLE'
+export const USE_VOTE = 'USE_VOTE'
 
 export const createUser = socket => {
-  return dispatch => {
-    return dispatch({
-      type: SET_LOCAL_SOCKET,
-      socket: socket
-    })
+  return {
+    type: SET_LOCAL_SOCKET,
+    socket: socket
   }
 }
 
 export function joinRoom(userData, socket) {
   socket.emit('user', (userData))
-
-  return dispatch => {
-    return dispatch({
-      type: SET_LOCAL_USER,
-      name: userData.name,
-      room: userData.room
-    })
+  return {
+    type: SET_LOCAL_USER,
+    name: userData.name,
+    room: userData.room
   }
 }
 
 export function addRole(role) {
-  return dispatch => {
-    return dispatch({
-      type: SET_ROLE,
-      role: role
-    })
+  return {
+    type: SET_ROLE,
+    role: role
   }
 }
 
 export function receiveHint(hint) {
-  return dispatch => {
-    return dispatch({
-      type: SET_HINT,
-      hint: hint
-    })
+  return {
+    type: SET_HINT,
+    hint: hint
   }
 }
 
 export function receiveTask(task) {
-  return dispatch => {
-    return dispatch({
-      type: SET_TASK,
-      task:task
-    })
+  return {
+    type: SET_TASK,
+    task: task
   }
 }
 
-//sends info that task is complete
-export function doComplete(socket, room) {
+export function useVote() {
+  return {
+    type: USE_VOTE
+  }
+}
+
+export function completeTask(socket, room) {
   socket.emit('completeTask', room)
-  return dispatch => {
-    return dispatch({
-      type: SET_TASK_COMPLETE,
-    })
+  return {
+    type: SET_TASK_COMPLETE,
   }
 }
 
-//sends info that user has skipped
-export function doSkip(socket) {
-  socket.emit('skipTask')
-}
-
-// sends info that user wants to do a vote
-export function doVote(voteData, socket) {
-  console.log(voteData)
-  socket.emit('sendVote', voteData)
-  return dispatch =>{
-    return dispatch({
-      type: 'SET_VOTE',
-      vote: voteData
-    })
-  }
-}
 
 
 
