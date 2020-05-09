@@ -5,9 +5,13 @@ import { connect } from 'react-redux'
 class CreateRoom extends React.Component {
 
   componentDidMount() {
+    const socket = this.props.socket
+    socket.emit('getRoomList')
+    const roomList = socket.on('roomList', rooms => rooms)
     var min = 1;
     var max = 100;
-    var rand = min + Math.ceil((Math.random() * (max - min)));
+    var rand = () => {min + Math.ceil((Math.random() * (max - min)))}
+    
 
     this.setState({
       room: rand
@@ -19,13 +23,15 @@ class CreateRoom extends React.Component {
     room: ''
   }
 
+
+  
   handleSubmit = (e) => {
     e.preventDefault()
     const userData = {
       name: this.state.name,
       room: this.state.room
     }
-
+  
     this.props.dispatch(joinRoom(userData, this.props.socket))
     this.props.history.replace('/waiting')
   }
