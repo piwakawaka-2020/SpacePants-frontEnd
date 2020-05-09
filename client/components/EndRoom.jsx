@@ -12,22 +12,23 @@ class EndRoom extends React.Component {
 
   render() {
     return (
-      <div class='align'>
-            <div>
-                <h1 class='heading'>The winner is -</h1>
-                {/* WINNER NAME */}
-            </div>
+      <div className='align' >
+        <div>
+          <h1 className='heading'>The winner is -</h1>
+          {/* WINNER NAME */}
+        </div >
 
-            <div>
-                <h2 class='text'>The alien completed these tasks-</h2>
-                {/* <ul>ALIEN TASKS GO HERE</ul> */}
-            </div>
+        <div>
+          <h2 className='text'>The alien completed these tasks-</h2>
+          {/* <ul>ALIEN TASKS GO HERE</ul> */}
+        </div >
 
-            <div>
-                <p class='text'>{this.state.time}</p>
-            </div>
-        <button class='button' onClick={() => this.props.history.push('/waiting')}>Another game?</button>
-      </div>
+        <div>
+          <p className='text'>{this.state.time}</p>
+        </div >
+        <button className='button' onClick={() => this.props.history.push('/waiting')
+        }> Another game ?</button >
+      </div >
     )
   }
 }

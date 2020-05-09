@@ -12,13 +12,13 @@ class JoinRoom extends React.Component {
     disableSubmit: true
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     const socket = this.props.socket
     socket.emit('getRoomList')
     socket.on('roomList', room => this.setState({roomList: room})) //get room lis
 
     this.setState({
-      [e.target.name]: e.target.value.toUpperCase()
+      [e.target.name]: e.target.name === 'room' ? e.target.value.toUpperCase() : e.target.value
     },
 
     () => {

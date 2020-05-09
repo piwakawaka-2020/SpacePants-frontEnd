@@ -2,7 +2,7 @@ import React from 'react'
 import Voting from './Voting'
 
 import { connect } from 'react-redux'
-import { doComplete, receiveTask, receiveHint } from '../actions/localUser'
+import { completeTask, receiveTask, receiveHint } from '../actions/localUser'
 
 class GameRoom extends React.Component {
 
@@ -25,12 +25,12 @@ class GameRoom extends React.Component {
         time
       })
 
-      if(time === '0:00') {
-        this.props.history.push('/end')
+      if (time === '0:00') {
+        this.props.history.replace('/end')
       }
-      
+
       const seconds = Number(time.split(':')[1])
-      if (seconds % 30 === 0 && this.props.localUser.role == 'Human') {
+      if ((seconds + 10) % 30 === 0 && this.props.localUser.role == 'Human') {
         this.props.socket.emit('getFakeHint')
       }
     })
@@ -92,10 +92,10 @@ class GameRoom extends React.Component {
 
   render() {
     return (
-      <div class="align">
-        <h1 class="heading">You are {this.props.localUser.role}</h1>
+      <div className="align">
+        <h1 className="heading">You are {this.props.localUser.role}</h1>
 
-        <p class="heading">{this.state.time}</p>
+        <p className="heading">{this.state.time}</p>
 
         {
           !this.state.voteData.receiveVote &&
@@ -119,13 +119,13 @@ class GameRoom extends React.Component {
                 <p>{this.state.hint}</p>
               </div>
             }
-            
+
             <button onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
           </>
         }
 
         <Voting {...this.state.voteData} />
-      </div>
+      </div >
     )
   }
 }

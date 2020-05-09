@@ -3,8 +3,8 @@ import React from "react"
 import PropTypes from "prop-types"
 
 export default class Modal extends React.Component {
-    
-    onClose = evt => {
+
+  onClose = evt => {
     this.props.onClose && this.props.onClose(evt)
   }
   render() {
@@ -12,18 +12,18 @@ export default class Modal extends React.Component {
       return null
     }
     return (
-      
-        <>
-        
+
+      <>
+
         <h2>How to play</h2>
-        <div class="text">{this.props.children}</div>
+        <div className="text">{this.props.children}</div>
         <div>
-          <button class="button" onClick={this.onClose}>
+          <button className="button" onClick={this.onClose}>
             Close
           </button>
-        </div>
-      
-      
+        </div >
+
+
       </>
     )
   }
