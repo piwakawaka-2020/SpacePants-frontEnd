@@ -5,15 +5,32 @@ import { joinRoom } from '../actions/localUser'
 
 class JoinRoom extends React.Component {
 
+  componentDidMount(){
+    const socket = this.props.socket
+
+    socket.emit('getRoomList')
+
+    socket.on('roomList', room => this.setState({roomList: room})) //get room lis
+    console.log('state.roomList =>', this.state.roomList)
+  }
+
   state = {
     name: '',
-    room: ''
+    room: '',
+    roomList: [],
+    disableSubmit: true
   }
 
   handleChange = (e) => {
+    let room = this.state.room
+    let roomList = this.state.roomList
+
     this.setState({
       [e.target.name]: e.target.value
     })
+    if (roomList.includes(room)){
+      this.setState({disableSubmit: false})
+    } else this.setState({disableSubmit: true})
   }
 
   handleSubmit = (e) => {
@@ -22,22 +39,21 @@ class JoinRoom extends React.Component {
       name: this.state.name,
       room: this.state.room,
     }
-
     this.props.dispatch(joinRoom(userData, this.props.socket))
     this.props.history.replace('/waiting')
   }
 
   render() {
     return (
-      <div class="align">
-        <h1 class="heading">Join a game!</h1>
-        <div class="text">
+      <div className="align">
+        <h1 className="heading">Join a game!</h1>
+        <div className="text">
           <form id="roomJoin" onSubmit={this.handleSubmit}>
             <label>Enter Name: </label>
             <input type="text" name="name" placeholder='Name' value={this.state.name} maxLength='20' onChange={this.handleChange} />
             <label>Room Id: </label>
             <input type="text" name="room" placeholder='Room code' value={this.state.room} maxLength="4" onChange={this.handleChange} />
-            <input type="submit" value="submit" />
+            <input type="submit" value="submit" disabled={this.state.disableSubmit}/>
           </form>
         </div>
       </div>

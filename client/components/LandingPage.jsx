@@ -15,13 +15,13 @@ class LandingPage extends React.Component {
   
   render() {
     return (
-      <div class="align">
+      <div className="align">
       
-        <h1 class='heading'>SpacePants</h1>
-            <button class='button' onClick={() => this.props.history.push('/create')}>Create Game</button>
-            <button class='button' onClick={() => this.props.history.push('/join')}>Join Game</button>
+        <h1 className='heading'>SpacePants</h1>
+            <button className='button' onClick={() => this.props.history.push('/create')}>Create Game</button>
+            <button className='button' onClick={() => this.props.history.push('/join')}>Join Game</button>
         <button
-          class="button"
+          className="button"
           id="centered-toggle-button"
           onClick={evt => {
             this.showModal(evt)
