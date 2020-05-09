@@ -5,15 +5,6 @@ import { joinRoom } from '../actions/localUser'
 
 class JoinRoom extends React.Component {
 
-  componentDidMount(){
-    const socket = this.props.socket
-
-    socket.emit('getRoomList')
-
-    socket.on('roomList', room => this.setState({roomList: room})) //get room lis
-    console.log('state.roomList =>', this.state.roomList)
-  }
-
   state = {
     name: '',
     room: '',
@@ -22,18 +13,26 @@ class JoinRoom extends React.Component {
   }
 
   handleChange = (e) => {
-    let room = this.state.room
-    let roomList = this.state.roomList
+    const socket = this.props.socket
+    socket.emit('getRoomList')
+    socket.on('roomList', room => this.setState({roomList: room})) //get room lis
 
     this.setState({
       [e.target.name]: e.target.value
-    })
-    if (roomList.includes(room)){
+    },
+
+    () => {
+      let room = this.state.room
+      let roomList = this.state.roomList
+      
+      if (roomList.includes(room)){
       this.setState({disableSubmit: false})
-    } else this.setState({disableSubmit: true})
+    } else this.setState({disableSubmit: true})}
+    )
   }
 
   handleSubmit = (e) => {
+
     e.preventDefault()
     const userData = {
       name: this.state.name,
