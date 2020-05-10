@@ -40,19 +40,28 @@ class CreateRoom extends React.Component {
     })
   }
 
+  handleClick = (e) => {
+    this.props.history.replace('/')
+  }
+
   render() {
     return (
-      <div className="align">
+      <>
+      <div className="text">
         <h1 className="heading">{this.state.room}</h1>
 
         <form className="text" id="Create" onSubmit={this.handleSubmit}>
           <label>
-            Name:
+            Enter Your Name:
           </label>
-          <input type="text" value={this.state.name} onChange={this.handleChange} name="name" />
-          <input type="submit" value="submit" />
+          <input type="text"placeholder='Name' onChange={this.handleChange} name="name" />
+          <input type="submit" value="submit"/>
+          <br />
+          <button className="button" onClick={this.handleClick}>Click to go Back</button>
+         
         </form>
-      </div>
+        </div>
+        </>
     )
   }
 }
