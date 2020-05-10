@@ -5,23 +5,42 @@ import { joinRoom } from '../actions/localUser'
 
 class JoinRoom extends React.Component {
 
+  componentDidMount(){
+    this.props.socket.on('usersWaiting', userArr => {
+      if (userArr.includes(this.state.name)) {
+        this.setState({usernameTaken: true})
+        return
+      } else {
+
+        const userData = {
+          name: this.state.name,
+          room: this.state.room,
+        }
+        this.props.dispatch(joinRoom(userData, this.props.socket))
+        this.props.history.replace('/waiting')
+      }
+    })
+  }
+
   state = {
     name: '',
     room: '',
-    roomList: [],
+    usernameTaken: false,
     disableSubmit: true
   }
 
   handleChange = e => {
 
     this.setState({
+      usernameTaken: false,
       [e.target.name]: e.target.name === 'room' ? e.target.value.toUpperCase() : e.target.value
     },
 
     () => {
       let name = this.state.name
       let room = this.state.room
-      
+
+      console.log(name)
       if(room.length == 4){
         const socket = this.props.socket
         socket.emit('getRoomList')
@@ -37,14 +56,11 @@ class JoinRoom extends React.Component {
   }
 
   handleSubmit = (e) => {
-
     e.preventDefault()
-    const userData = {
-      name: this.state.name,
-      room: this.state.room,
-    }
-    this.props.dispatch(joinRoom(userData, this.props.socket))
-    this.props.history.replace('/waiting')
+
+    const socket = this.props.socket
+    socket.emit('checkUsers', this.state.room)
+    
   }
 
   render() {
@@ -60,6 +76,7 @@ class JoinRoom extends React.Component {
             <input type="submit" value="submit" disabled={this.state.disableSubmit}/>
           </form>
         </div>
+        {this.state.usernameTaken && <p className="tipText">{this.state.name} is already in this room. Enter a new name and try again.</p>}
       </div>
     )
   }
