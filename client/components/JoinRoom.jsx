@@ -53,7 +53,6 @@ class JoinRoom extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-
     this.props.socket.emit('checkUsers', this.state.room)
   }
 
