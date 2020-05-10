@@ -5,7 +5,7 @@ export function subscriptions(socket, props) {
     props.dispatch(addExternalUsers(user))
   })
 
-  socket.on('voteResult', result => {
-    console.log('voteResult:', result)
-  })
+  // socket.on('voteResult', result => {
+  //   console.log('voteResult:', result)
+  // })
 }

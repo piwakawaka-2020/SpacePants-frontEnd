@@ -2,7 +2,7 @@ import React from 'react'
 import Voting from './Voting'
 
 import { connect } from 'react-redux'
-import { completeTask, receiveTask, receiveHint, setVoteResult} from '../actions/localUser'
+import { completeTask, receiveTask, receiveHint} from '../actions/localUser'
 
 class GameRoom extends React.Component {
 
@@ -66,12 +66,13 @@ class GameRoom extends React.Component {
     })
 
     this.props.socket.on('voteResult', result =>{
+      console.log(result)
       this.setState({
-        result: result
+        result: result.result
       })
 
-      if(result === false){
-        this.setDefault()
+      if(result.result == false){
+        this.setDefault() 
       }
     })
 
@@ -118,6 +119,7 @@ class GameRoom extends React.Component {
   }
 
   setDefault = () =>{
+    console.log('set default')
     this.setState({
       voteData: {
         castVote: false,

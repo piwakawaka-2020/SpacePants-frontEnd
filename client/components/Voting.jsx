@@ -48,11 +48,12 @@ class Voting extends React.Component {
           <>
             <h1>Who do you think is the Alien?</h1>
             {this.props.users.map((user, index) => {
+              if(user != this.props.localUser.name) {
               return (
                 <span key={index}>
                   <button onClick={this.handleVote} name={user} key={index}>{user}</button>
                 </span>
-              )
+              )}
             })
             }
           </>
