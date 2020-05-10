@@ -24,7 +24,6 @@ class EndRoom extends React.Component {
           <h2 className='text'>The alien completed these tasks-</h2>
           {
             this.props.location.state.taskList.map((task, i) => {
-              console.log(task)
               if (task.complete == true) {
                 let taskStyle = {
                   color: 'slategrey'
