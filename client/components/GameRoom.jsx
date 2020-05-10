@@ -2,7 +2,7 @@ import React from 'react'
 import Voting from './Voting'
 
 import { connect } from 'react-redux'
-import { completeTask, receiveTask, receiveHint } from '../actions/localUser'
+import { skipTask, completeTask, receiveTask, receiveHint } from '../actions/localUser'
 
 class GameRoom extends React.Component {
 
@@ -111,6 +111,7 @@ class GameRoom extends React.Component {
       disabled: true
     })
     this.props.socket.emit('skipTask')
+    this.props.dispatch(skipTask(this.props.socket, this.props.room))
   }
 
   handleComplete = e => {

@@ -24,17 +24,18 @@ class EndRoom extends React.Component {
         <div>
           <h2 className='text'>The alien completed these tasks-</h2>
           {
-            this.props.location.state.taskList.map(task => {
+            this.props.location.state.taskList.map((task, i) => {
               if (task.complete == true) {
                 let taskStyle = {
-                  color: 'green'
+                  color: 'blue'
                 }
-                return <p style={taskStyle}>{task.task} - complete</p>
-              } else {
+                return <p key={i} style={taskStyle}>{task.task} - complete</p>
+              } 
+              if (task.skip == true){
                 let taskStyle = {
                   color: 'red'
                 }
-                return <p style={taskStyle}>{task.task} - skipped</p>
+                return <p key={i} style={taskStyle}>{task.task} - skipped</p>
               }
             })
           }
@@ -51,7 +52,6 @@ class EndRoom extends React.Component {
 }
 
 function mapStateToProps(globalState) {
-
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers,

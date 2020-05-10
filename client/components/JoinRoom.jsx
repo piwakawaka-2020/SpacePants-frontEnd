@@ -40,7 +40,6 @@ class JoinRoom extends React.Component {
       let name = this.state.name
       let room = this.state.room
 
-      console.log(name)
       if(room.length == 4){
         const socket = this.props.socket
         socket.emit('getRoomList')

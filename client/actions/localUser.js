@@ -3,6 +3,7 @@ export const SET_LOCAL_USER = 'SET_USER_DETAILS'
 export const SET_TASK = 'SET_TASK'
 export const SET_HINT = 'SET_HINT'
 export const SET_TASK_COMPLETE = 'SET_TASK_COMPLETE'
+export const SET_TASK_SKIP = 'SET_TASK_SKIP'
 export const SET_ROLE = 'SET_ROLE'
 export const SET_RESULT = 'SET_RESULT'
 export const USE_VOTE = 'USE_VOTE'
@@ -61,6 +62,13 @@ export function completeTask(socket, room) {
   socket.emit('completeTask', room)
   return {
     type: SET_TASK_COMPLETE,
+  }
+}
+
+export function skipTask(socket, room) {
+  socket.emit('skipTask', room)
+  return {
+    type: SET_TASK_SKIP,
   }
 }
 
