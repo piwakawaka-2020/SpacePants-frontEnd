@@ -34,9 +34,18 @@ class Voting extends React.Component {
       vote: vote ? 'Affirmative' : 'Negative'
     })
 
+    let voteData = {
+      motion: vote,
+      person: this.props.vote
+    }
+
+    if(this.props.vote == this.props.localUser.name) {
+      voteData.role = this.props.localUser.role
+    }
+
     this.props.socket.emit('sendVote', {
       room: this.props.localUser.room,
-      voteData: { motion: vote, person: this.props.vote }
+      voteData
     })
   }
 

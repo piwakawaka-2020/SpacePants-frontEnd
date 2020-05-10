@@ -1,7 +1,13 @@
 import React from "react"
 import HowToModal from "./HowToModal"
 
+import { connect } from  'react-redux'
+
 class LandingPage extends React.Component {
+
+  componentDidMount() {
+
+  }
 
   state = {
     showModal: false
@@ -38,4 +44,10 @@ class LandingPage extends React.Component {
   }
 }
 
-export default LandingPage
+// function mapStateToProps(globalState) {
+//   this.props.socket.on('user', user => {
+//     props.dispatch(addExternalUsers(user))
+//   })
+// }
+
+export default connect()(LandingPage)
