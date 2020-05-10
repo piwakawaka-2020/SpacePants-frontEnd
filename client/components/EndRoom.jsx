@@ -11,6 +11,7 @@ class EndRoom extends React.Component {
   }
 
   render() {
+
     return (
       <div className='align' >
         <div>
@@ -22,7 +23,17 @@ class EndRoom extends React.Component {
           <h2 className='text'>The alien completed these tasks-</h2>
           {
             this.props.location.state.taskList.map(task => {
-              return <p>{task.task}</p>
+              if (task.complete == true) {
+                let taskStyle = {
+                  color: 'green'
+                }
+                return <p style={taskStyle}>{task.task} - complete</p>
+              } else {
+                let taskStyle = {
+                  color: 'red'
+                }
+                return <p style={taskStyle}>{task.task} - skipped</p>
+              }
             })
           }
         </div >

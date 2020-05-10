@@ -173,7 +173,6 @@ class GameRoom extends React.Component {
 }
 
 function mapStateToProps(globalState) {
-  console.log(globalState)
   return {
     socket: globalState.localUser.socket,
     localUser: globalState.localUser,
