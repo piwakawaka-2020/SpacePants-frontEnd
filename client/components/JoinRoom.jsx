@@ -60,7 +60,6 @@ class JoinRoom extends React.Component {
 
     const socket = this.props.socket
     socket.emit('checkUsers', this.state.room)
-    
   }
 
   render() {
