@@ -122,7 +122,6 @@ class GameRoom extends React.Component {
   }
 
   render() {
-    console.log(this.props.socket)
     return (
       <div className="align">
         <h1 className="heading">You are {this.props.localUser.role}</h1>

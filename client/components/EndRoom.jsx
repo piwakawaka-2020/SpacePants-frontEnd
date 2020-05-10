@@ -11,7 +11,6 @@ class EndRoom extends React.Component {
   }
 
   render() {
-    console.log(this.props.location.state)
     return (
       <div className='align' >
         <div>
