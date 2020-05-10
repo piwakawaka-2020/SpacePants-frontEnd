@@ -26,10 +26,6 @@ class GameRoom extends React.Component {
         time
       })
 
-      // if (time === '0:00') {
-      //   this.props.history.replace('/end')
-      // }
-
       const seconds = Number(time.split(':')[1])
       if ((seconds + 10) % 30 === 0 && this.props.localUser.role == 'Human') {
         this.props.socket.emit('getFakeHint')
@@ -66,7 +62,6 @@ class GameRoom extends React.Component {
     })
 
     this.props.socket.on('voteResult', result =>{
-      console.log(result)
       this.setState({
         result: result.result
       })
@@ -86,6 +81,7 @@ class GameRoom extends React.Component {
     })
 
     this.props.socket.on('taskList', tasks => {
+      this.props.socket.removeAllListeners()
       this.props.history.replace({
         pathname: '/end',
         state: { taskList: tasks}
@@ -119,7 +115,6 @@ class GameRoom extends React.Component {
   }
 
   setDefault = () =>{
-    console.log('set default')
     this.setState({
       voteData: {
         castVote: false,
@@ -128,8 +123,6 @@ class GameRoom extends React.Component {
         voter: ''
       },
     })
-    // console.log(this.state.voteData)
-    // console.log(this.state.result)
   }
 
   render() {
@@ -173,7 +166,6 @@ class GameRoom extends React.Component {
 }
 
 function mapStateToProps(globalState) {
-  console.log(globalState)
   return {
     socket: globalState.localUser.socket,
     localUser: globalState.localUser,
