@@ -82,7 +82,7 @@ class GameRoom extends React.Component {
           tasks: this.props.localUser.tasks,
           room: this.props.localUser.room 
         })
-      }
+      }x
     })
 
     this.props.socket.on('taskList', tasks => {
