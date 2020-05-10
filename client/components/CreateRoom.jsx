@@ -18,13 +18,13 @@ class CreateRoom extends React.Component {
   }
 
   state = {
-    name: "",
+    name: '',
     room: ''
   }
 
-  
   handleSubmit = (e) => {
     e.preventDefault()
+
     const userData = {
       name: this.state.name,
       room: this.state.room
@@ -49,7 +49,6 @@ class CreateRoom extends React.Component {
       <>
       <div className="text">
         <h1 className="heading">{this.state.room}</h1>
-
         <form className="text" id="Create" onSubmit={this.handleSubmit}>
           <label>
             Enter Your Name:
@@ -69,7 +68,6 @@ class CreateRoom extends React.Component {
 const mapStateToProps = (globalState) => {
   return {
     socket: globalState.localUser.socket
-
   }
 }
 

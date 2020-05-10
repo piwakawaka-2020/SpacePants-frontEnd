@@ -28,7 +28,7 @@ class GameRoom extends React.Component {
 
       const seconds = Number(time.split(':')[1])
       if ((seconds + 10) % 30 === 0 && this.props.localUser.role == 'Human') {
-        this.props.socket.emit('getFakeHint')
+        this.props.socket.emit('getBadHint')
       }
     })
 
@@ -72,7 +72,7 @@ class GameRoom extends React.Component {
       })
     })
 
-    this.props.socket.on('gameOver', ({winner}) => {
+    this.props.socket.on('gameOver', ({ winner }) => {
       if (this.props.localUser.role === 'Alien') {
         this.props.socket.emit('alienHistory', {
           tasks: this.props.localUser.tasks,
