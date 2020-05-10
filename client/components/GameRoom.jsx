@@ -2,7 +2,7 @@ import React from 'react'
 import Voting from './Voting'
 
 import { connect } from 'react-redux'
-import { completeTask, receiveTask, receiveHint } from '../actions/localUser'
+import { completeTask, receiveTask, receiveHint} from '../actions/localUser'
 
 class GameRoom extends React.Component {
 
@@ -16,7 +16,8 @@ class GameRoom extends React.Component {
       receiveVote: false,
       vote: '',
       voter: ''
-    }
+    },
+    result: ''
   }
 
   componentDidMount() {
@@ -25,9 +26,9 @@ class GameRoom extends React.Component {
         time
       })
 
-      if (time === '0:00') {
-        this.props.history.replace('/end')
-      }
+      // if (time === '0:00') {
+      //   this.props.history.replace('/end')
+      // }
 
       const seconds = Number(time.split(':')[1])
       if ((seconds + 10) % 30 === 0 && this.props.localUser.role == 'Human') {
@@ -63,6 +64,33 @@ class GameRoom extends React.Component {
         }
       })
     })
+
+    this.props.socket.on('voteResult', result =>{
+      console.log(result)
+      this.setState({
+        result: result.result
+      })
+
+      if(result.result == false){
+        this.setDefault() 
+      }
+    })
+
+    this.props.socket.on('gameOver', () => {
+      if (this.props.localUser.role === 'Alien') {
+        this.props.socket.emit('alienHistory', {
+          tasks: this.props.localUser.tasks,
+          room: this.props.localUser.room 
+        })
+      }
+    })
+
+    this.props.socket.on('taskList', tasks => {
+      this.props.history.replace({
+        pathname: '/end',
+        state: { taskList: tasks}
+      })
+    })
   }
 
   handleVote = e => {
@@ -88,6 +116,20 @@ class GameRoom extends React.Component {
       disabled: true
     })
     this.props.dispatch(completeTask(this.props.socket, this.props.room))
+  }
+
+  setDefault = () =>{
+    console.log('set default')
+    this.setState({
+      voteData: {
+        castVote: false,
+        receiveVote: false,
+        vote: '',
+        voter: ''
+      },
+    })
+    // console.log(this.state.voteData)
+    // console.log(this.state.result)
   }
 
   render() {
@@ -131,6 +173,7 @@ class GameRoom extends React.Component {
 }
 
 function mapStateToProps(globalState) {
+  console.log(globalState)
   return {
     socket: globalState.localUser.socket,
     localUser: globalState.localUser,

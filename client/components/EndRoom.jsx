@@ -20,7 +20,11 @@ class EndRoom extends React.Component {
 
         <div>
           <h2 className='text'>The alien completed these tasks-</h2>
-          {/* <ul>ALIEN TASKS GO HERE</ul> */}
+          {
+            this.props.location.state.taskList.map(task => {
+              return <p>{task.task}</p>
+            })
+          }
         </div >
 
         <div>
