@@ -27,13 +27,18 @@ class LandingPage extends React.Component {
 
   render() {
     return (
-      <div className="align">
-        <h1 className='heading'>SpacePants</h1>
-        <button className='button' onClick={() => this.props.history.push('/create')}>Create Game</button>
-        <button className='button' onClick={() => this.props.history.push('/join')}>Join Game</button>
-        <button className="button" id="centered-toggle-button" onClick={this.showModal}>How to play</button>
+      <div className='wrapper'>
+        <img className = 'lp-background' src='./img/WC-pink-transparent2.png'/>
+        <div className="container">
+          <h1 className='heading'>SpacePants</h1>
+          <button className='button' onClick={() => this.props.history.push('/create')}>Create Game</button>
+          <button className='button' onClick={() => this.props.history.push('/join')}>Join Game</button>
+          <button className="button" id="centered-toggle-button" onClick={this.showModal}>How to play</button>
 
-        <HowToModal showModal={this.state.showModal} closeModal={this.closeModal} />
+          <HowToModal showModal={this.state.showModal} closeModal={this.closeModal} />
+        </div>
+        
+                 
       </div>
     )
   }
