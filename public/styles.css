@@ -147,7 +147,7 @@ body {
 
 .voteScreen, .accuseScreen {
   margin: auto;
-  width: 100vw;
+  width: 80%;
   border: outset 1px gray;
   border-radius: 5px;
   -webkit-box-orient: vertical;

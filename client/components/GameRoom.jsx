@@ -1,11 +1,9 @@
 import React from 'react'
-import { CSSTransition, TransitionGroup, SwitchTransition } from 'react-transition-group'
+import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
-import Voting from './Voting'
 import TransitionContainer from './TransitionContainer'
 
 import { connect } from 'react-redux'
-import { completeTask, receiveTask, receiveHint } from '../actions/localUser'
 
 class GameRoom extends React.Component {
 
@@ -37,9 +35,10 @@ class GameRoom extends React.Component {
       }
     })
 
-
     this.props.socket.on('receiveVote', voteData => {
       this.setState({
+        screen: 'Votes',
+        voteActive: true,
         voteData: {
           castVote: false,
           receiveVote: true,
@@ -51,6 +50,8 @@ class GameRoom extends React.Component {
 
     this.props.socket.on('voteFailed', () => {
       this.setState({
+        screen: 'Comms',
+        voteActive: false,
         voteData: {
           castVote: false,
           receiveVote: false,

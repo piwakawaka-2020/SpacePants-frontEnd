@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { receiveTask, completeTask } from '../actions/localUser'
+import { receiveHint, receiveTask, completeTask } from '../actions/localUser'
 
 class Comms extends React.Component {
 
@@ -72,7 +72,8 @@ class Comms extends React.Component {
 
         {
           this.props.localUser.role === 'Human' &&
-          <div>
+          <div className='display'>
+            <p><strong>Latest B.O.S.S Communication:</strong></p>
             <p>{this.props.localUser.hint}</p>
           </div>
         }
