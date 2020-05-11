@@ -12,12 +12,12 @@
 }
 
 .slide-enter {
-  transform: translateX(200%);
+  transform: translateX(101%);
 }
 
 .slide-enter.slide-enter-active {
   transform: translateX(0);
-  transition: 250ms ease;
+  transition: 250ms linear;
 }
 
 .slide-exit {
@@ -25,6 +25,6 @@
 }
 
 .slide-exit.slide-exit-active {
-  transform: translateX(-200%);
-  transition: 250ms ease;
+  transform: translateX(-101%);
+  transition: 250ms linear;
 }

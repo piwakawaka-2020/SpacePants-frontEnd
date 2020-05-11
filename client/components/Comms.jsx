@@ -21,7 +21,7 @@ class Comms extends React.Component {
         });
       })
 
-      if(this.state.task == '') {
+      if (this.state.task == '') {
         this.props.socket.emit('getTask')
       }
 
@@ -64,18 +64,19 @@ class Comms extends React.Component {
             <span className='btn-bar'>
               <button onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
               <button onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
-            </span>
 
-            <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
+            </span>
           </>
         }
 
         {
           this.props.localUser.role === 'Human' &&
-          <div className='display'>
-            <p><strong>Latest B.O.S.S Communication:</strong></p>
-            <p>{this.props.localUser.hint}</p>
-          </div>
+          <>
+            <span>
+              <p><strong>Latest B.O.S.S Communication:</strong></p>
+              <p>{this.props.localUser.hint}</p>
+            </span>
+          </>
         }
       </div>
     )
@@ -85,7 +86,8 @@ class Comms extends React.Component {
 function mapStateToProps(globalState) {
   return {
     socket: globalState.localUser.socket,
-    localUser: globalState.localUser
+    localUser: globalState.localUser,
+    room: globalState.localUser.room
   }
 }
 
