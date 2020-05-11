@@ -127,7 +127,7 @@ class GameRoom extends React.Component {
         <h1 className="header">You are {this.props.localUser.role}</h1>
 
         <p className="time">{this.state.time}</p>
-
+        
         {
           !this.state.voteData.receiveVote &&
           <>
