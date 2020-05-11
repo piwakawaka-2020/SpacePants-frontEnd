@@ -127,6 +127,7 @@ body {
   width: $fullWidth;
   flex-grow: 1;
   text-align: center;
+  overflow-y: scroll;
   background-color: $darkerBackground;
 }
 
@@ -144,9 +145,9 @@ body {
 }
 
 .accuseBtn {
-  text-align: center;
+  margin: auto;
   font-size: 1.5rem;
-  display: inline-flex;
+  display: block;
   padding: 0.5rem;
   width: 70%;
   border: outset 1px black;
