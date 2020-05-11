@@ -3,6 +3,19 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addRole } from '../actions/localUser'
 
+
+//random user colours
+function colour() {
+  const col = Math.random()
+  if (col < 0.33) {
+    return 'purple'
+  } else if(col < 0.66) {
+    return 'blue'
+  } else {
+    return 'pink'
+  }
+}
+
 class WaitingRoom extends React.Component {
 
   state = {
@@ -24,19 +37,29 @@ class WaitingRoom extends React.Component {
     this.props.socket.emit('leaveRoom', this.props.room)
     this.props.history.replace('/')
   }
+  
+  
+
+
 
   render() {
 
     return (
       <div className="align">
-        <p className="heading">Room Code: {this.props.room}</p>
+        <div className='ufo'>
+        <p className="heading" className='ufoTop'>Room Code: </p>
+        <div className='ufoBottom'>{this.props.room}</div>
+        </div>
+        <div className='usersList'>
+        
         {
           this.props.users.map((user, i) => {
-            return (<p  className="text" key={i}>{user}</p>)
+            return (<p  className="text" className='userSingle' className={colour()} key={i}>{user}</p>)
           })
         }
-        <button className="button" onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
-        <button onClick={this.leaveGame}>Leave Game</button>
+        </div>
+        <button className="button" className='startBtn' onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
+        <button onClick={this.leaveGame} className='leaveBtn'>Leave Game</button>
       </div>
     )
   }
