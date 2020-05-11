@@ -7,6 +7,7 @@ class Voting extends React.Component {
   state = {
     voteName: '',
     vote: '',
+    cast: false
   }
 
   handleVote = (event) => {
@@ -31,7 +32,8 @@ class Voting extends React.Component {
 
   sendVote = vote => {
     this.setState({
-      vote: vote ? 'Affirmative' : 'Negative'
+      vote: vote ? 'Affirmative' : 'Negative',
+      cast: true
     })
 
     let voteData = {
@@ -39,7 +41,7 @@ class Voting extends React.Component {
       person: this.props.vote
     }
 
-    if(this.props.vote == this.props.localUser.name) {
+    if (this.props.vote == this.props.localUser.name) {
       voteData.role = this.props.localUser.role
     }
 
@@ -57,12 +59,13 @@ class Voting extends React.Component {
           <>
             <h2>Who do you accuse?</h2>
             {this.props.users.map((user, index) => {
-              if(user != this.props.localUser.name) {
-              return (
-                <div className='voteContainer' key={index}>
-                  <button className='accuseBtn' onClick={this.handleVote} name={user} key={index}>{user}</button>
-                </div>
-              )}
+              if (user != this.props.localUser.name) {
+                return (
+                  <div className='voteContainer' key={index}>
+                    <button className='accuseBtn' onClick={this.handleVote} name={user} key={index}>{user}</button>
+                  </div>
+                )
+              }
             })
             }
           </>
@@ -77,10 +80,16 @@ class Voting extends React.Component {
               </div>
               :
               <div className='accuseBtnContainer'>
+
                 <h2><strong>{this.props.voter}</strong> thinks <strong>{this.props.vote}</strong> is an <strong>{'\u{1F47D}'}</strong> How shall we proceed?</h2>
-                {/* <h3>{this.state.vote}</h3> */}
-                <button id='agree' onClick={() => this.sendVote(true)}>Alien Autopsy!</button>
-                <button id='disagree' onClick={() => this.sendVote(false)}>{this.props.vote} is a human!</button>
+                {!this.state.cast ?
+                  <>
+                    <button id='agree' onClick={() => this.sendVote(true)}>Alien Autopsy!</button>
+                    <button id='disagree' onClick={() => this.sendVote(false)}>{this.props.vote} is a human!</button>
+                  </>
+                  :
+                  <h2>Vote Cast!</h2>
+                }
               </div>
             }
           </div>

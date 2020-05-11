@@ -1,0 +1,8 @@
+{
+  "name": "SpacePants",
+  "short_name": "SpacePants",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#357baf",
+  "description": "Pretend to wear special pants without your friends noticing"
+}

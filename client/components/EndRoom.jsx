@@ -2,12 +2,25 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
+import { resetState } from '../actions/localUser'
+
 class EndRoom extends React.Component {
 
   state = {
     users: [],
     time: "",
     alienHistory: []
+  }
+
+  componentDidMount() {
+    this.props.socket.on('playAgain', () => {
+      this.props.dispatch(resetState())
+      this.props.history.replace('/waiting')
+    })
+  }
+
+  playAgain = e => {
+    this.props.socket.emit('playAgain')
   }
 
   render() {
@@ -44,8 +57,7 @@ class EndRoom extends React.Component {
         <div>
           <p className='text'>{this.state.time}</p>
         </div >
-        <button className='button' onClick={() => this.props.history.push('/waiting')
-        }> Another game ?</button >
+        <button className='button' onClick={this.playAgain}>Play Again</button >
       </div >
     )
   }
