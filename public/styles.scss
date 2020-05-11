@@ -26,6 +26,7 @@ body {
   width: 100vw;
   height: 100vh;
   color: white;
+  background-image: url('./img/wc-inverted.png');
   background-color: $darkestBackground;
   margin: 0px;
 }
@@ -130,17 +131,6 @@ body {
   }
 }
 
-/*
-h1 {
-  background-image: url('../images/SpacePantsWC-1.png');
-  background-size: cover;
-  background-position: 0px 10px;
-  font-weight: 900;
-  background-clip: text;
--webkit-background-clip: text;
-color: transparent;
-}
-*/
 
 .voteScreen, .accuseScreen{
   margin: auto;
@@ -212,4 +202,34 @@ color: transparent;
 
 #disagree{
   background-color: $darkBlue;
+}
+
+.fancy-header {
+  text-align: center;
+  
+  font-weight: 900;
+  // width: 100%;
+  padding: $defaultPadding;
+  margin: 0px;
+  background-image: url('./img/wc-800-200.png');
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.end-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 80%;
+  height: auto;
+  max-height: 540px;
+  overflow-y: scroll;
+
+  padding: $defaultPadding;
+  margin: $defaultMargin;
+
+  background-color: $darkerBackground;
 }
