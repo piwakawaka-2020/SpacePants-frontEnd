@@ -329,7 +329,7 @@ body {
 
 .pants {
   position: absolute;
-  top: 59%;
+  top: 52%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -340,19 +340,19 @@ body {
 
 @-webkit-keyframes walking {
   from {
-    content: url("./img/pants-lg-157-285.png");
+    content: url("../img/pants-lg-157-285.png");
   }
   to {
-    content: url("./img/pants-step2-157-285.png");
+    content: url("../img/pants-step2-157-285.png");
   }
 }
 
 @keyframes walking {
   from {
-    content: url("./img/pants-lg-157-285.png");
+    content: url("../img/pants-lg-157-285.png");
   }
   to {
-    content: url("./img/pants-step2-157-285.png");
+    content: url("../img/pants-step2-157-285.png");
   }
 }
 
@@ -363,8 +363,8 @@ body {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: -10;
-  -webkit-animation: opacity 4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
-          animation: opacity 4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
+  -webkit-animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
+          animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
   -webkit-animation-fill-mode: backwards;
           animation-fill-mode: backwards;
 }
@@ -376,8 +376,8 @@ body {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: -10;
-  -webkit-animation: opacity 4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.3s infinite, zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
-          animation: opacity 4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.3s infinite, zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
+  -webkit-animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.3s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
+          animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.3s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
   -webkit-animation-fill-mode: backwards;
           animation-fill-mode: backwards;
 }
@@ -389,8 +389,8 @@ body {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: -10;
-  -webkit-animation: opacity 4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2.7s infinite, zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
-          animation: opacity 4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2.7s infinite, zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
+  -webkit-animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2.7s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
+          animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2.7s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
   -webkit-animation-fill-mode: backwards;
           animation-fill-mode: backwards;
 }
@@ -447,5 +447,44 @@ body {
   to {
     opacity: 1;
   }
+}
+
+.lp-title {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+
+.lp-title .heading {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 3.15em;
+  color: #ba4385;
+}
+
+.instructions-btn {
+  position: fixed;
+  color: #8858ac;
+  background-color: #23272a80;
+  height: 3.2rem;
+  top: -1rem;
+  right: 20px;
+}
+
+.lp-btn-bar {
+  position: absolute;
+  bottom: 5%;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  width: 100%;
+}
+
+.lp-btn-bar button {
+  background-color: #61c5dc;
+  margin: 10%;
+  border: none;
 }
 /*# sourceMappingURL=styles.css.map */
