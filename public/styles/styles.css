@@ -9,21 +9,16 @@ body {
   width: 100vw;
   height: 100vh;
   margin: 0px;
+  font-size: 25px;
   color: white;
-  background-color: #23272a;
-  font-size: 20px;
   font-family: "VT323", monospace;
+  background-color: #23272a;
 }
 
 #app {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 100vw;
-  height: 100vh;
-  padding: 10px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -34,7 +29,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
   margin: 0px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .header {
@@ -44,17 +44,30 @@ body {
   margin: 0px;
 }
 
+.fancyHeader {
+  text-align: center;
+  font-weight: 1000;
+  font-size: 3.5rem;
+  padding: 1rem;
+  margin: 0px;
+  background-image: url("../img/wc1.png");
+  background-background-size: cover;
+  background-background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
 .time {
   font-family: "digi";
   width: 100%;
-  font-size: 6em;
+  font-size: 8rem;
   text-align: center;
   padding: 0;
   margin: 0;
   color: #ba4385;
 }
 
-.display {
+.commsDisplay {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -92,6 +105,16 @@ body {
   margin: 5px;
 }
 
+.hint-list {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hint-list::-webkit-scrollbar {
+  display: none;
+}
+
 .btn-bar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -107,6 +130,8 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .callVoteBtn {
@@ -116,9 +141,44 @@ body {
   width: 100%;
   margin: 10px;
   padding: 5px;
-  font-size: large;
   background-image: url("/img/wc1.png");
   background-size: cover;
+}
+
+.callVote-Btn, .accuseBtn, .positive-btn, .negative-btn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 1rem;
+  border: 1px solid black;
+  text-align: center;
+  outline: none;
+}
+
+.callVote-Btn:active, .accuseBtn:active, .positive-btn:active, .negative-btn:active {
+  border: inset 1px;
+}
+
+.accuseBtn {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 70%;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  -webkit-animation: bgcolorchange 12s infinite;
+          animation: bgcolorchange 12s infinite;
+  color: whitesmoke;
+}
+
+.positive-btn {
+  background-color: #ba4385;
+}
+
+.negative-btn {
+  background-color: #357baf;
 }
 
 .voteScreen,
@@ -145,28 +205,6 @@ body {
 .voteContainer,
 .accuseTextContainer {
   margin: 1rem;
-}
-
-.accuseBtn {
-  text-align: center;
-  font-size: 1.5rem;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  padding: 0.5rem;
-  width: 70%;
-  border: outset 1px black;
-  border-radius: 5px;
-  outline: none;
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
-  -webkit-animation: bgcolorchange 12s infinite;
-          animation: bgcolorchange 12s infinite;
-  color: whitesmoke;
-}
-
-.accuseBtn:active {
-  border: inset 1px;
 }
 
 .accuseBtnContainer button {
@@ -231,16 +269,6 @@ body {
 #human {
   background: center/100% url("../img/SpacePantsWC-1.png");
   text-shadow: 2px 2px #357baf;
-}
-
-.hint-list {
-  overflow-y: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.hint-list::-webkit-scrollbar {
-  display: none;
 }
 
 @-webkit-keyframes bgcolorchange {

@@ -55,9 +55,9 @@ class CreateRoom extends React.Component {
             Enter Your Name:
           </label>
           <input type="text"placeholder='Name' onChange={this.handleChange} name="name" />
-          <input type="submit" value="submit"/>
+          <input type="submit" className='positive-btn' value="submit"/>
           <br />
-          <button className="button" onClick={this.handleClick}>Click to go Back</button>
+          <button className="negative-btn" onClick={this.handleClick}>Click to go Back</button>
           </div>
         </form>
         </div>

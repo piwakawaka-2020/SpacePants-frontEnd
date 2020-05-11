@@ -98,7 +98,7 @@ class GameRoom extends React.Component {
   render() {
     return (
       <>
-        <h1 className="header">You are {this.props.localUser.role}</h1>
+        <h1 className="fancyHeader">You are {this.props.localUser.role}</h1>
         <span>
           <p className="time">{this.state.time}</p>
           {
