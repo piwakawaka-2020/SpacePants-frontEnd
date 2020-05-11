@@ -3,6 +3,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addRole } from '../actions/localUser'
 
+
+//random user colours
+
+
 class WaitingRoom extends React.Component {
 
   state = {
@@ -14,6 +18,17 @@ class WaitingRoom extends React.Component {
       this.props.dispatch(addRole(role))
       this.props.history.replace('/game')
     })
+  }
+
+  colour() {
+    const col = Math.random()
+    if (col < 0.33) {
+      return '#8858ac'
+    } else if (col < 0.66) {
+      return '#357baf'
+    } else {
+      return '#ba4385'
+    }
   }
 
   startGame = e => {
@@ -28,16 +43,24 @@ class WaitingRoom extends React.Component {
   render() {
 
     return (
-      <div className="align">
-        <p className="heading">Room Code: {this.props.room}</p>
-        {
-          this.props.users.map((user, i) => {
-            return (<p  className="text" key={i}>{user}</p>)
-          })
-        }
-        <button className="button" onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
-        <button onClick={this.leaveGame}>Leave Game</button>
-      </div>
+      <>
+
+        <p className="header">Room Code: </p>
+        <p className="header">{this.props.room}</p>
+        <div className='usersList'>
+
+          {
+            this.props.users.map((user, i) => {
+              return (<p style={{ color: this.colour()}} key={i}>{user}</p>)
+            })
+          }
+
+        </div>
+        <div className='btn-bar'>
+          <button onClick={this.leaveGame} className='negative-btn'>Leave Game</button>
+          <button className="button" className='fancy-btn' onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
+        </div>
+      </>
     )
   }
 }

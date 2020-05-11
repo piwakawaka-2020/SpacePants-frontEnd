@@ -99,7 +99,7 @@ class GameRoom extends React.Component {
     return (
       <>
         <h1 className="fancyHeader">You are {this.props.localUser.role}</h1>
-        <span>
+        <span className='time-container'>
           <p className="time">{this.state.time}</p>
           {
             this.props.localUser.role === 'Alien' &&
@@ -119,7 +119,7 @@ class GameRoom extends React.Component {
         </SwitchTransition>
 
 
-        <button className='callVoteBtn' onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
+        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
       </>
     )
   }

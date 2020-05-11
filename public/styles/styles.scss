@@ -44,18 +44,18 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
   padding: $defaultPadding;
-  margin: 0px;
+  width: 100vw;
   @include box-sizing();
+  height: 100vh;
 }
 
 .header {
   text-align: center;
   color: $pink;
-  padding: $defaultPadding;
+  padding: $defaultPadding/2;
   margin: 0px;
+  font-size: 3.5rem;
 }
 
 .fancyHeader {
@@ -71,6 +71,12 @@ body {
   }
   -webkit-background-clip: text;
   color: transparent;
+}
+
+.time-container {
+  width: 100%;
+  text-align: center;
+  @include box-sizing();
 }
 
 .time {
@@ -90,27 +96,27 @@ body {
   @include box-sizing();
   width: 100%;
   height: 50%;
+  overflow-y: scroll;
   margin-top: $defaultMargin;
   padding: $defaultPadding;
   background-color: $darkerBackground;
-}
 
-.display button {
-  background-color: $darkBlue;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 8px;
-  width: 30%;
-
-  &:active {
-    background-color: $lightBlue;
+  p {
+    margin: 0px {
+      bottom: 5px;
+    };
   }
 }
 
-.task {
-  color: $lightBlue;
-  margin: 5px;
+.voteDisplay {
+  @include box-sizing();
+  width: 100%;
+  height: 50%;
+  margin-top: $defaultMargin;
+  padding: $defaultPadding;
+  background-color: $darkerBackground;
+  text-align: center;
+  overflow-y: scroll;
 }
 
 // HINT LIST
@@ -118,7 +124,6 @@ body {
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
-
   &::-webkit-scrollbar {
     display: none;
   }
@@ -130,19 +135,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  @include box-sizing()
-}
-
-// VOTE SCREEN STYLE
-
-.callVoteBtn {
-  font-weight: bold;
   @include box-sizing();
-  width: 100%;
-  margin: 10px;
-  padding: 5px;
-  background-image: url("/img/wc1.png");
-  background-size: cover;
 }
 
 %buttons {
@@ -150,7 +143,9 @@ body {
   padding: {
     left: $defaultPadding;
     right: $defaultPadding;
-  };
+    top: $defaultPadding / 2;
+    bottom: $defaultPadding / 2;
+  }
   margin: $defaultMargin;
   border: 1px solid black;
   text-align: center;
@@ -175,12 +170,21 @@ body {
 
 .positive-btn {
   @extend %buttons;
-  background-color: $pink;
+  background-color: $darkBlue;
 }
 
 .negative-btn {
   @extend %buttons;
-  background-color: $darkBlue;
+  background-color: $pink;
+}
+
+.fancy-btn {
+  @extend %buttons;
+  font-weight: bold;
+  @include box-sizing();
+  width: 100%;
+  background-image: url("/img/wc1.png");
+  background-size: cover;
 }
 
 .voteScreen,
@@ -189,6 +193,7 @@ body {
   width: $fullWidth;
   flex-grow: 1;
   text-align: center;
+  overflow-y: scroll;
   background-color: $darkerBackground;
 }
 
@@ -256,13 +261,285 @@ body {
 }
 
 #alien {
-  background: center/100% url("../img/SpacePantsWC-3-hori.png");
+  background: center/100% url("img/SpacePantsWC-3-hori.png");
   text-shadow: 2px 2px $purple;
 }
 
 #human {
-  background: center/100% url("../img/SpacePantsWC-1.png");
+  background: center/100% url("img/SpacePantsWC-1.png");
   text-shadow: 2px 2px $darkBlue;
+}
+
+// HINT LIST
+
+.hint-list {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+//Users
+.usersList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 100vw;
+  height: 50%;
+  @include box-sizing();
+  margin-top: $defaultMargin;
+  padding: $defaultPadding;
+  background-color: $darkerBackground;
+}
+
+.ufoTop {
+  padding-top: 10px;
+  border-radius: 50px 50px 0px 0px;
+  background-color: $lightBlue;
+  height: 5vh;
+  text-align: center;
+  margin-bottom: 0px;
+  vertical-align: middle;
+}
+
+.ufoBottom {
+  text-align: center;
+  margin-top: 0px;
+  border-radius: 50px 50px 100px 100px;
+  background-color: grey;
+  vertical-align: middle;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-weight: bold;
+  font-size: 200%;
+}
+
+@media screen and (min-width: 670px) {
+  .ufoTop {
+    width: 350px;
+    height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+  }
+  .ufoBottom {
+    height: 80px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .usersList {
+    width: 500px;
+    height: 600px;
+    font-size: 150%;
+  }
+}
+@media screen and (max-height: 900px) {
+  .ufoTop {
+    width: 50%;
+    margin-top: -20px;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+  .ufoBottom {
+    width: 70;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+.userSingle {
+  margin-right: 20px;
+}
+
+.blue {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: $pink;
+  margin-right: 20px;
+}
+
+.purple {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: $purple;
+  margin-right: 20px;
+}
+.pink {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: $lightBlue;
+  margin-right: 20px;
+}
+
+.leaveBtn {
+  font-weight: bold;
+  width: 50%;
+  margin-top: 10px;
+  padding: 5px;
+  font-size: large;
+  color: grey;
+  background-color: $darkerBackground;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.startBtn {
+  font-weight: bold;
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  font-size: large;
+  background-image: url("/img/wc1.png");
+  background-size: cover;
+}
+
+// LANDING PAGE
+
+// #app{
+//     display: $defaultDisplay;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 0;
+//     margin: 20px;
+//     width: 100vw;
+//     height: 100vh;
+// }
+
+//Landing Page animations
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+//walking pants
+.pants {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  animation: walking 0.8s linear infinite alternate;
+}
+
+@keyframes walking {
+  from {
+    content: url("../img/pants-lg-157-285.png");
+  }
+  to {
+    content: url("../img/pants-step2-157-285.png");
+  }
+}
+
+//space animations
+.lightblue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite,
+    zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
+  animation-fill-mode: backwards;
+}
+.darkblue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.3s infinite,
+    zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
+  animation-fill-mode: backwards;
+}
+.purple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2.7s infinite,
+    zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
+  animation-fill-mode: backwards;
+}
+
+@keyframes zoom {
+  0% {
+    width: auto;
+    height: 800%;
+    z-index: -3;
+  }
+
+  33% {
+    z-index: -4;
+  }
+
+  67% {
+    z-index: -5;
+  }
+
+  100% {
+    width: auto;
+    height: 0%;
+  }
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lp-title {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.lp-title .heading {
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
+  font-size: 3.15em;
+  color: $pink;
+}
+
+.instructions-btn {
+  position: fixed;
+  color: $purple;
+  background-color: #23272a99;
+  height: 3.2rem;
+  top: -1rem;
+  right: 28px;
+}
+
+.lp-btn-bar {
+  position: absolute;
+  bottom: 5%;
+  align-content: center;
+  width: 100%;
+}
+
+.lp-btn-bar button {
+  background-color: $lightBlue;
+  margin: 10%;
+  border: none;
 }
 
 // Color change

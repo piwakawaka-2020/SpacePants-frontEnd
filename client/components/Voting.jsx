@@ -53,7 +53,7 @@ class Voting extends React.Component {
 
   render() {
     return (
-      <div className='voteScreen'>
+      <div className='voteDisplay'>
         {
           this.props.castVote &&
           <>
