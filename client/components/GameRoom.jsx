@@ -123,10 +123,10 @@ class GameRoom extends React.Component {
 
   render() {
     return (
-      <div className="align">
-        <h1 className="heading">You are {this.props.localUser.role}</h1>
+      <>
+        <h1 className="header">You are {this.props.localUser.role}</h1>
 
-        <p className="heading">{this.state.time}</p>
+        <p className="time">{this.state.time}</p>
 
         {
           !this.state.voteData.receiveVote &&
@@ -135,11 +135,19 @@ class GameRoom extends React.Component {
             {/* Alien screen */}
             {
               this.props.localUser.role === 'Alien' &&
-              <div>
-                <p>{this.state.task}</p>
-                <button onClick={this.handleSkip} disabled={this.state.disabled}>skip</button>
-                <button onClick={this.handleComplete} disabled={this.state.disabled}>complete</button>
-                <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
+
+              <div className='display'>
+                <span>
+                  <p className='task'><strong>Active Behaviour Directive:</strong></p>
+                  <p className='task'>{this.state.task}</p>
+                </span>
+                <span>
+                  <div className='btn-bar'>
+                    <button className='btn-good' onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
+                    <button className='btn-bad' onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
+                  </div>
+                  {/* <p className='task'>Number of Tasks completed: {this.props.localUser.completedTasks}</p> */}
+                </span>
               </div>
             }
 
@@ -151,12 +159,12 @@ class GameRoom extends React.Component {
               </div>
             }
 
-            <button onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
+            <button className='vote-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
           </>
         }
 
         <Voting {...this.state.voteData} />
-      </div >
+      </>
     )
   }
 }

@@ -1,0 +1,94 @@
+$defaultMargin: 1rem;
+$defaultPadding: 1rem;
+
+$pink: #ba4385;
+$purple: #8858ac;
+$lightBlue: #61c5dc;
+$darkBlue: #357baf;
+
+$darkestBackground: #23272A;
+$darkerBackground: #2C2F33;
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  background-color: $darkestBackground;
+}
+
+.header {
+  text-align: center;
+  color: $pink;
+  width: 100%;
+  padding: $defaultPadding;
+  margin: 0px;
+}
+
+.time {
+  width: 100%;
+  font-size: 6em;
+  text-align: center;
+  margin: $defaultMargin;
+  color: $pink;
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 80%;
+  height: 25%;
+
+  padding: $defaultPadding;
+  margin: $defaultMargin;
+
+  background-color: $darkerBackground;
+}
+
+.display button {
+  background-color: $darkBlue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  width: 30%;
+
+  &:active {
+    background-color: $lightBlue;
+  }
+}
+
+.task {
+  color: $lightBlue;
+  margin: 5px;
+}
+
+.btn-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.vote-btn {
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+  background-color: $purple;
+
+  &:active {
+    background-color: $pink;
+  }
+}
