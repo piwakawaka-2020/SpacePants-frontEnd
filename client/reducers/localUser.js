@@ -5,7 +5,7 @@ const initialState = {
   room: '',
   role: '',
   tasks: [],
-  hint: '',
+  hints: [''],
   vote: true,
   result: '',
   completedTasks: 0
@@ -23,7 +23,7 @@ const localUser = (state = initialState, action) => {
       return state
 
     case SET_HINT:
-      state.hint = action.hint
+      state.hints = [action.hint, ...state.hints]
       return state
 
     case SET_TASK:

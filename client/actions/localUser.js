@@ -50,7 +50,7 @@ export function useVote() {
   }
 }
 
-export function setVoteResult(result){
+export function setVoteResult(result) {
   return {
     type: SET_RESULT,
     result: result
