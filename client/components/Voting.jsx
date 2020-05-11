@@ -51,17 +51,17 @@ class Voting extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='voteScreen'>
         {
           this.props.castVote &&
           <>
-            <h1>Who do you think is the Alien?</h1>
+            <h2>Who do you think is the Alien?</h2>
             {this.props.users.map((user, index) => {
               if(user != this.props.localUser.name) {
               return (
-                <span key={index}>
-                  <button onClick={this.handleVote} name={user} key={index}>{user}</button>
-                </span>
+                <div className='voteContainer' key={index}>
+                  <button className='voteBtn' onClick={this.handleVote} name={user} key={index}>{user}</button>
+                </div>
               )}
             })
             }
@@ -71,17 +71,17 @@ class Voting extends React.Component {
           this.props.receiveVote &&
           <div>
             {this.props.voter === this.props.localUser.name ?
-              <>
-                <h1>You accused <strong>{this.props.vote}</strong> of being an <strong>{'\u{1F47D}'}</strong></h1>
+              <div className='accuseTextContainer'>
+                <h2>You accused <strong>{this.props.vote}</strong> of being an <strong>{'\u{1F47D}'}</strong></h2>
                 <p>Who will agree with you?</p>
-              </>
+              </div>
               :
-              <>
-                <h1><strong>{this.props.voter}</strong> thinks <strong>{this.props.vote}</strong> is an <strong>{'\u{1F47D}'}</strong> How shall we proceed?</h1>
+              <div className='accuseBtnContainer'>
+                <h2><strong>{this.props.voter}</strong> thinks <strong>{this.props.vote}</strong> is an <strong>{'\u{1F47D}'}</strong> How shall we proceed?</h2>
                 {/* <h3>{this.state.vote}</h3> */}
-                <button onClick={() => this.sendVote(true)}>Alien Autopsy!</button>
-                <button onClick={() => this.sendVote(false)}>{this.props.vote} is a human!</button>
-              </>
+                <button id='agree' onClick={() => this.sendVote(true)}>Alien Autopsy!</button>
+                <button id='disagree' onClick={() => this.sendVote(false)}>{this.props.vote} is a human!</button>
+              </div>
             }
           </div>
         }
