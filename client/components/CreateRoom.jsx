@@ -49,7 +49,7 @@ class CreateRoom extends React.Component {
       <>
       <div className="page">
         <h1 className="heading">{this.state.room}</h1>
-        <form className="text" id="Create" onSubmit={this.handleSubmit}>
+        <form className="text" id="Create" onSubmit={this.handleSubmit} maxLength='15'>
           <div className="btns">
           <label>
             Enter Your Name:
