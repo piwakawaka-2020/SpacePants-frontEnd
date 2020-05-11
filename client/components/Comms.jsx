@@ -1,0 +1,86 @@
+import React from 'react'
+import { connect } from 'react-redux'
+
+import { receiveTask, completeTask } from '../actions/localUser'
+
+class Comms extends React.Component {
+
+  state = {
+    task: '',
+    disabled: false
+  }
+
+  componentDidMount() {
+    if (this.props.localUser.role === 'Alien') {
+      this.props.socket.on('task', task => {
+        this.props.dispatch(receiveTask(task))
+
+        this.setState({
+          task: this.props.localUser.tasks[0].task,
+          disabled: false
+        });
+      })
+      this.props.socket.emit('getTask')
+    } else {
+      this.props.socket.on('hint', hint => {
+        this.props.dispatch(receiveHint(hint))
+        this.setState({ hint: this.props.localUser.hint });
+      })
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.socket.removeAllListeners('hint')
+    this.props.socket.removeAllListeners('task')
+  }
+
+  handleSkip = e => {
+    this.setState({
+      task: 'The humans are on to you!  Do nothing for 30 seconds!',
+      disabled: true
+    })
+    this.props.socket.emit('skipTask')
+  }
+
+  handleComplete = e => {
+    this.setState({
+      task: 'Waiting for next task...',
+      disabled: true
+    })
+    this.props.dispatch(completeTask(this.props.socket, this.props.room))
+  }
+
+  render() {
+    return (
+      <>
+        {
+          this.props.localUser.role === 'Alien' &&
+          <div>
+
+            <p>{this.state.task}</p>
+
+            <button onClick={this.handleSkip} disabled={this.state.disabled}>skip</button>
+            <button onClick={this.handleComplete} disabled={this.state.disabled}>complete</button>
+            <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
+          </div>
+        }
+
+        {
+          this.props.localUser.role === 'Human' &&
+          <div>
+            <p>{this.props.localUser.hint}</p>
+          </div>
+        }
+      </>
+    )
+  }
+}
+
+function mapStateToProps(globalState) {
+  return {
+    socket: globalState.localUser.socket,
+    localUser: globalState.localUser
+  }
+}
+
+export default connect(mapStateToProps)(Comms)

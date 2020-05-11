@@ -10,3 +10,21 @@
 .ReactModal__Overlay--after-close{
     opacity: 0;
 }
+
+.slide-enter {
+  transform: translateX(200%);
+}
+
+.slide-enter.slide-enter-active {
+  transform: translateX(0);
+  transition: 250ms ease;
+}
+
+.slide-exit {
+  transform: translateX(0%);
+}
+
+.slide-exit.slide-exit-active {
+  transform: translateX(-200%);
+  transition: 250ms ease;
+}
