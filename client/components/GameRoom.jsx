@@ -68,7 +68,7 @@ class GameRoom extends React.Component {
           winner: winner,
           room: this.props.localUser.room
         })
-      }
+      }x
     })
 
     this.props.socket.on('finalScreen', endData => {
