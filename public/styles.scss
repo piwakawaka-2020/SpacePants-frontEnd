@@ -1,0 +1,126 @@
+// VOTING SCREEN
+
+// Default
+$defaultMargin: 1rem;
+$defaultPadding: 1rem;
+$defaultDisplay: flex;
+
+// Set variables
+$vertical: column;
+$fullWidth: 100vw;
+$greenBackground: rgb(44, 78, 44);
+
+// Color set
+$pink: #ba4385;
+$purple: #8858ac;
+$lightBlue: #61c5dc;
+$darkBlue: #357baf;
+$darkestBackground: #23272A;
+$darkerBackground: #2C2F33;
+
+// Color change
+@keyframes bgcolorchange {
+  0% {
+    background-color: $pink;
+  }
+  25% {
+    background-color: $purple;
+  }
+  50% {
+    background-color: $lightBlue;
+  }
+  75% {
+    background-color: $darkBlue;
+  }
+  100% {
+    background-color: $pink;
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+#app {
+  display: $defaultDisplay;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+
+.voteScreen, .accuseScreen{
+  margin: auto;
+  width: $fullWidth;
+  border: outset 1px gray;
+  border-radius: 5px;
+  flex-direction: $vertical;
+  justify-content: center;
+  text-align: center;
+  background-color: $darkerBackground;
+}
+
+.voteScreen h2, .accuseTextContainer h2 {
+  font-size: 1.5rem;
+  color: $lightBlue;
+}
+
+.accuseTextContainer p {
+  color: whitesmoke;
+}
+
+.voteContainer, .accuseTextContainer{
+  margin: $defaultMargin;
+}
+
+.voteBtn{
+  font-size: 1.5rem;
+  display: inline-flex;
+  padding: 0.5rem;
+  width: 70%;
+  border: outset 1px black;
+  border-radius: 5px;
+  outline: none;
+  transition: all 0.1s ease-in-out;
+  animation: bgcolorchange 6s infinite;
+  color: whitesmoke;
+  &:hover {
+    font-weight: bold;
+    box-shadow: 0 5px 15px gray;
+  }
+  &:active {
+    border: inset 1px;
+    text-decoration: line-through;
+  }
+}
+
+.accuseBtnContainer button{
+  margin: $defaultMargin;
+  display: inline-flex;
+  width: 40%;
+  font-size: 1.5rem;
+  color: whitesmoke;
+  transition: all 0.1s ease-in-out;
+  border: outset 1px black;
+  border-radius: 5px;
+  outline: none;
+  &:hover {
+    font-weight: bold;
+    box-shadow: 0 5px 15px gray;
+  }
+  &:active {
+    border: inset 1px;
+  }
+}
+
+#agree{
+  background-color: $darkBlue;
+}
+
+#disagree{
+  background-color: $darkBlue;
+}
