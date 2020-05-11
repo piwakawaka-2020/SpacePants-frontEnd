@@ -1,8 +1,3 @@
-$defaultMargin: 1rem;
-$defaultPadding: 1rem;
-
-// VOTING SCREEN
-
 // Default
 $defaultMargin: 1rem;
 $defaultPadding: 1rem;
@@ -119,6 +114,8 @@ body {
   width: 100%;
 }
 
+// VOTE SCREEN STYLE
+
 .vote-btn {
   width: 6em;
   height: 6em;
@@ -142,6 +139,7 @@ body {
 }
 
 .voteScreen h2, .accuseTextContainer h2 {
+  margin: $defaultMargin;
   font-size: 1.5rem;
   color: $lightBlue;
 }
@@ -183,6 +181,7 @@ body {
   color: whitesmoke;
   transition: all 0.1s ease-in-out;
   border: outset 1px black;
+  background-color: $darkBlue;
   border-radius: 5px;
   outline: none;
   &:hover {
@@ -194,10 +193,10 @@ body {
   }
 }
 
-#agree{
-  background-color: $darkBlue;
-}
+// HOW TO MODAL
 
-#disagree{
-  background-color: $darkBlue;
+.description{
+  background-color: $darkerBackground;
+  color: whitesmoke;
+  height: 90%;
 }

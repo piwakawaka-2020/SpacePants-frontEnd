@@ -162,6 +162,7 @@ body {
 }
 
 .voteScreen h2, .accuseTextContainer h2 {
+  margin: 1rem;
   font-size: 1.5rem;
   color: #61c5dc;
 }
@@ -213,6 +214,7 @@ body {
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
   border: outset 1px black;
+  background-color: #357baf;
   border-radius: 5px;
   outline: none;
 }
@@ -227,11 +229,9 @@ body {
   border: inset 1px;
 }
 
-#agree {
-  background-color: #357baf;
-}
-
-#disagree {
-  background-color: #357baf;
+.description {
+  background-color: #2C2F33;
+  color: whitesmoke;
+  height: 90%;
 }
 /*# sourceMappingURL=styles.css.map */
