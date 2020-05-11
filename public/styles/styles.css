@@ -11,78 +11,7 @@ body {
   color: white;
   background-color: #23272a;
   font-size: large;
-}
-
-@-webkit-keyframes bgcolorchange {
-  0% {
-    background-color: #ba4385;
-  }
-  25% {
-    background-color: #8858ac;
-  }
-  50% {
-    background-color: #61c5dc;
-  }
-  75% {
-    background-color: #357baf;
-  }
-  100% {
-    background-color: #ba4385;
-  }
-}
-
-@keyframes bgcolorchange {
-  0% {
-    background-color: #ba4385;
-  }
-  25% {
-    background-color: #8858ac;
-  }
-  50% {
-    background-color: #61c5dc;
-  }
-  75% {
-    background-color: #357baf;
-  }
-  100% {
-    background-color: #ba4385;
-  }
-}
-
-@-webkit-keyframes textcolorchange {
-  0% {
-    color: #ba4385;
-  }
-  25% {
-    color: #8858ac;
-  }
-  50% {
-    color: #61c5dc;
-  }
-  75% {
-    color: #357baf;
-  }
-  100% {
-    color: #ba4385;
-  }
-}
-
-@keyframes textcolorchange {
-  0% {
-    color: #ba4385;
-  }
-  25% {
-    color: #8858ac;
-  }
-  50% {
-    color: #61c5dc;
-  }
-  75% {
-    color: #357baf;
-  }
-  100% {
-    color: #ba4385;
-  }
+  margin: 0px;
 }
 
 #app {
@@ -99,9 +28,10 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 20px;
   width: 100vw;
   height: 100vh;
+  margin: 0px;
+  padding: 0px;
 }
 
 .header {
@@ -313,5 +243,77 @@ body {
 
 .hint-list::-webkit-scrollbar {
   display: none;
+}
+
+@-webkit-keyframes bgcolorchange {
+  0% {
+    background-color: #ba4385;
+  }
+  25% {
+    background-color: #8858ac;
+  }
+  50% {
+    background-color: #61c5dc;
+  }
+  75% {
+    background-color: #357baf;
+  }
+  100% {
+    background-color: #ba4385;
+  }
+}
+
+@keyframes bgcolorchange {
+  0% {
+    background-color: #ba4385;
+  }
+  25% {
+    background-color: #8858ac;
+  }
+  50% {
+    background-color: #61c5dc;
+  }
+  75% {
+    background-color: #357baf;
+  }
+  100% {
+    background-color: #ba4385;
+  }
+}
+
+@-webkit-keyframes textcolorchange {
+  0% {
+    color: #ba4385;
+  }
+  25% {
+    color: #8858ac;
+  }
+  50% {
+    color: #61c5dc;
+  }
+  75% {
+    color: #357baf;
+  }
+  100% {
+    color: #ba4385;
+  }
+}
+
+@keyframes textcolorchange {
+  0% {
+    color: #ba4385;
+  }
+  25% {
+    color: #8858ac;
+  }
+  50% {
+    color: #61c5dc;
+  }
+  75% {
+    color: #357baf;
+  }
+  100% {
+    color: #ba4385;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
