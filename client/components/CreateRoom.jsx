@@ -47,19 +47,21 @@ class CreateRoom extends React.Component {
   render() {
     return (
       <>
-        <div className="page">
-          <h1 className="heading">{this.state.room}</h1>
-          <form className="text" id="Create" onSubmit={this.handleSubmit}>
-            <div className="btns">
-            <label>
-              Enter Your Name:
-            </label>
-            <input type="text"placeholder='Name' onChange={this.handleChange} name="name" />
-            <input type="submit" value="submit"/>
-            <br />
-            <button className="button" onClick={this.handleClick}>Click to go Back</button>
-            </div>
-          </form>
+
+      <div className="page">
+        <h1 className="heading">{this.state.room}</h1>
+        <form className="text" id="Create" onSubmit={this.handleSubmit} maxLength='15'>
+          <div className="btns">
+          <label>
+            Enter Your Name:
+          </label>
+          <input type="text"placeholder='Name' onChange={this.handleChange} name="name" />
+          <input type="submit" value="submit"/>
+          <br />
+          <button className="button" onClick={this.handleClick}>Click to go Back</button>
+          </div>
+        </form>
+
         </div>
       </>
     )

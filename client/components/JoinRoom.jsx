@@ -62,6 +62,7 @@ class JoinRoom extends React.Component {
   render() {
     return (
       <>
+
         <div className="align">
           <h1 className="heading">Join a game!</h1>
           <div className="text">
@@ -74,6 +75,7 @@ class JoinRoom extends React.Component {
             </form>
           </div>
           {this.state.usernameTaken && <p className="tipText">{this.state.name} is already in this room. Enter a new name and try again.</p>}
+
         </div>
       </>
     )
