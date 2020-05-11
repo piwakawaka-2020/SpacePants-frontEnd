@@ -27,13 +27,27 @@ class LandingPage extends React.Component {
 
   render() {
     return (
-      <div className="align">
-        <h1 className='heading'>SpacePants</h1>
-        <button className='button' onClick={() => this.props.history.push('/create')}>Create Game</button>
-        <button className='button' onClick={() => this.props.history.push('/join')}>Join Game</button>
-        <button className="button" id="centered-toggle-button" onClick={this.showModal}>How to play</button>
+      <div className='wrapper'>
+        <img className = 'pants'/>
+        <img className = 'lightblue' src='./img/bg-lightblue-space.png'/>
+        <img className = 'darkblue' src='./img/bg-darkblue-space.png'/>
+        <img className = 'purple' src ='./img/bg-purple-space.png'/>
+        
+        <div className = 'lp-title'>
+          <h1 className='heading'>SpacePants</h1>
+        </div>
 
-        <HowToModal showModal={this.state.showModal} closeModal={this.closeModal} />
+        <div className ="lp-btn-bar">
+          <button className='button create' onClick={() => this.props.history.push('/create')}>Create Game</button>
+          <button className='button join' onClick={() => this.props.history.push('/join')}>Join Game</button>
+        </div>
+      
+        <div className = 'instructions-btn'>
+          <p className="button" id="centered-toggle-button" onClick={this.showModal}>How to play</p>
+          <HowToModal showModal={this.state.showModal} closeModal={this.closeModal} />
+        </div>
+
+                     
       </div>
     )
   }
