@@ -55,12 +55,12 @@ class Voting extends React.Component {
         {
           this.props.castVote &&
           <>
-            <h2>Who do you think is the Alien?</h2>
+            <h2>Who do you accuse?</h2>
             {this.props.users.map((user, index) => {
               if(user != this.props.localUser.name) {
               return (
                 <div className='voteContainer' key={index}>
-                  <button className='voteBtn' onClick={this.handleVote} name={user} key={index}>{user}</button>
+                  <button className='accuseBtn' onClick={this.handleVote} name={user} key={index}>{user}</button>
                 </div>
               )}
             })

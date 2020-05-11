@@ -68,7 +68,7 @@ class GameRoom extends React.Component {
           winner: winner,
           room: this.props.localUser.room
         })
-      }x
+      }
     })
 
     this.props.socket.on('finalScreen', endData => {
@@ -100,8 +100,13 @@ class GameRoom extends React.Component {
     return (
       <>
         <h1 className="header">You are {this.props.localUser.role}</h1>
-
-        <p className="time">{this.state.time}</p>
+        <span>
+          <p className="time">{this.state.time}</p>
+          {
+            this.props.localUser.role === 'Alien' &&
+            <p>Tasks Completed: {this.props.localUser.completedTasks}</p>
+          }
+        </span>
 
         <SwitchTransition mode={'out-in'}>
           <CSSTransition
@@ -109,13 +114,13 @@ class GameRoom extends React.Component {
             addEndListener={(node, done) => { node.addEventListener("transitionend", done, false) }}
             classNames="slide">
 
-            <TransitionContainer screen={this.state.screen} voteData={this.state.voteData}/>
+            <TransitionContainer screen={this.state.screen} voteData={this.state.voteData} handleVote={this.handleVote} />
 
           </CSSTransition>
         </SwitchTransition>
 
 
-        <button className='vote-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
+        <button className='callVoteBtn' onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
       </>
     )
   }
