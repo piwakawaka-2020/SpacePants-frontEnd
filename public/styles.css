@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'digi';
+  font-family: "digi";
   src: url("./fonts/DS-DIGIB.woff") format("woff");
   font-weight: normal;
   font-style: normal;
@@ -9,8 +9,8 @@ body {
   width: 100vw;
   height: 100vh;
   color: white;
-  background-color: #23272A;
-  margin: 0px;
+  background-color: #23272a;
+  font-size: large;
 }
 
 @-webkit-keyframes bgcolorchange {
@@ -49,11 +49,6 @@ body {
   }
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
-}
-
 #app {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -68,6 +63,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 20px;
   width: 100vw;
   height: 100vh;
 }
@@ -81,11 +77,12 @@ body {
 }
 
 .time {
-  font-family: 'digi';
+  font-family: "digi";
   width: 100%;
   font-size: 6em;
   text-align: center;
-  margin: 1rem;
+  padding: 0;
+  margin: 0;
   color: #ba4385;
 }
 
@@ -100,11 +97,13 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 80%;
-  height: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  margin-top: 1rem;
   padding: 1rem;
-  margin: 1rem;
-  background-color: #2C2F33;
+  background-color: #2c2f33;
 }
 
 .display button {
@@ -142,34 +141,29 @@ body {
   width: 100%;
 }
 
-.vote-btn {
-  width: 6em;
-  height: 6em;
-  border-radius: 50%;
-  background-color: #8858ac;
+.callVoteBtn {
+  font-weight: bold;
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  font-size: large;
+  background-image: url("/img/wc1.png");
+  background-size: cover;
 }
 
-.vote-btn:active {
-  background-color: #ba4385;
-}
-
-.voteScreen, .accuseScreen {
+.voteScreen,
+.accuseScreen {
   margin: auto;
-  width: 80%;
-  border: outset 1px gray;
-  border-radius: 5px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   text-align: center;
-  background-color: #2C2F33;
+  background-color: #2c2f33;
 }
 
-.voteScreen h2, .accuseTextContainer h2 {
+.voteScreen h2,
+.accuseTextContainer h2 {
   font-size: 1.5rem;
   color: #61c5dc;
 }
@@ -178,11 +172,13 @@ body {
   color: whitesmoke;
 }
 
-.voteContainer, .accuseTextContainer {
+.voteContainer,
+.accuseTextContainer {
   margin: 1rem;
 }
 
-.voteBtn {
+.accuseBtn {
+  text-align: center;
   font-size: 1.5rem;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -194,20 +190,13 @@ body {
   outline: none;
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-  -webkit-animation: bgcolorchange 6s infinite;
-          animation: bgcolorchange 6s infinite;
+  -webkit-animation: bgcolorchange 12s infinite;
+          animation: bgcolorchange 12s infinite;
   color: whitesmoke;
 }
 
-.voteBtn:hover {
-  font-weight: bold;
-  -webkit-box-shadow: 0 5px 15px gray;
-          box-shadow: 0 5px 15px gray;
-}
-
-.voteBtn:active {
+.accuseBtn:active {
   border: inset 1px;
-  text-decoration: line-through;
 }
 
 .accuseBtnContainer button {

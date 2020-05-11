@@ -10,7 +10,7 @@ $defaultDisplay: flex;
 
 // Set variables
 $vertical: column;
-$fullWidth: 80%;
+$fullWidth: 100%;
 $greenBackground: rgb(44, 78, 44);
 
 // Color set
@@ -19,12 +19,12 @@ $purple: #8858ac;
 $lightBlue: #61c5dc;
 $darkBlue: #357baf;
 
-$darkestBackground: #23272A;
-$darkerBackground: #2C2F33;
+$darkestBackground: #23272a;
+$darkerBackground: #2c2f33;
 
 @font-face {
-  font-family: 'digi';
-  src: url('./fonts/DS-DIGIB.woff') format('woff');
+  font-family: "digi";
+  src: url("./fonts/DS-DIGIB.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -34,7 +34,7 @@ body {
   height: 100vh;
   color: white;
   background-color: $darkestBackground;
-  margin: 0px;
+  font-size: large;
 }
 
 // Color change
@@ -56,16 +56,12 @@ body {
   }
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
-}
-
 #app {
   display: $defaultDisplay;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  padding: 20px;
   width: 100vw;
   height: 100vh;
 }
@@ -79,11 +75,12 @@ body {
 }
 
 .time {
-  font-family: 'digi';
+  font-family: "digi";
   width: 100%;
   font-size: 6em;
   text-align: center;
-  margin: $defaultMargin;
+  padding: 0;
+  margin: 0;
   color: $pink;
 }
 
@@ -91,13 +88,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  width: 80%;
-  height: auto;
-
+  flex-grow: 1;
+  width: 100%;
+  margin-top: $defaultMargin;
   padding: $defaultPadding;
-  margin: $defaultMargin;
-
   background-color: $darkerBackground;
 }
 
@@ -127,29 +121,27 @@ body {
   width: 100%;
 }
 
-.vote-btn {
-  width: 6em;
-  height: 6em;
-  border-radius: 50%;
-  background-color: $purple;
-
-  &:active {
-    background-color: $pink;
-  }
+.callVoteBtn {
+  font-weight: bold;
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  font-size: large;
+  background-image: url('/img/wc1.png');
+  background-size: cover;
 }
 
-.voteScreen, .accuseScreen{
+.voteScreen,
+.accuseScreen {
   margin: auto;
   width: $fullWidth;
-  border: outset 1px gray;
-  border-radius: 5px;
-  flex-direction: $vertical;
-  justify-content: center;
+  flex-grow: 1;
   text-align: center;
   background-color: $darkerBackground;
 }
 
-.voteScreen h2, .accuseTextContainer h2 {
+.voteScreen h2,
+.accuseTextContainer h2 {
   font-size: 1.5rem;
   color: $lightBlue;
 }
@@ -158,11 +150,13 @@ body {
   color: whitesmoke;
 }
 
-.voteContainer, .accuseTextContainer{
+.voteContainer,
+.accuseTextContainer {
   margin: $defaultMargin;
 }
 
-.voteBtn{
+.accuseBtn {
+  text-align: center;
   font-size: 1.5rem;
   display: inline-flex;
   padding: 0.5rem;
@@ -171,19 +165,14 @@ body {
   border-radius: 5px;
   outline: none;
   transition: all 0.1s ease-in-out;
-  animation: bgcolorchange 6s infinite;
+  animation: bgcolorchange 12s infinite;
   color: whitesmoke;
-  &:hover {
-    font-weight: bold;
-    box-shadow: 0 5px 15px gray;
-  }
   &:active {
     border: inset 1px;
-    text-decoration: line-through;
   }
 }
 
-.accuseBtnContainer button{
+.accuseBtnContainer button {
   margin: $defaultMargin;
   display: inline-flex;
   width: 40%;
@@ -202,10 +191,10 @@ body {
   }
 }
 
-#agree{
+#agree {
   background-color: $darkBlue;
 }
 
-#disagree{
+#disagree {
   background-color: $darkBlue;
 }
