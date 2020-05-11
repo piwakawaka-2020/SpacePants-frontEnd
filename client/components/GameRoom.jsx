@@ -48,7 +48,7 @@ class GameRoom extends React.Component {
       })
     })
 
-    this.props.socket.on('voteFailed', () => {
+    this.props.socket.on('voteFailed', () => {     
       this.setState({
         screen: 'Comms',
         voteActive: false,
