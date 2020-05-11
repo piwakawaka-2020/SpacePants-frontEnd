@@ -61,7 +61,7 @@ class CreateRoom extends React.Component {
             </div>
           </form>
         </div>
-      </>     
+      </>
     )
   }
 }

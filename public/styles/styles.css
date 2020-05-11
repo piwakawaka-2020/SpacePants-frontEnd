@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @font-face {
   font-family: "digi";
   src: url("./fonts/DS-DIGIB.woff") format("woff");
@@ -505,3 +506,497 @@ body {
   border: none;
 }
 /*# sourceMappingURL=styles.css.map */
+||||||| 2f82d52
+=======
+<<<<<<<< HEAD:public/styles/styles.css
+@font-face {
+  font-family: "digi";
+  src: url("../fonts/DS-DIGIB.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+|||||||| 2f82d52:public/styles.css
+@font-face {
+  font-family: "digi";
+  src: url("./fonts/DS-DIGIB.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+========
+>>>>>>>> dev:public/styles.css
+body {
+  width: 100vw;
+  height: 100vh;
+  color: white;
+<<<<<<<< HEAD:public/styles/styles.css
+  background-color: #23272a;
+  font-size: large;
+  margin: 0px;
+|||||||| 2f82d52:public/styles.css
+  background-color: #23272a;
+  font-size: large;
+}
+
+@-webkit-keyframes bgcolorchange {
+  0% {
+    background-color: #ba4385;
+  }
+  25% {
+    background-color: #8858ac;
+  }
+  50% {
+    background-color: #61c5dc;
+  }
+  75% {
+    background-color: #357baf;
+  }
+  100% {
+    background-color: #ba4385;
+  }
+}
+
+@keyframes bgcolorchange {
+  0% {
+    background-color: #ba4385;
+  }
+  25% {
+    background-color: #8858ac;
+  }
+  50% {
+    background-color: #61c5dc;
+  }
+  75% {
+    background-color: #357baf;
+  }
+  100% {
+    background-color: #ba4385;
+  }
+========
+  background-image: url("./img/wc-inverted.png");
+  background-color: #23272A;
+  margin: 0px;
+}
+
+@-webkit-keyframes bgcolorchange {
+  0% {
+    background-color: #ba4385;
+  }
+  25% {
+    background-color: #8858ac;
+  }
+  50% {
+    background-color: #61c5dc;
+  }
+  75% {
+    background-color: #357baf;
+  }
+  100% {
+    background-color: #ba4385;
+  }
+}
+
+@keyframes bgcolorchange {
+  0% {
+    background-color: #ba4385;
+  }
+  25% {
+    background-color: #8858ac;
+  }
+  50% {
+    background-color: #61c5dc;
+  }
+  75% {
+    background-color: #357baf;
+  }
+  100% {
+    background-color: #ba4385;
+  }
+>>>>>>>> dev:public/styles.css
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+#app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
+
+.header {
+  text-align: center;
+  color: #ba4385;
+  width: 100%;
+  padding: 1rem;
+  margin: 0px;
+}
+
+.time {
+  width: 100%;
+  font-size: 6em;
+  text-align: center;
+  margin: 1rem;
+  color: #ba4385;
+}
+
+.display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+<<<<<<<< HEAD:public/styles/styles.css
+  width: 100%;
+  height: 50%;
+  margin-top: 1rem;
+|||||||| 2f82d52:public/styles.css
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  width: 100%;
+  margin-top: 1rem;
+========
+  width: 80%;
+  height: auto;
+>>>>>>>> dev:public/styles.css
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #2C2F33;
+}
+
+.display button {
+  background-color: #357baf;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  width: 30%;
+}
+
+.display button:active {
+  background-color: #61c5dc;
+}
+
+.task {
+  color: #61c5dc;
+  margin: 5px;
+}
+
+.btn-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+<<<<<<<< HEAD:public/styles/styles.css
+.vote-btn {
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+  background-color: #8858ac;
+}
+
+.vote-btn:active {
+  background-color: #ba4385;
+}
+
+.callVoteBtn {
+  font-weight: bold;
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  font-size: large;
+  background-image: url("/img/wc1.png");
+  background-size: cover;
+|||||||| 2f82d52:public/styles.css
+.callVoteBtn {
+  font-weight: bold;
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  font-size: large;
+  background-image: url("/img/wc1.png");
+  background-size: cover;
+========
+.vote-btn {
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+  background-color: #8858ac;
+}
+
+.vote-btn:active {
+  background-color: #ba4385;
+>>>>>>>> dev:public/styles.css
+}
+
+.voteScreen, .accuseScreen {
+  margin: auto;
+  width: 80%;
+  border: outset 1px gray;
+  border-radius: 5px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background-color: #2C2F33;
+}
+
+.voteScreen h2, .accuseTextContainer h2 {
+  font-size: 1.5rem;
+  color: #61c5dc;
+}
+
+.accuseTextContainer p {
+  color: whitesmoke;
+}
+
+.voteContainer, .accuseTextContainer {
+  margin: 1rem;
+}
+
+.voteBtn {
+  font-size: 1.5rem;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 0.5rem;
+  width: 70%;
+  border: outset 1px black;
+  border-radius: 5px;
+  outline: none;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  -webkit-animation: bgcolorchange 6s infinite;
+          animation: bgcolorchange 6s infinite;
+  color: whitesmoke;
+}
+
+.voteBtn:hover {
+  font-weight: bold;
+  -webkit-box-shadow: 0 5px 15px gray;
+          box-shadow: 0 5px 15px gray;
+}
+
+.voteBtn:active {
+  border: inset 1px;
+  text-decoration: line-through;
+}
+
+.accuseBtnContainer button {
+  margin: 1rem;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 40%;
+  font-size: 1.5rem;
+  color: whitesmoke;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border: outset 1px black;
+  background-color: #357baf;
+  border-radius: 5px;
+  outline: none;
+}
+
+.accuseBtnContainer button:hover {
+  font-weight: bold;
+  -webkit-box-shadow: 0 5px 15px gray;
+          box-shadow: 0 5px 15px gray;
+}
+
+.accuseBtnContainer button:active {
+  border: inset 1px;
+}
+
+.description h1 {
+  width: 100%;
+  text-align: center;
+  -webkit-animation: textcolorchange 2s infinite;
+          animation: textcolorchange 2s infinite;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2.5px gray;
+  letter-spacing: 3px;
+}
+
+.description fieldset {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border: none;
+  border-radius: 10px;
+  background-color: #2c2f33;
+  color: #61c5dc;
+  text-align: justify;
+}
+
+.description legend {
+  text-align: center;
+  color: whitesmoke;
+  border: none;
+  border-radius: 10px;
+  padding: 0 5% 0 5%;
+}
+
+#alien {
+  background: center/100% url("../img/SpacePantsWC-3-hori.png");
+  text-shadow: 2px 2px #8858ac;
+}
+
+#human {
+  background: center/100% url("../img/SpacePantsWC-1.png");
+  text-shadow: 2px 2px #357baf;
+}
+
+.hint-list {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hint-list::-webkit-scrollbar {
+  display: none;
+}
+
+@-webkit-keyframes bgcolorchange {
+  0% {
+    background-color: #ba4385;
+  }
+  25% {
+    background-color: #8858ac;
+  }
+  50% {
+    background-color: #61c5dc;
+  }
+  75% {
+    background-color: #357baf;
+  }
+  100% {
+    background-color: #ba4385;
+  }
+}
+
+@keyframes bgcolorchange {
+  0% {
+    background-color: #ba4385;
+  }
+  25% {
+    background-color: #8858ac;
+  }
+  50% {
+    background-color: #61c5dc;
+  }
+  75% {
+    background-color: #357baf;
+  }
+  100% {
+    background-color: #ba4385;
+  }
+}
+
+@-webkit-keyframes textcolorchange {
+  0% {
+    color: #ba4385;
+  }
+  25% {
+    color: #8858ac;
+  }
+  50% {
+    color: #61c5dc;
+  }
+  75% {
+    color: #357baf;
+  }
+  100% {
+    color: #ba4385;
+  }
+}
+
+@keyframes textcolorchange {
+  0% {
+    color: #ba4385;
+  }
+  25% {
+    color: #8858ac;
+  }
+  50% {
+    color: #61c5dc;
+  }
+  75% {
+    color: #357baf;
+  }
+  100% {
+    color: #ba4385;
+  }
+}
+
+.fancy-header {
+  text-align: center;
+  font-weight: 900;
+  padding: 1rem;
+  margin: 0px;
+  background-image: url("./img/wc-800-200.png");
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.end-display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+  height: auto;
+  max-height: 540px;
+  overflow-y: scroll;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #2C2F33;
+}
+/*# sourceMappingURL=styles.css.map */
+>>>>>>> dev
