@@ -28,7 +28,6 @@ class WaitingRoom extends React.Component {
   render() {
 
     return (
-      <div className = "container">
         <div className="align">
           <p className="heading">Room Code: {this.props.room}</p>
           {
@@ -38,7 +37,6 @@ class WaitingRoom extends React.Component {
           }
           <button className="button" onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
         </div>
-      </div>
     )
   }
 }

@@ -46,7 +46,7 @@ class CreateRoom extends React.Component {
 
   render() {
     return (
-      <div className = "container">
+      <>
         <div className="page">
           <h1 className="heading">{this.state.room}</h1>
           <form className="text" id="Create" onSubmit={this.handleSubmit}>
@@ -61,7 +61,7 @@ class CreateRoom extends React.Component {
             </div>
           </form>
         </div>
-      </div>     
+      </>     
     )
   }
 }

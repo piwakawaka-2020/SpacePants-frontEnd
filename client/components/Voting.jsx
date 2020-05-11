@@ -53,7 +53,6 @@ class Voting extends React.Component {
 
   render() {
     return (
-      <div className='container'>
         <div className='voteScreen'>
           {
             this.props.castVote &&
@@ -96,7 +95,6 @@ class Voting extends React.Component {
             </div>
           }
         </div>
-      </div>
     )
   }
 }

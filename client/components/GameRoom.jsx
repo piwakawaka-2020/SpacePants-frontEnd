@@ -98,7 +98,7 @@ class GameRoom extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <>
         <h1 className="header">You are {this.props.localUser.role}</h1>
         <span>
           <p className="time">{this.state.time}</p>
@@ -121,7 +121,7 @@ class GameRoom extends React.Component {
 
 
         <button className='callVoteBtn' onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
-      </div>
+      </>
     )
   }
 }

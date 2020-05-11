@@ -85,6 +85,26 @@ body {
   }
 }
 
+#app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+  margin: 20px;
+  width: 100vw;
+  height: 100vh;
+}
+
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -362,7 +382,6 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  z-index: -10;
   -webkit-animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
           animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
   -webkit-animation-fill-mode: backwards;
@@ -375,7 +394,6 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  z-index: -10;
   -webkit-animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.3s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
           animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.3s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
   -webkit-animation-fill-mode: backwards;
@@ -388,7 +406,6 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  z-index: -10;
   -webkit-animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2.7s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
           animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2.7s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
   -webkit-animation-fill-mode: backwards;
@@ -468,10 +485,10 @@ body {
 .instructions-btn {
   position: fixed;
   color: #8858ac;
-  background-color: #23272a80;
+  background-color: #23272a99;
   height: 3.2rem;
   top: -1rem;
-  right: 20px;
+  right: 28px;
 }
 
 .lp-btn-bar {

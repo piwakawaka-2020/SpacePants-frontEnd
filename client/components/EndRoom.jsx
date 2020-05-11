@@ -25,7 +25,6 @@ class EndRoom extends React.Component {
 
   render() {
     return (
-      <div className='container'>
         <div className='align' >
           <div>
             <h3 className='heading'>The winner is...</h3>
@@ -60,7 +59,6 @@ class EndRoom extends React.Component {
           <button className='button' onClick={() => this.props.history.push('/waiting')
           }> Another game ?</button >
         </div >
-      </div>
     )
   }
 }
