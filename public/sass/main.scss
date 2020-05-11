@@ -1,0 +1,21 @@
+$text-color: blue;
+$defaultMargin: 1rem;
+$defaultPadding: 1rem;
+
+body {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  border: 1px solid green ;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+}
