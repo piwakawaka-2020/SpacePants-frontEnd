@@ -20,24 +20,30 @@ class WaitingRoom extends React.Component {
     this.props.socket.emit('startGame', this.props.room)
   }
 
+  leaveGame = e => {
+    this.props.socket.emit('leaveRoom', this.props.room)
+    this.props.history.replace('/')
+  }
+
   render() {
 
     return (
-      <div className="align">
-        <p className="heading">Room Code: {this.props.room}</p>
-        {
-          this.props.users.map((user, i) => {
-            return (<p  className="text" key={i}>{user}</p>)
-          })
-        }
-        <button className="button" onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
+      <div className = "container">
+        <div className="align">
+          <p className="heading">Room Code: {this.props.room}</p>
+          {
+            this.props.users.map((user, i) => {
+              return (<p  className="text" key={i}>{user}</p>)
+            })
+          }
+          <button className="button" onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
+        </div>
       </div>
     )
   }
 }
 
 function mapStateToProps(globalState) {
-
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers,

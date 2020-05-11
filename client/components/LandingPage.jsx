@@ -33,8 +33,6 @@ class LandingPage extends React.Component {
         <img className = 'darkblue' src='./img/bg-darkblue-space.png'/>
         <img className = 'purple' src ='./img/bg-purple-space.png'/>
         
-        {/* <div className = 'pants step2'/>
-        
         {/* <div className="container">
           <h1 className='heading'>SpacePants</h1>
           <button className='button' onClick={() => this.props.history.push('/create')}>Create Game</button>
@@ -42,8 +40,7 @@ class LandingPage extends React.Component {
           <button className="button" id="centered-toggle-button" onClick={this.showModal}>How to play</button>
           <HowToModal showModal={this.state.showModal} closeModal={this.closeModal} />
         </div> */}
-        
-                 
+               
       </div>
     )
   }

@@ -9,7 +9,7 @@ class GameRoom extends React.Component {
 
   state = {
     task: '',
-    hint: 'No leads received yet',
+    hint: '',
     disabled: false,
     time: '5:00',
     screen: 'Comms',
@@ -48,7 +48,7 @@ class GameRoom extends React.Component {
       })
     })
 
-    this.props.socket.on('voteFailed', () => {
+    this.props.socket.on('voteFailed', () => {     
       this.setState({
         screen: 'Comms',
         voteActive: false,
@@ -68,7 +68,7 @@ class GameRoom extends React.Component {
           winner: winner,
           room: this.props.localUser.room
         })
-      } x
+      }
     })
 
     this.props.socket.on('finalScreen', endData => {
@@ -98,7 +98,7 @@ class GameRoom extends React.Component {
 
   render() {
     return (
-      <>
+      <div className="container">
         <h1 className="header">You are {this.props.localUser.role}</h1>
         <span>
           <p className="time">{this.state.time}</p>
@@ -121,7 +121,7 @@ class GameRoom extends React.Component {
 
 
         <button className='callVoteBtn' onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
-      </>
+      </div>
     )
   }
 }

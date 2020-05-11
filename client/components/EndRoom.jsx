@@ -2,6 +2,8 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
+import { resetState } from '../actions/localUser'
+
 class EndRoom extends React.Component {
 
   state = {
@@ -10,49 +12,60 @@ class EndRoom extends React.Component {
     alienHistory: []
   }
 
+  componentDidMount() {
+    this.props.socket.on('playAgain', () => {
+      this.props.dispatch(resetState())
+      this.props.history.replace('/waiting')
+    })
+  }
+
+  playAgain = e => {
+    this.props.socket.emit('playAgain')
+  }
+
   render() {
     return (
-      <div className='align' >
-        <div>
-          <h3 className='heading'>The winner is...</h3>
-          <h1>{this.props.location.state.winner}!</h1>
-        </div >
+      <div className='container'>
+        <div className='align' >
+          <div>
+            <h3 className='heading'>The winner is...</h3>
+            <h1>{this.props.location.state.winner}!</h1>
+          </div >
+          <div><h3>Final Time: {this.props.location.state.time}</h3></div>
 
-        <div><h3>Final Time: {this.props.location.state.time}</h3></div>
-
-        <div>
-          <h2 className='text'>The alien completed these tasks-</h2>
-          {
-            this.props.location.state.taskList.map((task, i) => {
-              console.log(task)
-              if (task.complete == true) {
-                let taskStyle = {
-                  color: 'slategrey'
+          <div>
+            <h2 className='text'>The alien completed these tasks-</h2>
+            {
+              this.props.location.state.taskList.map((task, i) => {
+                console.log(task)
+                if (task.complete == true) {
+                  let taskStyle = {
+                    color: 'slategrey'
+                  }
+                  return <p key={i} style={taskStyle}>{task.task} - complete</p>
+                } 
+                if(task.complete == false) {
+                  let taskStyle = {
+                    color: 'red'
+                  }
+                  return <p key={i} style={taskStyle}>{task.task} - skipped</p>
                 }
-                return <p key={i} style={taskStyle}>{task.task} - complete</p>
-              } 
-              if(task.complete == false) {
-                let taskStyle = {
-                  color: 'red'
-                }
-                return <p key={i} style={taskStyle}>{task.task} - skipped</p>
-              }
-            })
-          }
-        </div >
+              })
+            }
+          </div >
 
-        <div>
-          <p className='text'>{this.state.time}</p>
+          <div>
+            <p className='text'>{this.state.time}</p>
+          </div >
+          <button className='button' onClick={() => this.props.history.push('/waiting')
+          }> Another game ?</button >
         </div >
-        <button className='button' onClick={() => this.props.history.push('/waiting')
-        }> Another game ?</button >
-      </div >
+      </div>
     )
   }
 }
 
 function mapStateToProps(globalState) {
-
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers,

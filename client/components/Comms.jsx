@@ -64,7 +64,6 @@ class Comms extends React.Component {
             <span className='btn-bar'>
               <button onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
               <button onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
-
             </span>
           </>
         }
@@ -72,10 +71,16 @@ class Comms extends React.Component {
         {
           this.props.localUser.role === 'Human' &&
           <>
-            <span>
-              <p><strong>Latest B.O.S.S Communication:</strong></p>
-              <p>{this.props.localUser.hint}</p>
-            </span>
+
+            <div className='hint-list'>
+              <p><strong>Latest B.O.S.S Communications:</strong></p>
+              {
+                this.props.localUser.hints.map((hint, i) => {
+                  return <p key={i}>{hint}</p>
+                })
+              }
+            </div>
+
           </>
         }
       </div>
