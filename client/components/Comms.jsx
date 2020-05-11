@@ -20,7 +20,11 @@ class Comms extends React.Component {
           disabled: false
         });
       })
-      this.props.socket.emit('getTask')
+
+      if(this.state.task == '') {
+        this.props.socket.emit('getTask')
+      }
+
     } else {
       this.props.socket.on('hint', hint => {
         this.props.dispatch(receiveHint(hint))
@@ -43,26 +47,27 @@ class Comms extends React.Component {
   }
 
   handleComplete = e => {
-    this.setState({
-      task: 'Waiting for next task...',
-      disabled: true
-    })
     this.props.dispatch(completeTask(this.props.socket, this.props.room))
   }
 
   render() {
     return (
-      <>
+      <div className='display'>
         {
           this.props.localUser.role === 'Alien' &&
-          <div>
+          <>
+            <span>
+              <p><strong>Active Behaviour Directive:</strong></p>
+              <p>{this.state.task}</p>
+            </span>
 
-            <p>{this.state.task}</p>
+            <span className='btn-bar'>
+              <button onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
+              <button onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
+            </span>
 
-            <button onClick={this.handleSkip} disabled={this.state.disabled}>skip</button>
-            <button onClick={this.handleComplete} disabled={this.state.disabled}>complete</button>
             <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
-          </div>
+          </>
         }
 
         {
@@ -71,7 +76,7 @@ class Comms extends React.Component {
             <p>{this.props.localUser.hint}</p>
           </div>
         }
-      </>
+      </div>
     )
   }
 }

@@ -13,6 +13,8 @@ body {
   width: 100vw;
   height: 100vh;
   color: white;
+  background-color: $darkestBackground;
+  margin: 0px;
 }
 
 #app {
@@ -22,9 +24,8 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  margin: 0px;
-  padding: 0px;
-  background-color: $darkestBackground;
+  // margin: 0px;
+  // padding: 0px;
 }
 
 .header {
@@ -49,7 +50,7 @@ body {
   justify-content: space-between;
 
   width: 80%;
-  height: 25%;
+  height: auto;
 
   padding: $defaultPadding;
   margin: $defaultMargin;

@@ -2,6 +2,8 @@ body {
   width: 100vw;
   height: 100vh;
   color: white;
+  background-color: #23272A;
+  margin: 0px;
 }
 
 #app {
@@ -20,9 +22,6 @@ body {
           align-items: center;
   width: 100vw;
   height: 100vh;
-  margin: 0px;
-  padding: 0px;
-  background-color: #23272A;
 }
 
 .header {
@@ -53,7 +52,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 80%;
-  height: 25%;
+  height: auto;
   padding: 1rem;
   margin: 1rem;
   background-color: #2C2F33;
