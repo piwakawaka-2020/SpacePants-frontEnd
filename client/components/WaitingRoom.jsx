@@ -23,14 +23,20 @@ class WaitingRoom extends React.Component {
   render() {
 
     return (
-      <div className="align">
-        <p className="heading">Room Code: {this.props.room}</p>
+      <div className="align" id='join'>
+        <p className="heading" id='roomBox'>Room Code: </p>
+        <div className='align' id='oval'>{this.props.room}</div>
+        <div id='box'></div>
+          
+          <div id='userbox'>
         {
           this.props.users.map((user, i) => {
-            return (<p  className="text" key={i}>{user}</p>)
+            return (<p  className="text" key={i} class='user'>{user}</p>)
           })
         }
-        <button className="button" onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
+      
+        </div>
+        <button className="button" id='start' onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
       </div>
     )
   }

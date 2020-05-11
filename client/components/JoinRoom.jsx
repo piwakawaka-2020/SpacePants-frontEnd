@@ -58,7 +58,7 @@ class JoinRoom extends React.Component {
 
   render() {
     return (
-      <div className="align">
+      <div className="align" >
         <h1 className="heading">Join a game!</h1>
         <div className="text">
           <form id="roomJoin" onSubmit={this.handleSubmit}>
