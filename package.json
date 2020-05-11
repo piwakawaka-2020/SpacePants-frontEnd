@@ -15,7 +15,7 @@
     "build": "webpack",
     "server": "node server",
     "test": "jest --watchAll",
-    "compile:sass":"node-sass public/sass/main.scss public/css/main.css -w"
+    "compile:sass":"node-sass style.scss style.css -w"
   },
   "babel": {
     "presets": [

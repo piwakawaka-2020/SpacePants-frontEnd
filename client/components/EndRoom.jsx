@@ -20,8 +20,9 @@ class EndRoom extends React.Component {
           <h1 className='gradient2'>Alien!</h1>
 
         {/*<div><h3>Final Time: {this.props.location.state.time}</h3></div>*/}
+        </section>
+        
         <div><h3>Final Time: 1:15</h3></div>
-
 
         <div>
           <h2 className='text'>The alien completed these tasks-</h2>

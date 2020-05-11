@@ -1,1 +1,106 @@
+body {
+  width: 100vw;
+  height: 100vh;
+}
 
+#app {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  background-color: #23272A;
+}
+
+.header {
+  text-align: center;
+  color: #ba4385;
+  width: 100%;
+  padding: 1rem;
+  margin: 0px;
+}
+
+.time {
+  width: 100%;
+  font-size: 6em;
+  text-align: center;
+  margin: 1rem;
+  color: #ba4385;
+}
+
+.display {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+  height: 25%;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #2C2F33;
+}
+
+.display button {
+  background-color: #357baf;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  width: 30%;
+}
+
+.display button:active {
+  background-color: #61c5dc;
+}
+
+.task {
+  color: #61c5dc;
+  margin: 5px;
+}
+
+.btn-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.vote-btn {
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+  background-color: #8858ac;
+}
+
+.vote-btn:active {
+  background-color: #ba4385;
+}
+/*# sourceMappingURL=styles.css.map */
