@@ -152,7 +152,7 @@ body {
   margin-top: 10px;
   padding: 5px;
   font-size: large;
-  background-image: url("/img/wc1.png");
+  background-image: url("../img/wc1.png");
   background-size: cover;
 }
 
@@ -219,7 +219,7 @@ body {
 .description h1 {
   width: 100%;
   text-align: center;
-  animation: textcolorchange 2s infinite;
+  animation: textcolorchange 0.5s infinite;
   text-transform: uppercase;
   text-shadow: 2px 2px 2.5px gray;
   letter-spacing: 3px;
@@ -244,12 +244,12 @@ body {
 }
 
 #alien{
-  background: center/100% url('img/SpacePantsWC-3-hori.png');
+  background: center/100% url('../img/SpacePantsWC-3-hori.png');
   text-shadow: 2px 2px $purple;
 }
 
 #human{
-  background: center/100% url('img/SpacePantsWC-1.png');
+  background: center/100% url('../img/SpacePantsWC-1.png');
   text-shadow: 2px 2px $darkBlue;
 }
 
