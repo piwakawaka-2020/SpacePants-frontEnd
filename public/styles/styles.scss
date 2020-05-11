@@ -73,7 +73,19 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 0;
+  margin: 20px;
+  width: 100vw;
+  height: 100vh;
+  }
+
+.container{
+  display: $defaultDisplay;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 20px;
   width: 100vw;
   height: 100vh;
 }
@@ -161,6 +173,7 @@ body {
   width: $fullWidth;
   flex-grow: 1;
   text-align: center;
+  overflow-y: scroll;
   background-color: $darkerBackground;
 }
 
@@ -178,9 +191,9 @@ body {
 }
 
 .accuseBtn {
-  text-align: center;
+  margin: auto;
   font-size: 1.5rem;
-  display: inline-flex;
+  display: block;
   padding: 0.5rem;
   width: 70%;
   border: outset 1px black;
@@ -264,8 +277,6 @@ body {
     display: none;
   }
 }
-
-
 
 //Users
 .usersList {
@@ -389,3 +400,124 @@ margin-right: 20px;
   background-image: url("/img/wc1.png");
   background-size: cover;
 }
+=======
+// LANDING PAGE
+
+// #app{
+//     display: $defaultDisplay;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 0;
+//     margin: 20px;
+//     width: 100vw;
+//     height: 100vh;
+// }
+
+.wrapper {
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  
+}
+//walking pants
+.pants{
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  animation: walking 0.8s linear infinite alternate
+}
+
+@keyframes walking {
+  from {content: url('../img/pants-lg-157-285.png')}
+  to {content: url('../img/pants-step2-157-285.png')}
+}
+
+//space animations
+.lightblue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.50, 0.95) 0s infinite;
+  animation-fill-mode: backwards;
+}
+.darkblue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.3s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.50, 0.95) 1.3s infinite;
+  animation-fill-mode: backwards;
+}
+.purple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2.7s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.50, 0.95) 2.7s infinite;
+  animation-fill-mode: backwards;
+}
+
+@keyframes zoom {
+  0% {width: auto;
+    height: 800%;
+  z-index: -3;}
+
+    33% {z-index: -4;}
+
+    67% {z-index: -5;}
+
+  100% {width: auto;
+    height: 0%;}
+}
+
+@keyframes opacity {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.lp-title {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translate(-50%, 0)
+}
+
+.lp-title .heading {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+  font-size: 3.15em;
+  color: $pink;
+}
+
+.instructions-btn {
+  position: fixed;
+  color: $purple;
+  background-color: #23272a99;
+  height: 3.2rem;
+  top: -1rem;
+  right: 28px;
+}
+
+.lp-btn-bar {
+  position: absolute;
+  bottom: 5%;
+  align-content: center;
+  width: 100%
+}
+
+.lp-btn-bar button {
+  background-color: $lightBlue;
+  margin: 10%;
+  border: none;
+}
+

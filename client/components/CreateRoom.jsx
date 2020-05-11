@@ -47,6 +47,7 @@ class CreateRoom extends React.Component {
   render() {
     return (
       <>
+
       <div className="page">
         <h1 className="heading">{this.state.room}</h1>
         <form className="text" id="Create" onSubmit={this.handleSubmit} maxLength='15'>
@@ -60,6 +61,7 @@ class CreateRoom extends React.Component {
           <button className="button" onClick={this.handleClick}>Click to go Back</button>
           </div>
         </form>
+
         </div>
       </>
     )
