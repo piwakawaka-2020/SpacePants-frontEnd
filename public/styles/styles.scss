@@ -18,7 +18,7 @@ $darkerBackground: #2c2f33;
 
 @font-face {
   font-family: "digi";
-  src: url("./fonts/DS-DIGIB.woff") format("woff");
+  src: url("../fonts/DS-DIGIB.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -29,43 +29,7 @@ body {
   color: white;
   background-color: $darkestBackground;
   font-size: large;
-}
-
-// Color change
-@keyframes bgcolorchange {
-  0% {
-    background-color: $pink;
-  }
-  25% {
-    background-color: $purple;
-  }
-  50% {
-    background-color: $lightBlue;
-  }
-  75% {
-    background-color: $darkBlue;
-  }
-  100% {
-    background-color: $pink;
-  }
-}
-
-@keyframes textcolorchange {
-  0% {
-    color: $pink;
-  }
-  25% {
-    color: $purple;
-  }
-  50% {
-    color: $lightBlue;
-  }
-  75% {
-    color: $darkBlue;
-  }
-  100% {
-    color: $pink;
-  }
+  margin: 0px;
 }
 
 #app {
@@ -73,9 +37,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
   width: 100vw;
   height: 100vh;
+  margin: 0px;
+  padding: 0px;
 }
 
 .header {
@@ -144,6 +109,7 @@ body {
   &:active {
     background-color: $pink;
   }
+
 }
 
 .callVoteBtn {
@@ -244,12 +210,12 @@ body {
 }
 
 #alien{
-  background: center/100% url('img/SpacePantsWC-3-hori.png');
+  background: center/100% url('../img/SpacePantsWC-3-hori.png');
   text-shadow: 2px 2px $purple;
 }
 
 #human{
-  background: center/100% url('img/SpacePantsWC-1.png');
+  background: center/100% url('../img/SpacePantsWC-1.png');
   text-shadow: 2px 2px $darkBlue;
 }
 
@@ -262,5 +228,42 @@ body {
 
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+// Color change
+@keyframes bgcolorchange {
+  0% {
+    background-color: $pink;
+  }
+  25% {
+    background-color: $purple;
+  }
+  50% {
+    background-color: $lightBlue;
+  }
+  75% {
+    background-color: $darkBlue;
+  }
+  100% {
+    background-color: $pink;
+  }
+}
+
+@keyframes textcolorchange {
+  0% {
+    color: $pink;
+  }
+  25% {
+    color: $purple;
+  }
+  50% {
+    color: $lightBlue;
+  }
+  75% {
+    color: $darkBlue;
+  }
+  100% {
+    color: $pink;
   }
 }

@@ -20,7 +20,6 @@ class GameRoom extends React.Component {
       vote: '',
       voter: ''
     },
-    result: ''
   }
 
   componentDidMount() {
