@@ -49,7 +49,7 @@ class HowToModal extends React.Component {
           </p>
           <p>
             Hello fellow human. BOSS scientists have been tracking UFO activity around Earth. Recently our ability to track aliens has been severely compromised by new and highly effective alien disguises. Despite this we have identified an alien presence at your location.
-            </p>
+          </p>
           <p>
             Our research has confirmed that you are human; however we cannot be certain of anyone with you. We require you to observe the behaviour of those around you to identify the extra-terrestrial.
           </p>
@@ -58,7 +58,7 @@ class HowToModal extends React.Component {
           </p>
           <p>
             For security purposes do not discuss or share the contents of this message with anyone.  Good luck.
-            </p>
+          </p>
         </div>
       </Modal>
     )

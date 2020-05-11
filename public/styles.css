@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'digi';
+  src: url("./fonts/DS-DIGIB.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -74,6 +81,7 @@ body {
 }
 
 .time {
+  font-family: 'digi';
   width: 100%;
   font-size: 6em;
   text-align: center;
