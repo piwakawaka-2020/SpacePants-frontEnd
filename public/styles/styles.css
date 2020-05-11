@@ -296,12 +296,12 @@ body {
 }
 
 #alien {
-  background: center/100% url("img/SpacePantsWC-3-hori.png");
+  background: center/100% url("../img/SpacePantsWC-3-hori.png");
   text-shadow: 2px 2px #8858ac;
 }
 
 #human {
-  background: center/100% url("img/SpacePantsWC-1.png");
+  background: center/100% url("../img/SpacePantsWC-1.png");
   text-shadow: 2px 2px #357baf;
 }
 
