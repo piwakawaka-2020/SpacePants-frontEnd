@@ -1,6 +1,7 @@
 import React from 'react'
 import { joinRoom } from '../actions/localUser'
 import { connect } from 'react-redux'
+// import 'styles.scss';
 
 class CreateRoom extends React.Component {
 
@@ -40,18 +41,28 @@ class CreateRoom extends React.Component {
     })
   }
 
+  handleClick = (e) => {
+    this.props.history.replace('/')
+  }
+
   render() {
     return (
-      <div className="align">
+      <>
+      <div className="page">
         <h1 className="heading">{this.state.room}</h1>
         <form className="text" id="Create" onSubmit={this.handleSubmit}>
+          <div className="btns">
           <label>
-            Name:
+            Enter Your Name:
           </label>
-          <input type="text" value={this.state.name} onChange={this.handleChange} name="name" />
-          <input type="submit" value="submit" />
+          <input type="text"placeholder='Name' onChange={this.handleChange} name="name" />
+          <input type="submit" value="submit"/>
+          <br />
+          <button className="button" onClick={this.handleClick}>Click to go Back</button>
+          </div>
         </form>
-      </div>
+        </div>
+        </>
     )
   }
 }

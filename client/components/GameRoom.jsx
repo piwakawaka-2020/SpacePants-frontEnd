@@ -1,8 +1,9 @@
 import React from 'react'
-import Voting from './Voting'
+import { CSSTransition, SwitchTransition } from 'react-transition-group'
+
+import TransitionContainer from './TransitionContainer'
 
 import { connect } from 'react-redux'
-import { completeTask, receiveTask, receiveHint } from '../actions/localUser'
 
 class GameRoom extends React.Component {
 
@@ -11,6 +12,8 @@ class GameRoom extends React.Component {
     hint: 'No leads received yet',
     disabled: false,
     time: '5:00',
+    screen: 'Comms',
+    voteActive: false,
     voteData: {
       castVote: false,
       receiveVote: false,
@@ -32,26 +35,10 @@ class GameRoom extends React.Component {
       }
     })
 
-    if (this.props.localUser.role === 'Alien') {
-      this.props.socket.on('task', task => {
-        this.props.dispatch(receiveTask(task))
-
-        this.setState({
-          task: this.props.localUser.tasks[0].task,
-          disabled: false
-        });
-      })
-      this.props.socket.emit('getTask')
-
-    } else {
-      this.props.socket.on('hint', hint => {
-        this.props.dispatch(receiveHint(hint))
-        this.setState({ hint: this.props.localUser.hint });
-      })
-    }
-
     this.props.socket.on('receiveVote', voteData => {
       this.setState({
+        screen: 'Votes',
+        voteActive: true,
         voteData: {
           castVote: false,
           receiveVote: true,
@@ -63,6 +50,8 @@ class GameRoom extends React.Component {
 
     this.props.socket.on('voteFailed', () => {
       this.setState({
+        screen: 'Comms',
+        voteActive: false,
         voteData: {
           castVote: false,
           receiveVote: false,
@@ -79,7 +68,7 @@ class GameRoom extends React.Component {
           winner: winner,
           room: this.props.localUser.room
         })
-      }
+      }x
     })
 
     this.props.socket.on('finalScreen', endData => {
@@ -98,27 +87,13 @@ class GameRoom extends React.Component {
 
   handleVote = e => {
     this.setState(prevState => ({
+      voteActive: !this.state.voteActive,
+      screen: this.state.screen === 'Comms' ? 'Votes' : 'Comms',
       voteData: {
         ...prevState.voteData,
         castVote: true
       }
     }))
-  }
-
-  handleSkip = e => {
-    this.setState({
-      task: 'The humans are on to you!  Do nothing for 30 seconds!',
-      disabled: true
-    })
-    this.props.socket.emit('skipTask')
-  }
-
-  handleComplete = e => {
-    this.setState({
-      task: 'Waiting for next task...',
-      disabled: true
-    })
-    this.props.dispatch(completeTask(this.props.socket, this.props.room))
   }
 
   render() {
@@ -128,42 +103,19 @@ class GameRoom extends React.Component {
 
         <p className="time">{this.state.time}</p>
 
-        {
-          !this.state.voteData.receiveVote &&
-          <>
+        <SwitchTransition mode={'out-in'}>
+          <CSSTransition
+            key={this.state.voteActive}
+            addEndListener={(node, done) => { node.addEventListener("transitionend", done, false) }}
+            classNames="slide">
 
-            {/* Alien screen */}
-            {
-              this.props.localUser.role === 'Alien' &&
+            <TransitionContainer screen={this.state.screen} voteData={this.state.voteData}/>
 
-              <div className='display'>
-                <span>
-                  <p className='task'><strong>Active Behaviour Directive:</strong></p>
-                  <p className='task'>{this.state.task}</p>
-                </span>
-                <span>
-                  <div className='btn-bar'>
-                    <button className='btn-good' onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
-                    <button className='btn-bad' onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
-                  </div>
-                  {/* <p className='task'>Number of Tasks completed: {this.props.localUser.completedTasks}</p> */}
-                </span>
-              </div>
-            }
+          </CSSTransition>
+        </SwitchTransition>
 
-            {/* Human screen */}
-            {
-              this.props.localUser.role === 'Human' &&
-              <div>
-                <p>{this.state.hint}</p>
-              </div>
-            }
 
-            <button className='vote-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
-          </>
-        }
-
-        <Voting {...this.state.voteData} />
+        <button className='vote-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
       </>
     )
   }

@@ -44,17 +44,19 @@ class EndRoom extends React.Component {
           </div>
           {/* commented out for styling
           {
-            this.props.location.state.taskList.map(task => {
+            this.props.location.state.taskList.map((task, i) => {
+              console.log(task)
               if (task.complete == true) {
                 let taskStyle = {
-                  color: 'green'
+                  color: 'slategrey'
                 }
-                return <p style={taskStyle}>{task.task} - complete</p>
-              } else {
+                return <p key={i} style={taskStyle}>{task.task} - complete</p>
+              } 
+              if(task.complete == false) {
                 let taskStyle = {
                   color: 'red'
                 }
-                return <p style={taskStyle}>{task.task} - skipped</p>
+                return <p key={i} style={taskStyle}>{task.task} - skipped</p>
               }
             })
           }

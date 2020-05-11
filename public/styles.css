@@ -1,6 +1,50 @@
 body {
   width: 100vw;
   height: 100vh;
+  color: white;
+  background-color: #23272A;
+  margin: 0px;
+}
+
+@-webkit-keyframes bgcolorchange {
+  0% {
+    background-color: #ba4385;
+  }
+  25% {
+    background-color: #8858ac;
+  }
+  50% {
+    background-color: #61c5dc;
+  }
+  75% {
+    background-color: #357baf;
+  }
+  100% {
+    background-color: #ba4385;
+  }
+}
+
+@keyframes bgcolorchange {
+  0% {
+    background-color: #ba4385;
+  }
+  25% {
+    background-color: #8858ac;
+  }
+  50% {
+    background-color: #61c5dc;
+  }
+  75% {
+    background-color: #357baf;
+  }
+  100% {
+    background-color: #ba4385;
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
 }
 
 #app {
@@ -19,9 +63,6 @@ body {
           align-items: center;
   width: 100vw;
   height: 100vh;
-  margin: 0px;
-  padding: 0px;
-  background-color: #23272A;
 }
 
 .header {
@@ -52,7 +93,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   width: 80%;
-  height: 25%;
+  height: auto;
   padding: 1rem;
   margin: 1rem;
   background-color: #2C2F33;
@@ -102,5 +143,95 @@ body {
 
 .vote-btn:active {
   background-color: #ba4385;
+}
+
+.voteScreen, .accuseScreen {
+  margin: auto;
+  width: 80%;
+  border: outset 1px gray;
+  border-radius: 5px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  background-color: #2C2F33;
+}
+
+.voteScreen h2, .accuseTextContainer h2 {
+  font-size: 1.5rem;
+  color: #61c5dc;
+}
+
+.accuseTextContainer p {
+  color: whitesmoke;
+}
+
+.voteContainer, .accuseTextContainer {
+  margin: 1rem;
+}
+
+.voteBtn {
+  font-size: 1.5rem;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 0.5rem;
+  width: 70%;
+  border: outset 1px black;
+  border-radius: 5px;
+  outline: none;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  -webkit-animation: bgcolorchange 6s infinite;
+          animation: bgcolorchange 6s infinite;
+  color: whitesmoke;
+}
+
+.voteBtn:hover {
+  font-weight: bold;
+  -webkit-box-shadow: 0 5px 15px gray;
+          box-shadow: 0 5px 15px gray;
+}
+
+.voteBtn:active {
+  border: inset 1px;
+  text-decoration: line-through;
+}
+
+.accuseBtnContainer button {
+  margin: 1rem;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  width: 40%;
+  font-size: 1.5rem;
+  color: whitesmoke;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  border: outset 1px black;
+  border-radius: 5px;
+  outline: none;
+}
+
+.accuseBtnContainer button:hover {
+  font-weight: bold;
+  -webkit-box-shadow: 0 5px 15px gray;
+          box-shadow: 0 5px 15px gray;
+}
+
+.accuseBtnContainer button:active {
+  border: inset 1px;
+}
+
+#agree {
+  background-color: #357baf;
+}
+
+#disagree {
+  background-color: #357baf;
 }
 /*# sourceMappingURL=styles.css.map */
