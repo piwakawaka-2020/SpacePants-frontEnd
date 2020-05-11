@@ -1,46 +1,28 @@
-
 body {
-  color: white
+  height: 100vh;
+  background-color: #452626;
+  color: #fff;
 }
-.background {
-  background-image: url("placeholder.jpg"); /* The image used */
-  background-color: black; /* Used if the image is unavailable */
-  height: 500px; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-}
-
-.align {
-  text-align: center;
-}
-
-.text {
-  text-align: center;
-  color: white;
-  font-size: 30px
-}
-
-/* .button {
-  text-align: center;
-
-  color: black;
-  font-size: 20px
-} */
-
-.heading {
-  text-align: center;
-  color: white;
-  font-size: 60px
-}
-
 
 .button {
-  background-color: #000000;
-  color: #FFFFFF;
-  padding: 10px;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  margin:10px;
+  border-radius: 15px;
 }
+
+h1 {
+  text-align: center;
+}
+
+.btns {
+  text-align: center;
+  width: 100%;
+}
+
+.background {
+  background-image: url("placeholder.jpg");
+  background-color: black;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/*# sourceMappingURL=styles.css.map */
