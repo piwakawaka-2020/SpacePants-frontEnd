@@ -9,7 +9,7 @@ class GameRoom extends React.Component {
 
   state = {
     task: '',
-    hint: 'No leads received yet',
+    hint: '',
     disabled: false,
     time: '5:00',
     screen: 'Comms',
@@ -48,7 +48,7 @@ class GameRoom extends React.Component {
       })
     })
 
-    this.props.socket.on('voteFailed', () => {
+    this.props.socket.on('voteFailed', () => {     
       this.setState({
         screen: 'Comms',
         voteActive: false,
