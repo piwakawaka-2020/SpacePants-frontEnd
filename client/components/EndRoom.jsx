@@ -30,14 +30,16 @@ class EndRoom extends React.Component {
           <h3 className='heading'>The winner is...</h3>
           <h1>{this.props.location.state.winner}!</h1>
         </div >
-
         <div><h3>Final Time: {this.props.location.state.time}</h3></div>
 
         <div>
           <h2 className='text'>The alien completed these tasks-</h2>
           {
+            (this.props.location.state.taskList.length == 1) ?
+
+            <p>No task has been skipped or completed</p> :
+
             this.props.location.state.taskList.map((task, i) => {
-              console.log(task)
               if (task.complete == true) {
                 let taskStyle = {
                   color: 'slategrey'
@@ -64,7 +66,6 @@ class EndRoom extends React.Component {
 }
 
 function mapStateToProps(globalState) {
-
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers,

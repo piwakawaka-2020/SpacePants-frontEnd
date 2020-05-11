@@ -1,6 +1,6 @@
 @font-face {
   font-family: "digi";
-  src: url("./fonts/DS-DIGIB.woff") format("woff");
+  src: url("../fonts/DS-DIGIB.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -46,6 +46,42 @@ body {
   }
   100% {
     background-color: #ba4385;
+  }
+}
+
+@-webkit-keyframes textcolorchange {
+  0% {
+    color: #ba4385;
+  }
+  25% {
+    color: #8858ac;
+  }
+  50% {
+    color: #61c5dc;
+  }
+  75% {
+    color: #357baf;
+  }
+  100% {
+    color: #ba4385;
+  }
+}
+
+@keyframes textcolorchange {
+  0% {
+    color: #ba4385;
+  }
+  25% {
+    color: #8858ac;
+  }
+  50% {
+    color: #61c5dc;
+  }
+  75% {
+    color: #357baf;
+  }
+  100% {
+    color: #ba4385;
   }
 }
 
@@ -139,6 +175,17 @@ body {
   width: 100%;
 }
 
+.vote-btn {
+  width: 6em;
+  height: 6em;
+  border-radius: 50%;
+  background-color: #8858ac;
+}
+
+.vote-btn:active {
+  background-color: #ba4385;
+}
+
 .callVoteBtn {
   font-weight: bold;
   width: 100%;
@@ -149,8 +196,7 @@ body {
   background-size: cover;
 }
 
-.voteScreen,
-.accuseScreen {
+.voteScreen, .accuseScreen {
   margin: auto;
   width: 100%;
   -webkit-box-flex: 1;
@@ -160,8 +206,7 @@ body {
   background-color: #2c2f33;
 }
 
-.voteScreen h2,
-.accuseTextContainer h2 {
+.voteScreen h2, .accuseTextContainer h2 {
   font-size: 1.5rem;
   color: #61c5dc;
 }
@@ -170,8 +215,7 @@ body {
   color: whitesmoke;
 }
 
-.voteContainer,
-.accuseTextContainer {
+.voteContainer, .accuseTextContainer {
   margin: 1rem;
 }
 
@@ -208,6 +252,7 @@ body {
   -webkit-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
   border: outset 1px black;
+  background-color: #357baf;
   border-radius: 5px;
   outline: none;
 }
@@ -222,12 +267,42 @@ body {
   border: inset 1px;
 }
 
-#agree {
-  background-color: #357baf;
+.description h1 {
+  width: 100%;
+  text-align: center;
+  -webkit-animation: textcolorchange 2s infinite;
+          animation: textcolorchange 2s infinite;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 2.5px gray;
+  letter-spacing: 3px;
 }
 
-#disagree {
-  background-color: #357baf;
+.description fieldset {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border: none;
+  border-radius: 10px;
+  background-color: #2c2f33;
+  color: #61c5dc;
+  text-align: justify;
+}
+
+.description legend {
+  text-align: center;
+  color: whitesmoke;
+  border: none;
+  border-radius: 10px;
+  padding: 0 5% 0 5%;
+}
+
+#alien {
+  background: center/100% url("img/SpacePantsWC-3-hori.png");
+  text-shadow: 2px 2px #8858ac;
+}
+
+#human {
+  background: center/100% url("img/SpacePantsWC-1.png");
+  text-shadow: 2px 2px #357baf;
 }
 
 .hint-list {

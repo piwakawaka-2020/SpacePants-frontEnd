@@ -43,7 +43,6 @@ class WaitingRoom extends React.Component {
 }
 
 function mapStateToProps(globalState) {
-
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers,
