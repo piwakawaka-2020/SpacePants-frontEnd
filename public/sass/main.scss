@@ -19,3 +19,14 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
+
+h1 {
+    background-image: url('../images/SpacePantsWC-1.png');
+    background-size: cover;
+    background-position: 0px 10px;
+    font-weight: 900;
+    background-clip: text;
+-webkit-background-clip: text;
+color: transparent;
+}

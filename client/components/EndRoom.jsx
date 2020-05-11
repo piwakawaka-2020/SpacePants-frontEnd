@@ -11,16 +11,13 @@ class EndRoom extends React.Component {
   }
 
   render() {
-    let tasklist = () => {
-      
-    }
+
     return (
       <div className='align' >
-        <div>
-          <h3 className='heading'>The winner is...</h3>
+        <section className = "light">
+          <h3 className='heading gradient1'>The winner is...</h3>
           {/*<h1>{this.props.location.state.winner}!</h1>*/}
-          <h1>Alien!</h1>
-        </div >
+          <h1 className='gradient2'>Alien!</h1>
 
         {/*<div><h3>Final Time: {this.props.location.state.time}</h3></div>*/}
         <div><h3>Final Time: 1:15</h3></div>
@@ -28,8 +25,22 @@ class EndRoom extends React.Component {
 
         <div>
           <h2 className='text'>The alien completed these tasks-</h2>
-          <p style={color='green'}>{task.task} - complete</p>
-          <p style={color='red'}>{task.task} - skipped</p>
+          <div className='tasklist'>
+            <p className='completedTask'>This is a task that the Alien completed - complete</p>
+            <p className='skippedTask'>The Alien decided to skip this task - skipped</p>
+            <p className='completedTask'>This is a task that the Alien completed - complete</p>
+            <p className='skippedTask'>The Alien decided to skip this task - skipped</p>
+            <p className='completedTask'>This is a task that the Alien completed - complete</p>
+            <p className='skippedTask'>The Alien decided to skip this task - skipped</p>
+            <p className='completedTask'>This is a task that the Alien completed - complete</p>
+            <p className='skippedTask'>The Alien decided to skip this task - skipped</p>
+            <p className='completedTask'>This is a task that the Alien completed - complete</p>
+            <p className='skippedTask'>The Alien decided to skip this task - skipped</p>
+            <p className='completedTask'>This is a task that the Alien completed - complete</p>
+            <p className='skippedTask'>The Alien decided to skip this task - skipped</p>
+            <p className='completedTask'>This is a task that the Alien completed - complete</p>
+            <p className='skippedTask'>The Alien decided to skip this task - skipped</p>
+          </div>
           {/* commented out for styling
           {
             this.props.location.state.taskList.map(task => {
@@ -50,7 +61,7 @@ class EndRoom extends React.Component {
         </div >
 
         <div>
-          <p className='text'>{this.state.time}</p>
+          <p className='text'>this.state.time goes here</p>
         </div >
         <button className='button' onClick={() => this.props.history.push('/waiting')
         }> Another game ?</button >
