@@ -56,8 +56,12 @@ class JoinRoom extends React.Component {
     this.props.socket.emit('checkUsers', this.state.room)
   }
 
+  handleClick = (e) => {
+    this.props.history.replace('/')
+  }
   render() {
     return (
+      <>
       <div className="align">
         <h1 className="heading">Join a game!</h1>
         <div className="text">
@@ -71,6 +75,7 @@ class JoinRoom extends React.Component {
         </div>
         {this.state.usernameTaken && <p className="tipText">{this.state.name} is already in this room. Enter a new name and try again.</p>}
       </div>
+      </>
     )
   }
 }
