@@ -250,50 +250,52 @@ body {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: -10;
-  -webkit-animation: zoom1 6s linear infinite;
-          animation: zoom1 6s linear infinite;
+  -webkit-animation: opacity 3s cubic-bezier(0.94, 0.06, 0.46, 0.95) infinite;
+          animation: opacity 3s cubic-bezier(0.94, 0.06, 0.46, 0.95) infinite;
+  -webkit-animation: zoom 3s cubic-bezier(0.63, 0.2, 0.91, 0.4) infinite;
+          animation: zoom 3s cubic-bezier(0.63, 0.2, 0.91, 0.4) infinite;
 }
 
-@-webkit-keyframes zoom1 {
-  0% {
-    width: 0;
+@-webkit-keyframes zoom {
+  from {
+    width: auto;
     height: 0;
     opacity: 1;
   }
-  50% {
-    width: 50%;
-    height: 50%;
-  }
-  90% {
-    width: 500%;
-    height: 500%;
-    opacity: 1;
-  }
-  100% {
-    width: 900%;
-    height: 900%;
+  to {
+    width: auto;
+    height: 800%;
     opacity: 0;
   }
 }
 
-@keyframes zoom1 {
-  0% {
-    width: 0;
+@keyframes zoom {
+  from {
+    width: auto;
     height: 0;
     opacity: 1;
   }
-  50% {
-    width: 50%;
-    height: 50%;
+  to {
+    width: auto;
+    height: 800%;
+    opacity: 0;
   }
-  90% {
-    width: 500%;
-    height: 500%;
+}
+
+@-webkit-keyframes opacity {
+  from {
     opacity: 1;
   }
-  100% {
-    width: 900%;
-    height: 900%;
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes opacity {
+  from {
+    opacity: 1;
+  }
+  to {
     opacity: 0;
   }
 }
