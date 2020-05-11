@@ -243,60 +243,125 @@ body {
   overflow: hidden;
 }
 
-.lp-background {
+.pants {
+  position: absolute;
+  top: 59%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 1;
+  -webkit-animation: walking 0.8s linear infinite alternate;
+          animation: walking 0.8s linear infinite alternate;
+}
+
+@-webkit-keyframes walking {
+  from {
+    content: url("./img/pants-lg-157-285.png");
+  }
+  to {
+    content: url("./img/pants-step2-157-281.png");
+  }
+}
+
+@keyframes walking {
+  from {
+    content: url("./img/pants-lg-157-285.png");
+  }
+  to {
+    content: url("./img/pants-step2-157-281.png");
+  }
+}
+
+.lightblue {
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: -10;
-  -webkit-animation: opacity 3s cubic-bezier(0.94, 0.06, 0.46, 0.95) infinite;
-          animation: opacity 3s cubic-bezier(0.94, 0.06, 0.46, 0.95) infinite;
-  -webkit-animation: zoom 3s cubic-bezier(0.63, 0.2, 0.91, 0.4) infinite;
-          animation: zoom 3s cubic-bezier(0.63, 0.2, 0.91, 0.4) infinite;
+  -webkit-animation: opacity 2.4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite;
+          animation: opacity 2.4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite;
+  -webkit-animation: zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
+          animation: zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
+}
+
+.darkblue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: -10;
+  -webkit-animation: opacity 2.4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0.6s infinite;
+          animation: opacity 2.4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0.6s infinite;
+  -webkit-animation: zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
+          animation: zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
+}
+
+.purple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: -10;
+  -webkit-animation: opacity 2.4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.6s infinite;
+          animation: opacity 2.4s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.6s infinite;
+  -webkit-animation: zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
+          animation: zoom 4s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
 }
 
 @-webkit-keyframes zoom {
-  from {
-    width: auto;
-    height: 0;
-    opacity: 1;
-  }
-  to {
+  0% {
     width: auto;
     height: 800%;
-    opacity: 0;
+    z-index: -5;
+  }
+  33% {
+    z-index: -4;
+  }
+  67% {
+    z-index: -3;
+  }
+  100% {
+    width: auto;
+    height: 0%;
   }
 }
 
 @keyframes zoom {
-  from {
-    width: auto;
-    height: 0;
-    opacity: 1;
-  }
-  to {
+  0% {
     width: auto;
     height: 800%;
-    opacity: 0;
+    z-index: -5;
+  }
+  33% {
+    z-index: -4;
+  }
+  67% {
+    z-index: -3;
+  }
+  100% {
+    width: auto;
+    height: 0%;
   }
 }
 
 @-webkit-keyframes opacity {
   from {
-    opacity: 1;
+    opacity: 0;
   }
   to {
-    opacity: 0;
+    opacity: 1;
   }
 }
 
 @keyframes opacity {
   from {
-    opacity: 1;
+    opacity: 0;
   }
   to {
-    opacity: 0;
+    opacity: 1;
   }
 }
 
