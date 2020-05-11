@@ -1,4 +1,4 @@
-import { SET_LOCAL_SOCKET, SET_LOCAL_USER, SET_HINT, SET_TASK, SET_TASK_COMPLETE, SET_ROLE, USE_VOTE, SET_RESULT } from '../actions/localUser'
+import { SET_LOCAL_SOCKET, SET_LOCAL_USER, SET_HINT, SET_TASK, SET_TASK_COMPLETE, SET_ROLE, USE_VOTE, SET_RESULT, RESET_STATE } from '../actions/localUser'
 
 const initialState = {
   name: '',
@@ -44,6 +44,16 @@ const localUser = (state = initialState, action) => {
 
     case SET_RESULT:
       state.result = action.result
+      return state
+
+    case RESET_STATE:
+      state.role = ''
+      state.tasks = []
+      state.hints = ['']
+      state.vote = true
+      state.result = ''
+      state.completedTasks = 0
+
       return state
 
     default:

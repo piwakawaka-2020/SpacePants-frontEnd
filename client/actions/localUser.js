@@ -6,6 +6,7 @@ export const SET_TASK_COMPLETE = 'SET_TASK_COMPLETE'
 export const SET_ROLE = 'SET_ROLE'
 export const SET_RESULT = 'SET_RESULT'
 export const USE_VOTE = 'USE_VOTE'
+export const RESET_STATE = 'RESET_STATE'
 
 export const createUser = socket => {
   return {
@@ -61,6 +62,12 @@ export function completeTask(socket, room) {
   socket.emit('completeTask', room)
   return {
     type: SET_TASK_COMPLETE,
+  }
+}
+
+export function resetState() {
+  return {
+    type: RESET_STATE
   }
 }
 
