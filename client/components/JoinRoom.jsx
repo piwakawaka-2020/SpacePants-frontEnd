@@ -72,7 +72,7 @@ class JoinRoom extends React.Component {
             <input type="text" name="name" placeholder='Name' value={this.state.name} maxLength='20' onChange={this.handleChange} />
             <label>Room Id: </label>
             <input type="text" name="room" placeholder='Room code' value={this.state.room} maxLength="4" onChange={this.handleChange} />
-            <input type="submit" value="submit" disabled={this.state.disableSubmit} />
+            <input type="submit" value="submit" />
           </form>
         </div>
         {this.state.usernameTaken && <p className="tipText">{this.state.name} is already in this room. Enter a new name and try again.</p>}
