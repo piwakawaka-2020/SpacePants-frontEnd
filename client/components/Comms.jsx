@@ -64,7 +64,6 @@ class Comms extends React.Component {
             <span className='btn-bar'>
               <button onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
               <button onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
-
             </span>
           </>
         }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { joinRoom } from '../actions/localUser'
 import { connect } from 'react-redux'
-// import 'styles.scss';
 
 class CreateRoom extends React.Component {
 
@@ -62,7 +61,7 @@ class CreateRoom extends React.Component {
           </div>
         </form>
         </div>
-        </>
+      </>
     )
   }
 }
