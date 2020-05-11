@@ -20,6 +20,11 @@ class WaitingRoom extends React.Component {
     this.props.socket.emit('startGame', this.props.room)
   }
 
+  leaveGame = e => {
+    this.props.socket.emit('leaveRoom', this.props.room)
+    this.props.history.replace('/')
+  }
+
   render() {
 
     return (
@@ -31,6 +36,7 @@ class WaitingRoom extends React.Component {
           })
         }
         <button className="button" onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
+        <button onClick={this.leaveGame}>Leave Game</button>
       </div>
     )
   }
