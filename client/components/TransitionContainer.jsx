@@ -13,7 +13,7 @@ class TransitionContainer extends React.Component {
     return (
       <>
         {this.state.screen === 'Comms' &&
-          <Comms />
+          <Comms time={this.props.time}/>
         }
         {this.state.screen === 'Votes' &&
           <Voting {...this.props.voteData}  />
