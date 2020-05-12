@@ -19,7 +19,8 @@ class CreateRoom extends React.Component {
 
   state = {
     name: '',
-    room: ''
+    room: '',
+    category: 'local'
   }
 
   handleSubmit = (e) => {
@@ -27,10 +28,11 @@ class CreateRoom extends React.Component {
 
     const userData = {
       name: this.state.name,
-      room: this.state.room
+      room: this.state.room,
     }
 
     this.props.dispatch(joinRoom(userData, this.props.socket))
+    this.props.socket.emit('setRoomCategory', this.state.category)
     this.props.history.replace('/waiting')
   }
 
@@ -52,6 +54,7 @@ class CreateRoom extends React.Component {
           <p>Room Code:</p>
           <h1 className="header">{this.state.room}</h1>
         </span>
+
         <form className="formDisplay" id="Create" onSubmit={this.handleSubmit} maxLength='15'>
           <span>
             <label>
@@ -59,6 +62,16 @@ class CreateRoom extends React.Component {
             </label>
             <input type="text" onChange={this.handleChange} name="name" />
           </span>
+          <div className='toggle-container'>
+            <span>
+              <input type='radio' name='category' id='local' value='local' onChange={this.handleChange} />
+              <label htmlFor='local'>Play Locally</label>
+            </span>
+            <span>
+              <input type='radio' name='category' id='remote' value='remote' onChange={this.handleChange} />
+              <label htmlFor='remote'>Play Remotely</label>
+            </span>
+          </div>
           <div className='btn-bar'>
             <button className="negative-btn" onClick={this.handleClick}>Return</button>
             <input type="submit" className='positive-btn' value="Create" />
