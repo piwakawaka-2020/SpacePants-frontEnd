@@ -5,6 +5,8 @@ import TransitionContainer from './TransitionContainer'
 
 import { connect } from 'react-redux'
 
+import { voteClick } from '../../server/sound'
+
 class GameRoom extends React.Component {
 
   state = {
@@ -86,6 +88,7 @@ class GameRoom extends React.Component {
   }
 
   handleVote = e => {
+    voteClick.play()
     this.setState(prevState => ({
       voteActive: !this.state.voteActive,
       screen: this.state.screen === 'Comms' ? 'Votes' : 'Comms',

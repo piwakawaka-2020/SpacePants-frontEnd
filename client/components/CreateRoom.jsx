@@ -1,7 +1,7 @@
 import React from 'react'
 import { joinRoom } from '../actions/localUser'
 import { connect } from 'react-redux'
-import { click2, click1 } from '../../public/sound'
+import { positiveClick, negativeClick } from '../../server/sound'
 
 class CreateRoom extends React.Component {
 
@@ -25,7 +25,7 @@ class CreateRoom extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    click1.play()
+    positiveClick.play()
 
     const userData = {
       name: this.state.name,
@@ -43,7 +43,7 @@ class CreateRoom extends React.Component {
   }
 
   handleClick = (e) => {
-    click2.play()
+    negativeClick.play()
     this.props.history.replace('/')
   }
 

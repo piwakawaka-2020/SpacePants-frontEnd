@@ -2,7 +2,7 @@ import React from "react"
 import HowToModal from "./HowToModal"
 
 import { connect } from 'react-redux'
-import { click2, click1 } from '../../public/sound'
+import { positiveClick } from '../../server/sound'
 
 class LandingPage extends React.Component {
 
@@ -11,6 +11,7 @@ class LandingPage extends React.Component {
   }
 
   showModal = e => {
+    positiveClick.play()
     this.setState({
       showModal: true
     })
@@ -24,10 +25,10 @@ class LandingPage extends React.Component {
 
   handleClick = (e) =>{
     if(e.target.innerText === 'Create Game'){
-      click1.play()
+      positiveClick.play()
       this.props.history.push('/create')
     } else {
-      click1.play()
+      positiveClick.play()
       this.props.history.push('/join')
     }
   }

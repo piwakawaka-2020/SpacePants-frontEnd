@@ -3,6 +3,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { joinRoom } from '../actions/localUser'
 
+import { positiveClick, negativeClick } from '../../server/sound'
+
 class JoinRoom extends React.Component {
 
   componentDidMount() {
@@ -53,10 +55,12 @@ class JoinRoom extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    positiveClick.play()
     this.props.socket.emit('checkUsers', this.state.room)
   }
 
   handleClick = (e) => {
+    negativeClick.play()
     this.props.history.replace('/')
   }
   render() {
