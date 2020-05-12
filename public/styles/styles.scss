@@ -1,4 +1,4 @@
-// Default
+/* // Default */
 $defaultMargin: 1rem;
 $defaultPadding: 1rem;
 
@@ -285,7 +285,7 @@ body {
 }
 
 @keyframes walking {
-  from {
+  from { 
     content: url("../img/pants-lg-157-285.png");
   }
   to {
