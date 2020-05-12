@@ -2,6 +2,7 @@ import React from "react"
 import HowToModal from "./HowToModal"
 
 import { connect } from 'react-redux'
+import { click2, click1 } from '../../public/sound'
 
 class LandingPage extends React.Component {
 
@@ -21,6 +22,16 @@ class LandingPage extends React.Component {
     })
   }
 
+  handleClick = (e) =>{
+    if(e.target.innerText === 'Create Game'){
+      click1.play()
+      this.props.history.push('/create')
+    } else {
+      click1.play()
+      this.props.history.push('/join')
+    }
+  }
+
   render() {
     return (
       <div className='wrapper'>
@@ -34,8 +45,8 @@ class LandingPage extends React.Component {
 
 
         <div className="btn-bar">
-          <button className='positive-btn' onClick={() => this.props.history.push('/create')}>Create Game</button>
-          <button className='positive-btn' onClick={() => this.props.history.push('/join')}>Join Game</button>
+          <button className='positive-btn' onClick={this.handleClick}>Create Game</button>
+          <button className='positive-btn' onClick={this.handleClick}>Join Game</button>
         </div>
 
         <div className='instructions-btn'>
