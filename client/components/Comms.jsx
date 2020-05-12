@@ -52,7 +52,7 @@ class Comms extends React.Component {
   handleComplete = e => {
     let [minutes, seconds] = this.props.time.split(':')
 
-    if (Number(seconds) < 35 && minutes == '0') {
+    if (Number(seconds) < 30 && minutes == '0') {
       this.setState({
         task: 'No more submissions needed!  You have successfully integrated into human culture.  Surely they won\'t discover you in the final few seconds...'
       })
