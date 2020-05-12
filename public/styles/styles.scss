@@ -60,8 +60,8 @@ body {
   margin: 0px;
   background: {
     image: url("../img/wc1.png");
-    background-size: cover;
-    background-clip: text;
+    size: cover;
+    clip: text;
   }
   -webkit-background-clip: text;
   color: transparent;
@@ -101,7 +101,7 @@ body {
 
   p {
     margin: 0px {
-      bottom: 5px;
+      bottom: 15px;
     }
   }
 }
@@ -141,6 +141,7 @@ body {
   flex-wrap: wrap;
   align-content: flex-start;
   text-align: center;
+  overflow-y: scroll;
   p {
     width: 50%;
     font-size: 1.5rem;
@@ -166,7 +167,7 @@ body {
   }
 
   p {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
   }
 }
 
@@ -180,14 +181,14 @@ body {
 }
 
 %buttons {
-  flex: 1 1 0px;
+  flex: 1 0 0px;
   padding: {
     left: $defaultPadding;
     right: $defaultPadding;
     top: $defaultPadding / 2;
     bottom: $defaultPadding / 2;
   }
-  margin: $defaultMargin;
+  margin: $defaultMargin / 2;
   border: 1px solid black;
   text-align: center;
   outline: none;
@@ -198,11 +199,10 @@ body {
 
 .accuse-btn {
   @extend %buttons;
-  display: inline-flex;
-  width: 70%;
   transition: all 0.1s ease-in-out;
   animation: bgcolorchange 12s infinite;
-  color: whitesmoke;
+  width: 90%;
+  @include box-sizing();
 }
 
 .positive-btn {
