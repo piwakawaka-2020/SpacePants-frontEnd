@@ -15,7 +15,7 @@ import GameRoom from './GameRoom'
 import Voting from './Voting'
 import EndRoom from './EndRoom'
 
-const socket = io('http://spacepantsbackend.herokuapp.com/', {secure: true})
+const socket = io('https://spacepantsbackend.herokuapp.com/', {secure: true})
 
 class App extends React.Component {
 
