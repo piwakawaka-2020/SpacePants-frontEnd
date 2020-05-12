@@ -7,19 +7,14 @@ class HowToModal extends React.Component {
 
   customStyles = {
     overlay: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+
+      backgroundColor: 'rgba(255, 255, 255, 0.25)',
     },
     content: {
       border: 'none',
       backgroundColor: '#23272a',
       borderRadius: '10px',
       margin: 'auto',
-      color: 'black',
       maxHeight: '90%',
     }
   };

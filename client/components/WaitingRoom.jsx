@@ -47,7 +47,7 @@ class WaitingRoom extends React.Component {
 
         <p className="header">Room Code: </p>
         <p className="header">{this.props.room}</p>
-        <div className='usersList'>
+        <div className='usersDisplay'>
 
           {
             this.props.users.map((user, i) => {
