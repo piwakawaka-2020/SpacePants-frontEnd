@@ -2,7 +2,6 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
-import { resetState } from '../actions/localUser'
 
 class EndRoom extends React.Component {
 
@@ -13,10 +12,7 @@ class EndRoom extends React.Component {
   }
 
   componentDidMount() {
-    this.props.socket.on('playAgain', () => {
-      this.props.dispatch(resetState())
-      this.props.history.replace('/waiting')
-    })
+
   }
 
   playAgain = e => {
