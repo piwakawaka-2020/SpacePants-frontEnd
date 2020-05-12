@@ -105,6 +105,7 @@ class GameRoom extends React.Component {
 
         <h1 className="fancyHeader">You are {this.props.localUser.role}</h1>
         <span className='time-container'>
+          <span className="timeUnderlay">0:00</span>
           <p className="time">{this.state.time}</p>
           {
             this.props.localUser.role === 'Alien' &&

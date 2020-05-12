@@ -24,11 +24,10 @@ class LandingPage extends React.Component {
   }
 
   handleClick = (e) =>{
+    positiveClick.play()
     if(e.target.innerText === 'Create Game'){
-      positiveClick.play()
       this.props.history.push('/create')
     } else {
-      positiveClick.play()
       this.props.history.push('/join')
     }
   }

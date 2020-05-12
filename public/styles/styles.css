@@ -1,6 +1,6 @@
 @font-face {
   font-family: "digi";
-  src: url("../fonts/DS-DIGIB.woff") format("woff");
+  src: url("../fonts/DS-ODEO.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -64,10 +64,17 @@ body {
   box-sizing: border-box;
 }
 
-.time {
+.timeUnderlay {
+  padding: auto;
+  display: block;
+  position: absolute;
+  opacity: 0.2;
+}
+
+.time, .timeUnderlay {
   font-family: "digi";
   width: 100%;
-  font-size: 6rem;
+  font-size: 7rem;
   text-align: center;
   padding: 0;
   margin: 0;
@@ -333,7 +340,7 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  z-index: 0;
+  z-index: 1;
   -webkit-animation: walking 0.8s linear infinite alternate;
           animation: walking 0.8s linear infinite alternate;
 }
