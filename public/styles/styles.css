@@ -188,6 +188,14 @@ body {
   margin-bottom: 15px;
 }
 
+.task-summary {
+  margin-bottom: 25px;
+}
+
+.task-summary p {
+  margin-bottom: 5px;
+}
+
 .btn-bar {
   display: -webkit-box;
   display: -ms-flexbox;

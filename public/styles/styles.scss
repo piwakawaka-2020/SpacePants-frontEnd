@@ -163,6 +163,14 @@ body {
   }
 }
 
+.task-summary {
+  margin-bottom: 25px;
+
+  p {
+    margin-bottom: 5px;
+  }
+}
+
 .btn-bar {
   display: flex;
   flex-direction: row;
