@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter as Router, Route } from 'react-router-dom'
+import { HashRouter as Router, Route, Redirect } from 'react-router-dom'
 
 import io from 'socket.io-client'
 import { connect } from 'react-redux'
@@ -35,6 +35,7 @@ class App extends React.Component {
         <Route path='/game' component={GameRoom} />
         <Route path='/vote' component={Voting} />
         <Route path='/end' component={EndRoom} />
+        <Redirect to='/' component={LandingPage} />
       </Router>
     )
   }

@@ -73,13 +73,12 @@ class Voting extends React.Component {
           <>
             {this.props.voter === this.props.localUser.name ?
               <>
-                <h2>You accused <strong>{this.props.vote}</strong> of being an <strong>{'\u{1F47D}'}</strong></h2>
+                <h2>You accused <strong>{this.props.vote}</strong> of being an Alien!</h2>
                 <p>Who will agree with you?</p>
               </>
               :
               <>
-
-                <h2><strong>{this.props.voter}</strong> thinks <strong>{this.props.vote}</strong> is an <strong>{'\u{1F47D}'}</strong> How shall we proceed?</h2>
+                <h2><strong>{this.props.voter}</strong> thinks <strong>{this.props.vote}</strong> is an Alien! How shall we proceed?</h2>
                 {!this.state.cast ?
                   <div className='btn-bar'>
                     <button className='accuse-btn' onClick={() => this.sendVote(true)}>Alien Autopsy!</button>
