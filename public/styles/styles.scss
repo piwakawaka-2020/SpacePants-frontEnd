@@ -257,12 +257,12 @@ body {
 }
 
 #alien{
-  background: center/100% url('img/SpacePantsWC-3-hori.png');
+  background: center/100% url('../img/SpacePantsWC-3-hori.png');
   text-shadow: 2px 2px $purple;
 }
 
 #human{
-  background: center/100% url('img/SpacePantsWC-1.png');
+  background: center/100% url('../img/SpacePantsWC-1.png');
   text-shadow: 2px 2px $darkBlue;
 }
 
@@ -400,7 +400,7 @@ margin-right: 20px;
   background-image: url("/img/wc1.png");
   background-size: cover;
 }
-=======
+
 // LANDING PAGE
 
 // #app{

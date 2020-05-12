@@ -7,7 +7,7 @@ class HowToModal extends React.Component {
 
   customStyles = {
     overlay: {
-      position: 'fixed',
+      zIndex: '1',
       top: 0,
       left: 0,
       right: 0,
