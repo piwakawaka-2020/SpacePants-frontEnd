@@ -4,5 +4,12 @@
   "start_url": ".",
   "display": "standalone",
   "background_color": "#357baf",
-  "description": "Pretend to wear special pants without your friends noticing"
+  "description": "Pretend to wear special pants without your friends noticing",
+  "icons": [
+    {
+      "src": "/img/favicon_icon2.png",
+      "type": "image/png",
+      "size": "90x90"
+    }
+  ]
 }
