@@ -50,44 +50,52 @@ class Comms extends React.Component {
   }
 
   handleComplete = e => {
-    this.props.dispatch(completeTask(this.props.socket, this.props.room))
+    let [minutes, seconds] = this.props.time.split(':')
+
+    if (Number(seconds) < 35 && minutes == '0') {
+      this.setState({
+        task: 'No more submissions needed!  You have successfully integrated into human culture.  Surely they won\'t discover you in the final few seconds...'
+      })
+    } else {
+      this.props.dispatch(completeTask(this.props.socket, this.props.room))
+    }
   }
 
   render() {
     return (
-    <>
-      <div className='commsDisplay'>
+      <>
+        <div className='commsDisplay'>
 
-        {
-          this.props.localUser.role === 'Alien' &&
-          <>
-            <span>
-              <p><strong>Active Behaviour Directive:</strong></p>
-              <p>{this.state.task}</p>
-            </span>
+          {
+            this.props.localUser.role === 'Alien' &&
+            <>
+              <span>
+                <p><strong>Active Behaviour Directive:</strong></p>
+                <p>{this.state.task}</p>
+              </span>
 
-            <span className='btn-bar'>
-              <button className='negative-btn' onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
-              <button className='positive-btn' onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
-            </span>
-          </>
-        }
+              <span className='btn-bar'>
+                <button className='negative-btn' onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
+                <button className='positive-btn' onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
+              </span>
+            </>
+          }
 
-        {
-          this.props.localUser.role === 'Human' &&
-          <>
-            <div className='hint-list'>
-              <p><strong>Latest B.O.S.S Communications:</strong></p>
-              {
-                this.props.localUser.hints.map((hint, i) => {
-                  return <p key={i}>{hint}</p>
-                })
-              }
-            </div>
-          </>
-        }
-      </div>
-    </>
+          {
+            this.props.localUser.role === 'Human' &&
+            <>
+              <div className='hint-list'>
+                <p><strong>Latest B.O.S.S Communications:</strong></p>
+                {
+                  this.props.localUser.hints.map((hint, i) => {
+                    return <p key={i}>{hint}</p>
+                  })
+                }
+              </div>
+            </>
+          }
+        </div>
+      </>
     )
   }
 }

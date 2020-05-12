@@ -115,7 +115,7 @@ class GameRoom extends React.Component {
             addEndListener={(node, done) => { node.addEventListener("transitionend", done, false) }}
             classNames="slide">
 
-            <TransitionContainer screen={this.state.screen} voteData={this.state.voteData} handleVote={this.handleVote} />
+            <TransitionContainer screen={this.state.screen} voteData={this.state.voteData} handleVote={this.handleVote} time={this.state.time}/>
 
           </CSSTransition>
         </SwitchTransition>
