@@ -13,7 +13,7 @@ class Comms extends React.Component {
   componentDidMount() {
     if (this.props.localUser.role === 'Alien') {
       this.props.socket.on('task', task => {
-        navigator.vibrate([250, 150, 250])
+        navigator.vibrate([250])
 
         this.props.dispatch(receiveTask(task))
 
@@ -29,7 +29,7 @@ class Comms extends React.Component {
 
     } else {
       this.props.socket.on('hint', hint => {
-        navigator.vibrate([250, 150, 250])
+        navigator.vibrate([250])
         this.props.dispatch(receiveHint(hint))
         this.setState({ hint: this.props.localUser.hint });
       })
