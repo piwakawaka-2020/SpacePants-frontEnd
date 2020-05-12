@@ -51,8 +51,8 @@ body {
   padding: 1rem;
   margin: 0px;
   background-image: url("../img/wc1.png");
-  background-background-size: cover;
-  background-background-clip: text;
+  background-size: cover;
+  background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
