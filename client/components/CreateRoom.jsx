@@ -55,7 +55,8 @@ class CreateRoom extends React.Component {
           <h1 className="header">{this.state.room}</h1>
         </span>
 
-        <form className="formDisplay" onSubmit={this.handleSubmit} maxLength='15'>
+        <form className="formDisplay" style={{
+          justifyContent: 'space-between'}} onSubmit={this.handleSubmit} maxLength='15'>
           <div>
             <span>
               <label>
