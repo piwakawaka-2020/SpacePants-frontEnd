@@ -18,28 +18,27 @@ The goal of the humans is to identify the alien before time runs out.  They win 
 
 ### MVP
 
-- [ ] The user should have the option to create a game session or join an existing one
-- [ ] On creating a room, they should be provided a code to give to others who can then join the same room
-- [ ] There should be a 'waiting room' where they can see people as they join, and select a 'start game' button when everyone is in
-- [ ] There should be a screen describing how to play the game
-- [ ] When the game starts, each playing should be given a role.  One person will be an alien, all others will be human
-- [ ] Each player will receive a brief based on their role
-- [ ] On the game screen a countdown will appear
+- [x] The user should have the option to create a game session or join an existing one
+- [x] On creating a room, they should be provided a code to give to others who can then join the same room
+- [x] There should be a 'waiting room' where they can see people as they join, and select a 'start game' button when everyone is in
+- [x] There should be a screen describing how to play the game
+- [x] When the game starts, each playing should be given a role.  One person will be an alien, all others will be human
+- [x] Each player will receive a task or hint based on their role
+- [x] On the game screen a countdown will appear
 
 #### Alien
-- [ ] The alien will be given a task to complete
-- [ ] Upon completing the task, they can check a box and receive a new task
-- [ ] If the alien does not want to do a certain task, they will have to wait for 30 seconds before receiving a new one
+- [x] The alien will be given a task to complete
+- [x] Upon completing the task, they can check a box and receive a new task
+- [x] If the alien does not want to do a certain task, they will have to pay a time penalty before receiving a new one
 
 #### Humans
-- [ ] At random intervals, each human will receive a broadcase containing information about the alien.  This information may or may not be relevant
-- [ ] At any point a human (or an alien trying to blend in) may hit a vote button.  This will pause the timer.  They will then accuse another player
-- [ ] After a discussion, all other humans will select agree or disagree on their own device.  If it passes, the game ends.  If not, the time continues.  Each player can only call a vote once.
+- [x] At random intervals, each human will receive a broadcast containing information about the alien.  This information may or may not be relevant
+- [x] At any point a human (or an alien trying to blend in) may hit a vote button.  They will then accuse another player
+- [x] After a discussion, all other humans will select agree or disagree on their own device.  If it passes by majority vote, the game ends.  If not, the time continues.  Each player can only call a vote once.
 
 ### Stretch
 
-- [ ] A sweet design
-- [ ] A scoreboard for the current session
+- [x] A sweet design
 - [ ] Make available as a PWA
 
 ---

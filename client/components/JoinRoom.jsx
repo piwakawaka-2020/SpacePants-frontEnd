@@ -62,19 +62,22 @@ class JoinRoom extends React.Component {
   render() {
     return (
       <>
-        <div className="align">
-          <h1 className="heading">Join a game!</h1>
-          <div className="text">
-            <form id="roomJoin" onSubmit={this.handleSubmit}>
-              <label>Enter Name: </label>
-              <input type="text" name="name" placeholder='Name' value={this.state.name} maxLength='20' onChange={this.handleChange} />
-              <label>Room Id: </label>
-              <input type="text" name="room" placeholder='Room code' value={this.state.room} maxLength="4" onChange={this.handleChange} />
-              <input type="submit" value="submit" disabled={this.state.disableSubmit} />
-            </form>
+        <h1 className="header">Join a Game</h1>
+        <form className='formDisplay' onSubmit={this.handleSubmit}>
+          <span>
+            <label>Enter Name: </label>
+            <input type="text" name="name" value={this.state.name} maxLength='20' onChange={this.handleChange} />
+          </span>
+          <span>
+            <label>Room Code: </label>
+            <input type="text" name="room" value={this.state.room} maxLength="4" onChange={this.handleChange} />
+          </span>
+          <div className='btn-bar'>
+            <button className="negative-btn" onClick={this.handleClick}>Return</button>
+            <input className='positive-btn' type="submit" value="Join" disabled={this.state.disableSubmit} />
           </div>
-          {this.state.usernameTaken && <p className="tipText">{this.state.name} is already in this room. Enter a new name and try again.</p>}
-        </div>
+        </form>
+        {this.state.usernameTaken && <p className="tipText">{this.state.name} is already in this room. Enter a new name and try again.</p>}
       </>
     )
   }

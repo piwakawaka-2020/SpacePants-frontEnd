@@ -1,12 +1,6 @@
 // Default
 $defaultMargin: 1rem;
 $defaultPadding: 1rem;
-$defaultDisplay: flex;
-
-// Set variables
-$vertical: column;
-$fullWidth: 100%;
-$greenBackground: rgb(44, 78, 44);
 
 // Color set
 $pink: #ba4385;
@@ -18,17 +12,352 @@ $darkerBackground: #2c2f33;
 
 @font-face {
   font-family: "digi";
-  src: url("./fonts/DS-DIGIB.woff") format("woff");
+  src: url("../fonts/DS-DIGIB.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+}
+
+@mixin box-sizing {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
   width: 100vw;
   height: 100vh;
+  margin: 0px;
+  font-size: 25px;
   color: white;
+  font-family: "VT323", monospace;
   background-color: $darkestBackground;
-  font-size: large;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: $defaultPadding;
+  width: 100vw;
+  @include box-sizing();
+  height: 100vh;
+}
+
+.header {
+  text-align: center;
+  color: $pink;
+  padding: $defaultPadding/2;
+  margin: 0px;
+  font-size: 3.5rem;
+}
+
+.fancyHeader {
+  text-align: center;
+  font-weight: 1000;
+  font-size: 3.5rem;
+  padding: $defaultPadding;
+  margin: 0px;
+  background: {
+    image: url("../img/wc1.png");
+    size: cover;
+    clip: text;
+  }
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.time-container {
+  width: 100%;
+  text-align: center;
+  @include box-sizing();
+}
+
+.time {
+  font-family: "digi";
+  width: 100%;
+  font-size: 8rem;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  color: $pink;
+}
+
+@mixin display {
+  @include box-sizing();
+  width: 100%;
+  height: 100%;
+  margin-top: $defaultMargin;
+  padding: $defaultPadding;
+  background-color: $darkerBackground;
+}
+
+.commsDisplay {
+  @include display();
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+
+  p {
+    margin: 0px {
+      bottom: 15px;
+    }
+  }
+}
+
+.voteDisplay {
+  @include display();
+  text-align: center;
+  overflow-y: scroll;
+
+  h2 {
+    margin-top: 0px;
+  }
+}
+
+.formDisplay {
+  @include display();
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  input[type=text]{
+    width: 100%;
+    @include box-sizing();
+    margin: {
+      top: 10px;
+      bottom: 15px;
+    }
+    padding-left: 5px;
+  }
+}
+
+//Waiting Room
+.usersDisplay {
+  @include display();
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  text-align: center;
+  overflow-y: scroll;
+
+  p {
+    width: 50%;
+    font-size: 1.5rem;
+  }
+}
+
+.hint-list {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+}
+
+.btn-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  @include box-sizing();
+}
+
+%buttons {
+  flex: 1 0 0px;
+  padding: {
+    left: $defaultPadding;
+    right: $defaultPadding;
+    top: $defaultPadding / 2;
+    bottom: $defaultPadding / 2;
+  }
+  margin: $defaultMargin / 2;
+  border: 1px solid black;
+  text-align: center;
+  outline: none;
+  &:active {
+    border: inset 1px;
+  }
+}
+
+.accuse-btn {
+  @extend %buttons;
+  transition: all 0.1s ease-in-out;
+  animation: bgcolorchange 12s infinite;
+  width: 90%;
+  @include box-sizing();
+}
+
+.positive-btn {
+  @extend %buttons;
+  background-color: $darkBlue;
+}
+
+.negative-btn {
+  @extend %buttons;
+  background-color: $pink;
+}
+
+.fancy-btn {
+  @extend %buttons;
+  font-weight: bold;
+  @include box-sizing();
+  width: 100%;
+  background-image: url("/img/wc1.png");
+  background-size: cover;
+}
+
+// HOW TO MODAL
+.description {
+  h1 {
+    width: 100%;
+    text-align: center;
+    animation: textcolorchange 2s infinite;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 2.5px gray;
+    letter-spacing: 3px;
+  }
+  h2 {
+    margin: 0px;
+  }
+
+  fieldset {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border: none;
+    border-radius: 10px;
+    background-color: #2c2f33;
+    color: $lightBlue;
+    // text-align: justify;
+  }
+  legend {
+    text-align: center;
+    color: whitesmoke;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px 5px 15px;
+    margin: 0px
+  }
+}
+
+#alien {
+  background: center/100% url("../img/SpacePantsWC-3-hori.png");
+  text-shadow: 2px 2px $purple;
+}
+
+#human {
+  background: center/100% url("../img/SpacePantsWC-1.png");
+  text-shadow: 2px 2px $darkBlue;
+}
+
+//Landing Page animations
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+//walking pants
+.pants {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  animation: walking 0.8s linear infinite alternate;
+}
+
+@keyframes walking {
+  from {
+    content: url("../img/pants-lg-157-285.png");
+  }
+  to {
+    content: url("../img/pants-step2-157-285.png");
+  }
+}
+
+//space animations
+.lightblue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, 
+    zoom 3s cubic-bezier(0.26, 0.75, 0.50, 0.95) 0s infinite;
+  animation-fill-mode: backwards;
+}
+.darkblue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1s infinite, 
+    zoom 3s cubic-bezier(0.26, 0.75, 0.50, 0.95) 1s infinite;
+  animation-fill-mode: backwards;
+}
+.purple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2s infinite, 
+    zoom 3s cubic-bezier(0.26, 0.75, 0.50, 0.95) 2s infinite;
+  animation-fill-mode: backwards;
+}
+
+@keyframes zoom {
+
+  0% {width: auto;
+    height: 850%;
+  z-index: -8;}
+
+ 50% {z-index: -6}
+
+  100% {width: auto;
+    height: 0%;
+    z-index: -4;}
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.instructions-btn {
+  position: fixed;
+  color: $purple;
+  background-color: #23272a99;
+  height: 3.2rem;
+  top: -1rem;
+  right: 28px;
+}
+
+.lp-btn-bar {
+  position: absolute;
+  bottom: 5%;
+  align-content: center;
+  width: 100%;
 }
 
 // Color change
@@ -66,335 +395,4 @@ body {
   100% {
     color: $pink;
   }
-}
-
-#app {
-  display: $defaultDisplay;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0;
-  margin: 20px;
-  width: 100vw;
-  height: 100vh;
-  }
-
-.container{
-  display: $defaultDisplay;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0;
-  margin: 20px;
-  width: 100vw;
-  height: 100vh;
-}
-
-.header {
-  text-align: center;
-  color: $pink;
-  width: 100%;
-  padding: $defaultPadding;
-  margin: 0px;
-}
-
-.time {
-  font-family: "digi";
-  width: 100%;
-  font-size: 6em;
-  text-align: center;
-  padding: 0;
-  margin: 0;
-  color: $pink;
-}
-
-.display {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 50%;
-  margin-top: $defaultMargin;
-  padding: $defaultPadding;
-  background-color: $darkerBackground;
-}
-
-.display button {
-  background-color: $darkBlue;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 8px;
-  width: 30%;
-
-  &:active {
-    background-color: $lightBlue;
-  }
-}
-
-.task {
-  color: $lightBlue;
-  margin: 5px;
-}
-
-.btn-bar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-}
-
-// VOTE SCREEN STYLE
-
-.vote-btn {
-  width: 6em;
-  height: 6em;
-  border-radius: 50%;
-  background-color: $purple;
-
-  &:active {
-    background-color: $pink;
-  }
-}
-
-.callVoteBtn {
-  font-weight: bold;
-  width: 100%;
-  margin-top: 10px;
-  padding: 5px;
-  font-size: large;
-  background-image: url("/img/wc1.png");
-  background-size: cover;
-}
-
-.voteScreen, .accuseScreen {
-  margin: auto;
-  width: $fullWidth;
-  flex-grow: 1;
-  text-align: center;
-  overflow-y: scroll;
-  background-color: $darkerBackground;
-}
-
-.voteScreen h2, .accuseTextContainer h2 {
-  font-size: 1.5rem;
-  color: $lightBlue;
-}
-
-.accuseTextContainer p {
-  color: whitesmoke;
-}
-
-.voteContainer, .accuseTextContainer {
-  margin: $defaultMargin;
-}
-
-.accuseBtn {
-  margin: auto;
-  font-size: 1.5rem;
-  display: block;
-  padding: 0.5rem;
-  width: 70%;
-  border: outset 1px black;
-  border-radius: 5px;
-  outline: none;
-  transition: all 0.1s ease-in-out;
-  animation: bgcolorchange 12s infinite;
-  color: whitesmoke;
-  &:active {
-    border: inset 1px;
-  }
-}
-
-.accuseBtnContainer button {
-  margin: $defaultMargin;
-  display: inline-flex;
-  width: 40%;
-  font-size: 1.5rem;
-  color: whitesmoke;
-  transition: all 0.1s ease-in-out;
-  border: outset 1px black;
-  background-color: $darkBlue;
-  border-radius: 5px;
-  outline: none;
-  &:hover {
-    font-weight: bold;
-    box-shadow: 0 5px 15px gray;
-  }
-  &:active {
-    border: inset 1px;
-  }
-}
-
-// HOW TO MODAL
-
-.description h1 {
-  width: 100%;
-  text-align: center;
-  animation: textcolorchange 2s infinite;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 2.5px gray;
-  letter-spacing: 3px;
-}
-
-.description fieldset {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  border: none;
-  border-radius: 10px;
-  background-color: #2c2f33;
-  color: $lightBlue;
-  text-align: justify;
-}
-
-.description legend {
-  text-align: center;
-  color: whitesmoke;
-  border: none;
-  border-radius: 10px;
-  padding: 0 5% 0 5%;
-}
-
-#alien{
-  background: center/100% url('img/SpacePantsWC-3-hori.png');
-  text-shadow: 2px 2px $purple;
-}
-
-#human{
-  background: center/100% url('img/SpacePantsWC-1.png');
-  text-shadow: 2px 2px $darkBlue;
-}
-
-// HINT LIST
-
-.hint-list {
-  overflow-y: scroll;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
-// LANDING PAGE
-
-// #app{
-//     display: $defaultDisplay;
-//     flex-direction: column;
-//     justify-content: space-between;
-//     align-items: center;
-//     padding: 0;
-//     margin: 20px;
-//     width: 100vw;
-//     height: 100vh;
-// }
-
-.wrapper {
-  width: 100vw;
-  max-width: 100vw;
-  height: 100vh;
-  max-height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  
-}
-//walking pants
-.pants{
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  animation: walking 0.8s linear infinite alternate;
-}
-
-@keyframes walking {
-  from {content: url('../img/pants-lg-157-285.png')}
-  to {content: url('../img/pants-step2-157-285.png')}
-}
-
-//space animations
-.lightblue {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 3s cubic-bezier(0.26, 0.75, 0.50, 0.95) 0s infinite;
-  animation-fill-mode: backwards;
-}
-.darkblue {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1s infinite, zoom 3s cubic-bezier(0.26, 0.75, 0.50, 0.95) 1s infinite;
-  animation-fill-mode: backwards;
-}
-.purple {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2s infinite, zoom 3s cubic-bezier(0.26, 0.75, 0.50, 0.95) 2s infinite;
-  animation-fill-mode: backwards;
-}
-
-@keyframes zoom {
-  0% {width: auto;
-    height: 850%;
-  z-index: -8;}
-
-  33% {z-index: -6;}
-
-  67% {z-index: -4;}
-
-  100% {width: auto;
-    height: 0%;
-    z-index: -3;}
-}
-
-@keyframes opacity {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-.lp-title {
-  position: absolute;
-  top: 6%;
-  left: 50%;
-  transform: translate(-50%, 0)
-}
-
-.lp-title .heading {
-  text-align: center;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 900;
-  font-size: 3.15em;
-  color: $pink;
-}
-
-.instructions-btn {
-  position: fixed;
-  color: $purple;
-  background-color: #23272a99;
-  height: 3.2rem;
-  top: -1rem;
-  right: 28px;
-}
-
-.lp-btn-bar {
-  position: absolute;
-  bottom: 5%;
-  align-content: center;
-  width: 100%
-}
-
-.lp-btn-bar button {
-  background-color: $lightBlue;
-  margin: 10%;
-  border: none;
 }

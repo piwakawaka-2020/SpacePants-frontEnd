@@ -13,6 +13,8 @@ class Comms extends React.Component {
   componentDidMount() {
     if (this.props.localUser.role === 'Alien') {
       this.props.socket.on('task', task => {
+        navigator.vibrate([250, 150, 250])
+
         this.props.dispatch(receiveTask(task))
 
         this.setState({
@@ -27,6 +29,7 @@ class Comms extends React.Component {
 
     } else {
       this.props.socket.on('hint', hint => {
+        navigator.vibrate([250, 150, 250])
         this.props.dispatch(receiveHint(hint))
         this.setState({ hint: this.props.localUser.hint });
       })
@@ -52,7 +55,9 @@ class Comms extends React.Component {
 
   render() {
     return (
-      <div className='display'>
+    <>
+      <div className='commsDisplay'>
+
         {
           this.props.localUser.role === 'Alien' &&
           <>
@@ -62,8 +67,8 @@ class Comms extends React.Component {
             </span>
 
             <span className='btn-bar'>
-              <button onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
-              <button onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
+              <button className='negative-btn' onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
+              <button className='positive-btn' onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
             </span>
           </>
         }
@@ -71,7 +76,6 @@ class Comms extends React.Component {
         {
           this.props.localUser.role === 'Human' &&
           <>
-
             <div className='hint-list'>
               <p><strong>Latest B.O.S.S Communications:</strong></p>
               {
@@ -80,10 +84,10 @@ class Comms extends React.Component {
                 })
               }
             </div>
-
           </>
         }
       </div>
+    </>
     )
   }
 }
