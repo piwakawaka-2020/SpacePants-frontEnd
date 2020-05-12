@@ -58,7 +58,7 @@ class WaitingRoom extends React.Component {
         </div>
         <div className='btn-bar'>
           <button onClick={this.leaveGame} className='negative-btn'>Leave Game</button>
-          <button className="button" className='fancy-btn' onClick={this.startGame} disabled={this.props.users.length < 4}>Start Game</button>
+          <button className="button" className='fancy-btn' onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
         </div>
       </>
     )
