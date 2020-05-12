@@ -1,0 +1,30 @@
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 250ms ease;
+}
+
+.ReactModal__Overlay--after-open{
+    opacity: 1;
+}
+
+.ReactModal__Overlay--after-close{
+    opacity: 0;
+}
+
+.slide-enter {
+  transform: translateX(101%);
+}
+
+.slide-enter.slide-enter-active {
+  transform: translateX(0);
+  transition: 250ms linear;
+}
+
+.slide-exit {
+  transform: translateX(0%);
+}
+
+.slide-exit.slide-exit-active {
+  transform: translateX(-101%);
+  transition: 250ms linear;
+}

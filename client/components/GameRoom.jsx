@@ -1,23 +1,25 @@
 import React from 'react'
-import Voting from './Voting'
+import { CSSTransition, SwitchTransition } from 'react-transition-group'
+
+import TransitionContainer from './TransitionContainer'
 
 import { connect } from 'react-redux'
-import { completeTask, receiveTask, receiveHint} from '../actions/localUser'
 
 class GameRoom extends React.Component {
 
   state = {
     task: '',
-    hint: 'No leads received yet',
+    hint: '',
     disabled: false,
     time: '5:00',
+    screen: 'Comms',
+    voteActive: false,
     voteData: {
       castVote: false,
       receiveVote: false,
       vote: '',
       voter: ''
     },
-    result: ''
   }
 
   componentDidMount() {
@@ -26,36 +28,16 @@ class GameRoom extends React.Component {
         time
       })
 
-      // if (time === '0:00') {
-      //   this.props.history.replace('/end')
-      // }
-
       const seconds = Number(time.split(':')[1])
       if ((seconds + 10) % 30 === 0 && this.props.localUser.role == 'Human') {
-        this.props.socket.emit('getFakeHint')
+        this.props.socket.emit('getBadHint')
       }
     })
 
-    if (this.props.localUser.role === 'Alien') {
-      this.props.socket.on('task', task => {
-        this.props.dispatch(receiveTask(task))
-
-        this.setState({
-          task: this.props.localUser.tasks[0].task,
-          disabled: false
-        });
-      })
-      this.props.socket.emit('getTask')
-
-    } else {
-      this.props.socket.on('hint', hint => {
-        this.props.dispatch(receiveHint(hint))
-        this.setState({ hint: this.props.localUser.hint });
-      })
-    }
-
     this.props.socket.on('receiveVote', voteData => {
       this.setState({
+        screen: 'Votes',
+        voteActive: true,
         voteData: {
           castVote: false,
           receiveVote: true,
@@ -65,36 +47,47 @@ class GameRoom extends React.Component {
       })
     })
 
-    this.props.socket.on('voteResult', result =>{
-      console.log(result)
+    this.props.socket.on('voteFailed', () => {     
       this.setState({
-        result: result.result
+        screen: 'Comms',
+        voteActive: false,
+        voteData: {
+          castVote: false,
+          receiveVote: false,
+          vote: '',
+          voter: ''
+        },
       })
-
-      if(result.result == false){
-        this.setDefault() 
-      }
     })
 
-    this.props.socket.on('gameOver', () => {
+    this.props.socket.on('gameOver', ({ winner }) => {
       if (this.props.localUser.role === 'Alien') {
         this.props.socket.emit('alienHistory', {
           tasks: this.props.localUser.tasks,
-          room: this.props.localUser.room 
+          winner: winner,
+          room: this.props.localUser.room
         })
       }
     })
 
-    this.props.socket.on('taskList', tasks => {
+    this.props.socket.on('finalScreen', endData => {
+      this.props.socket.removeAllListeners()
+
       this.props.history.replace({
         pathname: '/end',
-        state: { taskList: tasks}
+        state: {
+          taskList: endData.tasks,
+          winner: endData.winner,
+          time: this.state.time
+        }
       })
     })
   }
 
   handleVote = e => {
     this.setState(prevState => ({
+      voteActive: !this.state.voteActive,
+      screen: this.state.screen === 'Comms' ? 'Votes' : 'Comms',
       voteData: {
         ...prevState.voteData,
         castVote: true
@@ -102,78 +95,37 @@ class GameRoom extends React.Component {
     }))
   }
 
-  handleSkip = e => {
-    this.setState({
-      task: 'The humans are on to you!  Do nothing for 30 seconds!',
-      disabled: true
-    })
-    this.props.socket.emit('skipTask')
-  }
-
-  handleComplete = e => {
-    this.setState({
-      task: 'Waiting for next task...',
-      disabled: true
-    })
-    this.props.dispatch(completeTask(this.props.socket, this.props.room))
-  }
-
-  setDefault = () =>{
-    console.log('set default')
-    this.setState({
-      voteData: {
-        castVote: false,
-        receiveVote: false,
-        vote: '',
-        voter: ''
-      },
-    })
-    // console.log(this.state.voteData)
-    // console.log(this.state.result)
-  }
-
   render() {
     return (
-      <div className="align">
-        <h1 className="heading">You are {this.props.localUser.role}</h1>
+      <>
+        <h1 className="fancyHeader">You are {this.props.localUser.role}</h1>
+        <span className='time-container'>
+          <p className="time">{this.state.time}</p>
+          {
+            this.props.localUser.role === 'Alien' &&
+            <p>Tasks Completed: {this.props.localUser.completedTasks}</p>
+          }
+        </span>
 
-        <p className="heading">{this.state.time}</p>
+        <SwitchTransition mode={'out-in'}>
+          <CSSTransition
+            key={this.state.voteActive}
+            addEndListener={(node, done) => { node.addEventListener("transitionend", done, false) }}
+            classNames="slide">
 
-        {
-          !this.state.voteData.receiveVote &&
-          <>
+            <TransitionContainer screen={this.state.screen} voteData={this.state.voteData} handleVote={this.handleVote} />
 
-            {/* Alien screen */}
-            {
-              this.props.localUser.role === 'Alien' &&
-              <div>
-                <p>{this.state.task}</p>
-                <button onClick={this.handleSkip} disabled={this.state.disabled}>skip</button>
-                <button onClick={this.handleComplete} disabled={this.state.disabled}>complete</button>
-                <p>Number of Tasks completed: {this.props.localUser.completedTasks}</p>
-              </div>
-            }
+          </CSSTransition>
+        </SwitchTransition>
 
-            {/* Human screen */}
-            {
-              this.props.localUser.role === 'Human' &&
-              <div>
-                <p>{this.state.hint}</p>
-              </div>
-            }
 
-            <button onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
-          </>
-        }
-
-        <Voting {...this.state.voteData} />
-      </div >
+        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote}>Vote</button>
+      </>
     )
   }
 }
 
 function mapStateToProps(globalState) {
-  console.log(globalState)
   return {
     socket: globalState.localUser.socket,
     localUser: globalState.localUser,

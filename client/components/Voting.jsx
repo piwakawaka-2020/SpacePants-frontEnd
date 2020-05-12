@@ -7,6 +7,7 @@ class Voting extends React.Component {
   state = {
     voteName: '',
     vote: '',
+    cast: false
   }
 
   handleVote = (event) => {
@@ -31,50 +32,65 @@ class Voting extends React.Component {
 
   sendVote = vote => {
     this.setState({
-      vote: vote ? 'Affirmative' : 'Negative'
+      vote: vote ? 'Affirmative' : 'Negative',
+      cast: true
     })
+
+    let voteData = {
+      motion: vote,
+      person: this.props.vote
+    }
+
+    if (this.props.vote == this.props.localUser.name) {
+      voteData.role = this.props.localUser.role
+    }
 
     this.props.socket.emit('sendVote', {
       room: this.props.localUser.room,
-      voteData: { motion: vote, person: this.props.vote }
+      voteData
     })
   }
 
   render() {
     return (
-      <div>
+      <div className='voteDisplay'>
         {
           this.props.castVote &&
           <>
-            <h1>Who do you think is the Alien?</h1>
-            {this.props.users.map((user, index) => {
-              if(user != this.props.localUser.name) {
-              return (
-                <span key={index}>
-                  <button onClick={this.handleVote} name={user} key={index}>{user}</button>
-                </span>
-              )}
+            <h2>Who do you accuse?</h2>
+            {this.props.users.map((user, i) => {
+              if (user != this.props.localUser.name) {
+                return (
+                  <button key={i} className='accuse-btn' onClick={this.handleVote} name={user} key={i}>{user}</button>
+                )
+              }
             })
             }
           </>
         }
         {
           this.props.receiveVote &&
-          <div>
+          <>
             {this.props.voter === this.props.localUser.name ?
               <>
-                <h1>You accused <strong>{this.props.vote}</strong> of being an <strong>{'\u{1F47D}'}</strong></h1>
+                <h2>You accused <strong>{this.props.vote}</strong> of being an <strong>{'\u{1F47D}'}</strong></h2>
                 <p>Who will agree with you?</p>
               </>
               :
               <>
-                <h1><strong>{this.props.voter}</strong> thinks <strong>{this.props.vote}</strong> is an <strong>{'\u{1F47D}'}</strong> How shall we proceed?</h1>
-                {/* <h3>{this.state.vote}</h3> */}
-                <button onClick={() => this.sendVote(true)}>Alien Autopsy!</button>
-                <button onClick={() => this.sendVote(false)}>{this.props.vote} is a human!</button>
+
+                <h2><strong>{this.props.voter}</strong> thinks <strong>{this.props.vote}</strong> is an <strong>{'\u{1F47D}'}</strong> How shall we proceed?</h2>
+                {!this.state.cast ?
+                  <div className='btn-bar'>
+                    <button className='accuse-btn' onClick={() => this.sendVote(true)}>Alien Autopsy!</button>
+                    <button className='accuse-btn' onClick={() => this.sendVote(false)}>{this.props.vote} is a human!</button>
+                  </div>
+                  :
+                  <h2>Vote Cast!</h2>
+                }
               </>
             }
-          </div>
+          </>
         }
       </div>
     )
