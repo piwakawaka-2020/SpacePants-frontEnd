@@ -14,6 +14,7 @@ class GameRoom extends React.Component {
     time: '5:00',
     screen: 'Comms',
     voteActive: false,
+    disableVote: false,
     voteData: {
       castVote: false,
       receiveVote: false,
@@ -34,6 +35,12 @@ class GameRoom extends React.Component {
       }
     })
 
+    this.props.socket.on('disableVote', () => {
+      this.setState({
+        disableVote: true
+      })
+    })
+
     this.props.socket.on('receiveVote', voteData => {
       navigator.vibrate([250])
       this.setState({
@@ -52,6 +59,7 @@ class GameRoom extends React.Component {
       this.setState({
         screen: 'Comms',
         voteActive: false,
+        disableVote: false,
         voteData: {
           castVote: false,
           receiveVote: false,
@@ -94,6 +102,7 @@ class GameRoom extends React.Component {
   }
 
   handleVote = e => {
+    this.props.socket.emit('disableVote')
     this.setState(prevState => ({
       voteActive: !this.state.voteActive,
       screen: this.state.screen === 'Comms' ? 'Votes' : 'Comms',
@@ -129,7 +138,7 @@ class GameRoom extends React.Component {
         </SwitchTransition>
 
 
-        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote || this.state.screen === 'Votes'}>Vote</button>
+        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote || this.state.screen === 'Votes' || this.state.disableVote}>Vote</button>
       </>
     )
   }
