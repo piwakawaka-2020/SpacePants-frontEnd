@@ -35,6 +35,7 @@ class GameRoom extends React.Component {
     })
 
     this.props.socket.on('receiveVote', voteData => {
+      navigator.vibrate([500, 250, 500])
       this.setState({
         screen: 'Votes',
         voteActive: true,
@@ -47,7 +48,7 @@ class GameRoom extends React.Component {
       })
     })
 
-    this.props.socket.on('voteFailed', () => {     
+    this.props.socket.on('voteFailed', () => {
       this.setState({
         screen: 'Comms',
         voteActive: false,
@@ -98,6 +99,7 @@ class GameRoom extends React.Component {
   render() {
     return (
       <>
+
         <h1 className="fancyHeader">You are {this.props.localUser.role}</h1>
         <span className='time-container'>
           <p className="time">{this.state.time}</p>

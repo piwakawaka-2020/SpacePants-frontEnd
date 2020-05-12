@@ -5,10 +5,6 @@ import { connect } from 'react-redux'
 
 class LandingPage extends React.Component {
 
-  componentDidMount() {
-
-  }
-
   state = {
     showModal: false
   }
