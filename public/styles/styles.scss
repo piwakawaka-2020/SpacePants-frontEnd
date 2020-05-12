@@ -73,6 +73,15 @@ body {
   @include box-sizing();
 }
 
+.toggle-container {
+  display: flex;
+  flex-direction: column;
+  
+  input {
+    margin-right: 10px;
+  }
+}
+
 .time {
   font-family: "digi";
   width: 100%;
@@ -121,7 +130,9 @@ body {
   @include display();
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-content: center;
+  height: 100%;
 
   input[type=text]{
     width: 100%;
