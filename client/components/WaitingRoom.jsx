@@ -5,16 +5,7 @@ import { addRole } from '../actions/localUser'
 
 
 //random user colours
-function colour() {
-  const col = Math.random()
-  if (col < 0.33) {
-    return 'purple'
-  } else if(col < 0.66) {
-    return 'blue'
-  } else {
-    return 'pink'
-  }
-}
+
 
 class WaitingRoom extends React.Component {
 
@@ -29,6 +20,17 @@ class WaitingRoom extends React.Component {
     })
   }
 
+  colour() {
+    const col = Math.random()
+    if (col < 0.33) {
+      return '#8858ac'
+    } else if (col < 0.66) {
+      return '#357baf'
+    } else {
+      return '#ba4385'
+    }
+  }
+
   startGame = e => {
     this.props.socket.emit('startGame', this.props.room)
   }
@@ -37,30 +39,28 @@ class WaitingRoom extends React.Component {
     this.props.socket.emit('leaveRoom', this.props.room)
     this.props.history.replace('/')
   }
-  
-  
-
-
 
   render() {
 
     return (
-      <div className="align">
-        <div className='ufo'>
-        <p className="heading" className='ufoTop'>Room Code: </p>
-        <div className='ufoBottom'>{this.props.room}</div>
+      <>
+
+        <p className="header">Room Code: </p>
+        <p className="header">{this.props.room}</p>
+        <div className='usersDisplay'>
+
+          {
+            this.props.users.map((user, i) => {
+              return (<p style={{ color: this.colour()}} key={i}>{user}</p>)
+            })
+          }
+
         </div>
-        <div className='usersList'>
-        
-        {
-          this.props.users.map((user, i) => {
-            return (<p  className="text" className='userSingle' className={colour()} key={i}>{user}</p>)
-          })
-        }
+        <div className='btn-bar'>
+          <button onClick={this.leaveGame} className='negative-btn'>Leave Game</button>
+          <button className="button" className='fancy-btn' onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
         </div>
-        <button className="button" className='startBtn' onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
-        <button onClick={this.leaveGame} className='leaveBtn'>Leave Game</button>
-      </div>
+      </>
     )
   }
 }
