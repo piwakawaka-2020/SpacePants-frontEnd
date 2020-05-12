@@ -11,10 +11,6 @@ class EndRoom extends React.Component {
     alienHistory: []
   }
 
-  componentDidMount() {
-
-  }
-
   playAgain = e => {
     this.props.socket.emit('playAgain')
   }
@@ -22,42 +18,36 @@ class EndRoom extends React.Component {
   render() {
 
     return (
-      <div className='align' >
-        <div>
-          <h3 className='heading'>The winner is...</h3>
-          <h1>{this.props.location.state.winner}!</h1>
-        </div >
-        <div><h3>Final Time: {this.props.location.state.time}</h3></div>
+      <>
 
-        <div>
-          <h2 className='text'>The alien completed these tasks-</h2>
+        <h3 className='header'>The winner is...</h3>
+        <h1 className='fancyHeader'>{this.props.location.state.winner}!</h1>
+
+        <h3>Time Remaining: {this.props.location.state.time}</h3>
+
+        <div className='commsDisplay'>
+          <p><solid>The alien completed these tasks:</solid></p>
           {
             (this.props.location.state.taskList.length == 1) ?
 
-            <p>No task has been skipped or completed</p> :
+              <p>No task has been skipped or completed</p> :
 
-            this.props.location.state.taskList.map((task, i) => {
-              if (task.complete == true) {
-                let taskStyle = {
-                  color: 'slategrey'
-                }
-                return <p key={i} style={taskStyle}>{task.task} - complete</p>
-              } 
-              if(task.complete == false) {
-                let taskStyle = {
-                  color: 'red'
-                }
-                return <p key={i} style={taskStyle}>{task.task} - skipped</p>
-              }
-            })
+              this.props.location.state.taskList.map((task, i) => {
+                return (
+                  <div key={i} className='taskSummary'>
+                    <p>{task.task}</p>
+                    <p
+                      style={{ textAlign: 'center', color: task.complete ? '#357baf' : '#ba4385' }}>
+                      {task.complete ? 'Complete' : 'Skipped'}
+                    </p>
+                  </div>
+                )
+              })
           }
         </div >
 
-        <div>
-          <p className='text'>{this.state.time}</p>
-        </div >
-        <button className='button' onClick={this.playAgain}>Play Again</button >
-      </div >
+        <button className='fancy-btn' onClick={this.playAgain}>Play Again</button >
+      </>
     )
   }
 }

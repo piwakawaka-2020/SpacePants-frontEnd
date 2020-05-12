@@ -163,6 +163,14 @@ body {
   }
 }
 
+.taskSummary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
 .btn-bar {
   display: flex;
   flex-direction: row;
