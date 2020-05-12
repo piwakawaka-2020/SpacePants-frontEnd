@@ -1,4 +1,4 @@
-// Default
+/* // Default */
 $defaultMargin: 1rem;
 $defaultPadding: 1rem;
 
@@ -73,6 +73,15 @@ body {
   @include box-sizing();
 }
 
+.toggle-container {
+  display: flex;
+  flex-direction: column;
+  
+  input {
+    margin-right: 10px;
+  }
+}
+
 .timeUnderlay{
   padding: auto;
   display: block;
@@ -129,6 +138,7 @@ body {
   display: flex;
   flex-direction: column;
   align-content: center;
+  height: 100%;
 
   input[type=text]{
     width: 100%;
@@ -176,6 +186,14 @@ body {
 
   p {
     margin-bottom: 15px;
+  }
+}
+
+.task-summary {
+  margin-bottom: 25px;
+
+  p {
+    margin-bottom: 5px;
   }
 }
 
@@ -302,7 +320,7 @@ body {
 }
 
 @keyframes walking {
-  from {
+  from { 
     content: url("../img/pants-lg-157-285.png");
   }
   to {
@@ -316,8 +334,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite,
-    zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
+  animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, 
+    zoom 3s cubic-bezier(0.26, 0.75, 0.50, 0.95) 0s infinite;
   animation-fill-mode: backwards;
 }
 .darkblue {
@@ -325,8 +343,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.3s infinite,
-    zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
+  animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1s infinite, 
+    zoom 3s cubic-bezier(0.26, 0.75, 0.50, 0.95) 1s infinite;
   animation-fill-mode: backwards;
 }
 .purple {
@@ -334,30 +352,22 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2.7s infinite,
-    zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
+  animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2s infinite, 
+    zoom 3s cubic-bezier(0.26, 0.75, 0.50, 0.95) 2s infinite;
   animation-fill-mode: backwards;
 }
 
 @keyframes zoom {
-  0% {
-    width: auto;
-    height: 800%;
-    z-index: -3;
-  }
 
-  33% {
-    z-index: -4;
-  }
+  0% {width: auto;
+    height: 850%;
+  z-index: -8;}
 
-  67% {
-    z-index: -5;
-  }
+ 50% {z-index: -6}
 
-  100% {
-    width: auto;
+  100% {width: auto;
     height: 0%;
-  }
+    z-index: -4;}
 }
 
 @keyframes opacity {

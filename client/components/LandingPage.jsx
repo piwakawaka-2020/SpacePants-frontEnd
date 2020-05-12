@@ -50,7 +50,8 @@ class LandingPage extends React.Component {
         </div>
 
         <div className='instructions-btn'>
-          <p className="button" id="centered-toggle-button" onClick={this.showModal}>How to play</p>
+          <p className="button" onClick={this.showModal}>How to play</p>
+          
           <HowToModal showModal={this.state.showModal} closeModal={this.closeModal} />
         </div>
 

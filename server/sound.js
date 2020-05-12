@@ -5,3 +5,6 @@ export const winnerSound = new Audio('/music/winner.mp3')
 
 // SET VOLUME
 winnerSound.volume = 0.15
+positiveClick.volume = 0.15
+negativeClick.volume = 0.15
+voteClick.volume = 0.15

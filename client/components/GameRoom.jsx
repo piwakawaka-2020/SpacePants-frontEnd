@@ -1,9 +1,9 @@
 import React from 'react'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
+import { connect } from 'react-redux'
 
 import TransitionContainer from './TransitionContainer'
-
-import { connect } from 'react-redux'
+import { resetState } from '../actions/localUser'
 
 import { voteClick } from '../../server/sound'
 
@@ -74,7 +74,15 @@ class GameRoom extends React.Component {
     })
 
     this.props.socket.on('finalScreen', endData => {
-      this.props.socket.removeAllListeners()
+
+      this.props.socket.removeAllListeners('receiveVote')
+      this.props.socket.removeAllListeners('voteFailed')
+      this.props.socket.removeAllListeners('timer')
+
+      this.props.socket.on('playAgain', () => {
+        this.props.dispatch(resetState())
+        this.props.history.replace('/waiting')
+      })
 
       this.props.history.replace({
         pathname: '/end',
