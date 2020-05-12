@@ -130,7 +130,9 @@ body {
   @include display();
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-content: center;
+  height: 100%;
 
   input[type=text]{
     width: 100%;

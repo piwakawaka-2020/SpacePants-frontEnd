@@ -55,23 +55,40 @@ class CreateRoom extends React.Component {
           <h1 className="header">{this.state.room}</h1>
         </span>
 
-        <form className="formDisplay" id="Create" onSubmit={this.handleSubmit} maxLength='15'>
-          <span>
-            <label>
-              Enter Your Name:
+        <form className="formDisplay" onSubmit={this.handleSubmit} maxLength='15'>
+          <div>
+            <span>
+              <label>
+                Enter Your Name:
             </label>
-            <input type="text" onChange={this.handleChange} name="name" />
-          </span>
-          <div className='toggle-container'>
-            <span>
-              <input type='radio' name='category' id='local' value='local' onChange={this.handleChange} />
-              <label htmlFor='local'>Play Locally</label>
+              <input type="text" onChange={this.handleChange} name="name" />
             </span>
+
             <span>
-              <input type='radio' name='category' id='remote' value='remote' onChange={this.handleChange} />
-              <label htmlFor='remote'>Play Remotely</label>
+              <div className='toggle-container'>
+                <span>
+                  <input type='radio' name='category' id='local' value='local' onChange={this.handleChange} checked={this.state.category === 'local'} />
+                  <label htmlFor='local'>Play Locally</label>
+                </span>
+                <span>
+                  <input type='radio' name='category' id='remote' value='remote' onChange={this.handleChange} checked={this.state.category === 'remote'} />
+                  <label htmlFor='remote'>Play Remotely</label>
+                </span>
+              </div>
+
+              <div>
+                {
+                  this.state.category === 'local' &&
+                  <p>The full experience.  Play the game with all available behaviour directives</p>
+                }
+                {
+                  this.state.category === 'remote' &&
+                  <p>For online play.  Use only tasks that are doable over the internet</p>
+                }
+              </div>
             </span>
           </div>
+
           <div className='btn-bar'>
             <button className="negative-btn" onClick={this.handleClick}>Return</button>
             <input type="submit" className='positive-btn' value="Create" />
