@@ -1,3 +1,4 @@
+/* // Default */
 @font-face {
   font-family: "digi";
   src: url("../fonts/DS-DIGIB.woff") format("woff");
@@ -323,7 +324,7 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  z-index: 0;
+  z-index: -1;
   -webkit-animation: walking 0.8s linear infinite alternate;
           animation: walking 0.8s linear infinite alternate;
 }
@@ -352,8 +353,8 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
-          animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
+  -webkit-animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 3s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
+          animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 0s infinite, zoom 3s cubic-bezier(0.26, 0.75, 0.5, 0.95) 0s infinite;
   -webkit-animation-fill-mode: backwards;
           animation-fill-mode: backwards;
 }
@@ -364,8 +365,8 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.3s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
-          animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1.3s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1.3s infinite;
+  -webkit-animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1s infinite, zoom 3s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1s infinite;
+          animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 1s infinite, zoom 3s cubic-bezier(0.26, 0.75, 0.5, 0.95) 1s infinite;
   -webkit-animation-fill-mode: backwards;
           animation-fill-mode: backwards;
 }
@@ -376,8 +377,8 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2.7s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
-          animation: opacity 3.5s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2.7s infinite, zoom 3.5s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2.7s infinite;
+  -webkit-animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2s infinite, zoom 3s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2s infinite;
+          animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2s infinite, zoom 3s cubic-bezier(0.26, 0.75, 0.5, 0.95) 2s infinite;
   -webkit-animation-fill-mode: backwards;
           animation-fill-mode: backwards;
 }
@@ -385,36 +386,32 @@ body {
 @-webkit-keyframes zoom {
   0% {
     width: auto;
-    height: 800%;
-    z-index: -3;
+    height: 850%;
+    z-index: -8;
   }
-  33% {
-    z-index: -4;
-  }
-  67% {
-    z-index: -5;
+  50% {
+    z-index: -6;
   }
   100% {
     width: auto;
     height: 0%;
+    z-index: -4;
   }
 }
 
 @keyframes zoom {
   0% {
     width: auto;
-    height: 800%;
-    z-index: -3;
+    height: 850%;
+    z-index: -8;
   }
-  33% {
-    z-index: -4;
-  }
-  67% {
-    z-index: -5;
+  50% {
+    z-index: -6;
   }
   100% {
     width: auto;
     height: 0%;
+    z-index: -4;
   }
 }
 
