@@ -116,6 +116,23 @@ body {
   }
 }
 
+.formDisplay {
+  @include display();
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  input[type=text]{
+    width: 100%;
+    @include box-sizing();
+    margin: {
+      top: 10px;
+      bottom: 15px;
+    }
+    padding-left: 5px;
+  }
+}
+
 //Waiting Room
 .usersDisplay {
   @include display();
@@ -263,7 +280,7 @@ body {
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: -1;
+  z-index: 0;
   animation: walking 0.8s linear infinite alternate;
 }
 
