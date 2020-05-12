@@ -26,7 +26,7 @@ class EndRoom extends React.Component {
         <h3>Time Remaining: {this.props.location.state.time}</h3>
 
         <div className='commsDisplay'>
-          <p><solid>The alien completed these tasks:</solid></p>
+          <p><strong>The alien completed these tasks:</strong></p>
           {
             (this.props.location.state.taskList.length == 1) ?
 
@@ -34,7 +34,7 @@ class EndRoom extends React.Component {
 
               this.props.location.state.taskList.map((task, i) => {
                 return (
-                  <div key={i} className='taskSummary'>
+                  <div key={i} className='task-summary'>
                     <p>{task.task}</p>
                     <p
                       style={{ textAlign: 'center', color: task.complete ? '#357baf' : '#ba4385' }}>

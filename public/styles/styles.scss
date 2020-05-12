@@ -163,12 +163,12 @@ body {
   }
 }
 
-.taskSummary {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: nowrap;
+.task-summary {
+  margin-bottom: 25px;
+
+  p {
+    margin-bottom: 5px;
+  }
 }
 
 .btn-bar {
