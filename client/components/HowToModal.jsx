@@ -19,7 +19,6 @@ class HowToModal extends React.Component {
       backgroundColor: '#23272a',
       borderRadius: '10px',
       margin: 'auto',
-      color: 'black',
       maxHeight: '90%',
     }
   };

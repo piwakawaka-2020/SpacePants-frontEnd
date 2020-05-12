@@ -52,7 +52,7 @@ class Comms extends React.Component {
 
   render() {
     return (
-      <div className='display'>
+      <div className='commsDisplay'>
         {
           this.props.localUser.role === 'Alien' &&
           <>
@@ -62,8 +62,8 @@ class Comms extends React.Component {
             </span>
 
             <span className='btn-bar'>
-              <button onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
-              <button onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
+              <button className='negative-btn' onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
+              <button className='positive-btn' onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
             </span>
           </>
         }
