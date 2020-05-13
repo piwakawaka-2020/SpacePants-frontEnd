@@ -20,6 +20,10 @@ class WaitingRoom extends React.Component {
     })
   }
 
+  componentWillUnmount() {
+    this.props.socket.removeAllListeners('role')
+  }
+
   colour() {
     const col = Math.random()
     if (col < 0.33) {
