@@ -11,6 +11,7 @@ class LandingPage extends React.Component {
   }
 
   toggleModal = e => {
+
     positiveClick.play()
     this.setState({
       showModal: !this.state.showModal
@@ -26,8 +27,6 @@ class LandingPage extends React.Component {
     }
     this.setState({
       showModal: !this.state.showModal
-    })
-  }
 
   render() {
     return (

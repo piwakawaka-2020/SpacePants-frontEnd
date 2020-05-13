@@ -6,9 +6,6 @@ import { addRole, joinRoom } from '../actions/localUser'
 
 import { positiveClick, negativeClick } from '../../server/sound'
 
-
-
-
 //random user colours
 
 class WaitingRoom extends React.Component {

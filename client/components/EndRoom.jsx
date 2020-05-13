@@ -22,7 +22,9 @@ class EndRoom extends React.Component {
   }
 
   playAgain = e => {
+
     positiveClick.play()
+
     let room = this.props.localUser.room
     this.props.socket.emit('playAgain', room)
   }

@@ -9,7 +9,7 @@ class JoinRoom extends React.Component {
 
   componentDidMount() {
     this.props.socket.on('usersWaiting', ({users, inProgress}) => {
-    
+
       if (users.includes(this.state.name)) {
         this.setState({ usernameTaken: true })
         return
