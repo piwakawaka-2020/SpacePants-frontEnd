@@ -11,12 +11,20 @@
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
       rel="stylesheet">
 
-    <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="icon" type="image/png" href="img/favicon.png" sizes="32x32">
-  </head>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+    rel="stylesheet">
 
-  <body class="background">
-    <div id='app'></div>
-    <script src='/bundle.js'></script>
-  </body>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="img/favicon.png" sizes="32x32">
+</head>
+
+<body class="background">
+  <div id='app'></div>
+  <script src='/bundle.js'></script>
+  <script type='module'>
+    import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+    const el = document.createElement('pwa-update');
+    document.body.appendChild(el);</script>
+</body>
+
 </html>
