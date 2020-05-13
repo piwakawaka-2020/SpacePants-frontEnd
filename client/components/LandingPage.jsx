@@ -9,15 +9,9 @@ class LandingPage extends React.Component {
     showModal: false
   }
 
-  showModal = e => {
+  toggleModal = e => {
     this.setState({
-      showModal: true
-    })
-  }
-
-  closeModal = e => {
-    this.setState({
-      showModal: false
+      showModal: !this.state.showModal
     })
   }
 
@@ -36,9 +30,9 @@ class LandingPage extends React.Component {
           <button className='positive-btn' onClick={() => this.props.history.push('/join')}>Join Game</button>
         </div>
 
-        <p className="instructions-btn" onClick={this.showModal}>How to play</p>
+        <p className="instructions-btn" onClick={this.toggleModal}>How to play</p>
 
-        <HowToModal showModal={this.state.showModal} closeModal={this.closeModal} />
+        <HowToModal showModal={this.state.showModal} closeModal={this.toggleModal} />
       </div>
     )
   }
