@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import { receiveHint, receiveTask, completeTask } from '../actions/localUser'
 
+
 class Comms extends React.Component {
 
   state = {

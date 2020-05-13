@@ -6,6 +6,8 @@ import TransitionContainer from './TransitionContainer'
 import VoteResultModal from './VoteResultModal'
 import { resetState } from '../actions/localUser'
 
+import { voteClick } from '../../server/sound'
+
 class GameRoom extends React.Component {
 
   state = {
@@ -102,6 +104,7 @@ class GameRoom extends React.Component {
   }
 
   handleVote = e => {
+    voteClick.play()
     this.props.socket.emit('disableVote')
     this.setState(prevState => ({
       voteActive: !this.state.voteActive,
@@ -133,6 +136,7 @@ class GameRoom extends React.Component {
       <>
         <h1 className="fancyHeader">You are {this.props.localUser.role}</h1>
         <span className='time-container'>
+          <span className="timeUnderlay">8:88</span>
           <p className="time">{this.state.time}</p>
           {
             this.props.localUser.role === 'Alien' &&

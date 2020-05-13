@@ -1,6 +1,7 @@
 import React from 'react'
 import { joinRoom } from '../actions/localUser'
 import { connect } from 'react-redux'
+import { positiveClick, negativeClick } from '../../server/sound'
 
 class CreateRoom extends React.Component {
 
@@ -25,12 +26,12 @@ class CreateRoom extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    positiveClick.play()
 
     const userData = {
       name: this.state.name,
       room: this.state.room,
     }
-
     this.props.dispatch(joinRoom(userData, this.props.socket))
     this.props.socket.emit('setRoomCategory', this.state.category)
     this.props.history.replace('/waiting')
@@ -44,6 +45,7 @@ class CreateRoom extends React.Component {
   }
 
   handleClick = (e) => {
+    negativeClick.play()
     this.props.history.replace('/')
   }
 

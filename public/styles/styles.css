@@ -1,7 +1,7 @@
 /* // Default */
 @font-face {
   font-family: "digi";
-  src: url("../fonts/DS-DIGIB.woff") format("woff");
+  src: url("../fonts/DS-ODEO.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -64,13 +64,6 @@ body {
   color: transparent;
 }
 
-.time-container {
-  width: 100%;
-  text-align: center;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 .toggle-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -85,10 +78,27 @@ body {
   margin-right: 10px;
 }
 
-.time {
-  font-family: "digi";
+.time-container {
   width: 100%;
-  font-size: 6rem;
+  text-align: center;
+  padding: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.timeUnderlay {
+  display: block;
+  position: absolute;
+  width: inherit;
+  left: 0;
+  right: 0;
+  opacity: 0.15;
+}
+
+.time, .timeUnderlay {
+  font-family: "digi";
+  width: inherit;
+  font-size: 7rem;
   text-align: center;
   padding: 0;
   margin: 0;
@@ -195,6 +205,16 @@ body {
   font-size: 1.5rem;
 }
 
+#alien {
+  background: center/100% url("../img/SpacePantsWC-3-hori.png");
+  text-shadow: 2px 2px #8858ac;
+}
+
+#human {
+  background: center/100% url("../img/SpacePantsWC-1.png");
+  text-shadow: 2px 2px #357baf;
+}
+
 .hint-list {
   overflow-y: scroll;
   scrollbar-width: none;
@@ -264,8 +284,6 @@ body {
   -webkit-animation: bgcolorchange 12s infinite;
           animation: bgcolorchange 12s infinite;
   width: 90%;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 .positive-btn {
@@ -278,9 +296,8 @@ body {
 
 .fancy-btn {
   font-weight: bold;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   width: 100%;
+  margin: auto;
   background-image: url("/img/wc1.png");
   background-size: cover;
 }
@@ -368,26 +385,6 @@ body {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: -1;
-  -webkit-animation: walking 0.8s linear infinite alternate;
-          animation: walking 0.8s linear infinite alternate;
-}
-
-@-webkit-keyframes walking {
-  from {
-    content: url("../img/pants-lg-157-285.png");
-  }
-  to {
-    content: url("../img/pants-step2-157-285.png");
-  }
-}
-
-@keyframes walking {
-  from {
-    content: url("../img/pants-lg-157-285.png");
-  }
-  to {
-    content: url("../img/pants-step2-157-285.png");
-  }
 }
 
 .lightblue {

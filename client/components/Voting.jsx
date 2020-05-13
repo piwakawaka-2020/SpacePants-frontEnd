@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { useVote } from '../actions/localUser'
+import {voteClick} from '../../server/sound'
 
 class Voting extends React.Component {
 
@@ -12,7 +13,7 @@ class Voting extends React.Component {
 
   handleVote = (event) => {
     event.preventDefault()
-
+    voteClick.play()
     this.setState({
       voteName: event.target.name
     }, () => {
