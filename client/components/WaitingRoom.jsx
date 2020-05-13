@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { addRole } from '../actions/localUser'
+import { addRole, joinRoom } from '../actions/localUser'
 
 
 //random user colours
@@ -11,7 +11,7 @@ class WaitingRoom extends React.Component {
 
   state = {
     users: [],
-    disableStart: false
+    // disableStart: false
   }
 
   componentDidMount() {
@@ -20,11 +20,12 @@ class WaitingRoom extends React.Component {
       this.props.history.replace('/game')
     })
     this.props.socket.on('waitOver', newRoom => {
+      // this.props.dispatch(joinRoom(userData, this.props.socket))
       let oldRoom = this.props.room
       let name = this.props.name
       this.props.socket.emit('leaveRoom', oldRoom)
-      this.props.socket.emit('user', {name, room: newRoom})
-      this.setState({disableStart: false})
+      this.props.dispatch(joinRoom({name, room: newRoom}, this.props.socket)) // 
+      // this.setState({disableStart: false})
     })
   }
 
@@ -48,11 +49,11 @@ class WaitingRoom extends React.Component {
     this.props.history.replace('/')
   }
 
-  disableStart = () => {
-    if (this.props.room.includes('game in progress') || this.props.users.length < 1) {
-      this.setState({disableStart: true})
-    } else {this.setState({disableStart: false})}
-  }
+  // disableStart = () => {
+  //   if (this.props.room.includes('game in progress') || this.props.users.length < 1) {
+  //     this.setState({disableStart: true})
+  //   } else {this.setState({disableStart: false})}
+  // }
 
   render() {
     
