@@ -52,7 +52,7 @@ class CreateRoom extends React.Component {
       <>
         <span style={{ textAlign: 'center' }}>
           <h1 className="header">Create a Game</h1>
-          <p>Room Code:</p>
+          <p className='tagline'>Room Code:</p>
           <h1 className="header">{this.state.room}</h1>
         </span>
 

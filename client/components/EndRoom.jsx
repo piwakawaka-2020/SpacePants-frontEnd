@@ -21,10 +21,10 @@ class EndRoom extends React.Component {
     return (
       <>
 
-        <h3 className='header'>The winner is...</h3>
+        <p className='tagline'>The winner is...</p>
         <h1 className='fancyHeader'>{this.props.location.state.winner}!</h1>
 
-        <h3>Time Remaining: {this.props.location.state.time}</h3>
+        <p className='tagline'>Time Remaining: {this.props.location.state.time}</p>
 
         <div className='commsDisplay'>
           <p><strong>The alien completed these tasks:</strong></p>

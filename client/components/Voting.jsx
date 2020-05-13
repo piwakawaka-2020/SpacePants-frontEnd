@@ -56,7 +56,7 @@ class Voting extends React.Component {
         {
           this.props.castVote &&
           <>
-            <h2>Who do you accuse?</h2>
+            <p><strong>Who do you accuse?</strong></p>
             {this.props.users.map((user, i) => {
               if (user != this.props.localUser.name) {
                 return (
@@ -72,12 +72,12 @@ class Voting extends React.Component {
           <>
             {this.props.voter === this.props.localUser.name ?
               <>
-                <h2>You accused <strong>{this.props.vote}</strong> of being an Alien!</h2>
+                <p><strong>You accused {this.props.vote} of being an Alien!</strong></p>
                 <p>Who will agree with you?</p>
               </>
               :
               <>
-                <h2><strong>{this.props.voter}</strong> thinks <strong>{this.props.vote}</strong> is an Alien! How shall we proceed?</h2>
+                <p><strong>{this.props.voter} thinks {this.props.vote} is an Alien! How shall we proceed?</strong></p>
                 {!this.state.cast ?
                   <div className='btn-bar'>
                     <button className='accuse-btn' onClick={() => this.sendVote(true)}>Alien Autopsy!</button>

@@ -217,7 +217,7 @@ body {
   margin-bottom: 5px;
 }
 
-.task-count {
+.tagline {
   margin: 0px;
 }
 
@@ -242,8 +242,8 @@ body {
 
 .accuse-btn, .positive-btn, .negative-btn, .fancy-btn {
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 0px;
-          flex: 1 0 0px;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0px;
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 0.5rem;
