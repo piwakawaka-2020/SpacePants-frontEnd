@@ -17,7 +17,7 @@
 
 .slide-enter.slide-enter-active {
   transform: translateX(0);
-  transition: 250ms linear;
+  transition: 150ms linear;
 }
 
 .slide-exit {
@@ -26,5 +26,5 @@
 
 .slide-exit.slide-exit-active {
   transform: translateX(-101%);
-  transition: 250ms linear;
+  transition: 150ms linear;
 }
