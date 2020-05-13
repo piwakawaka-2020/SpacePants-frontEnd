@@ -50,6 +50,12 @@ body {
   padding: $defaultPadding/2;
   margin: 0px;
   font-size: 3.5rem;
+
+  &.main {
+    position: relative;
+    top: 50px;
+    font-size: 5rem;
+  }
 }
 
 .fancyHeader {
@@ -62,7 +68,7 @@ body {
     image: url("../img/wc1.png");
     size: cover;
     clip: text;
-  }
+  };
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -181,6 +187,10 @@ body {
   }
 }
 
+.task-count {
+  margin: 0px;
+}
+
 .btn-bar {
   display: flex;
   flex-direction: row;
@@ -232,6 +242,17 @@ body {
   width: 100%;
   background-image: url("/img/wc1.png");
   background-size: cover;
+}
+
+.instructions-btn {
+  position: fixed;
+  color: $purple;
+  background-color: #23272a99;
+  top: -2rem;
+  right: 28px;
+  padding: 5px;
+
+
 }
 
 // HOW TO MODAL
@@ -361,22 +382,6 @@ body {
   to {
     opacity: 1;
   }
-}
-
-.instructions-btn {
-  position: fixed;
-  color: $purple;
-  background-color: #23272a99;
-  height: 3.2rem;
-  top: -1rem;
-  right: 28px;
-}
-
-.lp-btn-bar {
-  position: absolute;
-  bottom: 5%;
-  align-content: center;
-  width: 100%;
 }
 
 // Color change
