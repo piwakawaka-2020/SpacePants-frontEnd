@@ -55,6 +55,9 @@ body {
     position: relative;
     top: 50px;
     font-size: 5rem;
+    animation: textcolorchange infinite, jackInTheBox;
+    animation-duration: 5s;
+    text-shadow: 15px 15px 50px $purple;
   }
 }
 
@@ -367,6 +370,13 @@ body {
   animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2s infinite, 
     zoom 3s cubic-bezier(0.26, 0.75, 0.50, 0.95) 2s infinite;
   animation-fill-mode: backwards;
+}
+
+// SET DURATION FOR ANIMATE CSS
+
+.pants {
+  animation: zoomInLeft;
+  animation-duration: 5s;
 }
 
 @keyframes zoom {
