@@ -4,6 +4,8 @@ import HowToModal from "./HowToModal"
 import { connect } from 'react-redux'
 import { positiveClick } from '../../server/sound'
 
+
+
 class LandingPage extends React.Component {
   componentDidMount() {
     const img1 = '../img/pants-lg-157-285.png'
@@ -18,6 +20,7 @@ class LandingPage extends React.Component {
 
     this.setState({walkingPants})
 
+    this.shadow()
   }
 
   componentWillUnmount() {
@@ -26,7 +29,8 @@ class LandingPage extends React.Component {
 
   state = {
     showModal: false,
-    pantsImage: ''
+    pantsImage: '',
+    shadowArr: []
   }
 
   toggleModal = e => {
@@ -48,16 +52,61 @@ class LandingPage extends React.Component {
     })
   }
 
+  // .header {
+  // text-align: center;
+  // color: $pink;
+  // padding: $defaultPadding/2;
+  // margin: 0px;
+  // font-size: 3.5rem;
+
+  // &.main {
+  //   position: relative;
+  //   top: 68px;
+    
+  //   font-size: 5rem;
+  //   letter-spacing: .03rem;
+  shadow = () => {
+    let top = 76
+    let fontSize = 5
+    let colour = 174
+    let shadowStyle = {
+      textAlign: 'center',
+      color: `rgb(${colour},${colour},${colour})`,
+      margin: '0px',
+      position: 'absolute',
+      top: `${top}px`, 
+      fontSize: `${fontSize}rem`,
+      letterSpacing: '.03rem',
+      zIndex: -5,
+      opacity: 1
+    }
+    let shadowArr = []
+    for (let i=0; i<50; i++) {
+      shadowStyle = {
+        ...shadowStyle,
+        top: `${top+(i*1.3)}px`,
+        fontSize: `${fontSize-(i/40)}rem`,
+        opacity: shadowStyle.opacity-(i/((i+1)*50)),
+        color: `rgb(${colour-(i*1.5)},${colour-(i*4.5)},${colour-(i*2.75)})`,
+        zIndex: shadowStyle.zIndex-1
+
+      }
+      shadowArr.push(<h1 key={i} style={shadowStyle}>SpacePants</h1>)
+    }
+    // console.log(shadowArr)
+    // console.log(shadowArr.map(item=> {return {color: item.props.style.color}}))
+    this.setState({shadowArr})
+  }
   render() {
+ 
     return (
       <div className='wrapper'>
         <img className='pants' src={this.state.pantsImage} />
         <img className='lightblue' src='./img/bg-lightblue-space.png' />
         <img className='darkblue' src='./img/bg-darkblue-space.png' />
         <img className='purple' src='./img/bg-purple-space.png' />
-
         <h1 className='header main'>SpacePants</h1>
-
+        {this.state.shadowArr}
         <div className="btn-bar">
           <button className='positive-btn' onClick={this.handleClick}>Create Game</button>
           <button className='positive-btn' onClick={this.handleClick}>Join Game</button>
