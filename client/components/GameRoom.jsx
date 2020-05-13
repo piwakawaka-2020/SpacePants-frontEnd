@@ -3,7 +3,8 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
 
 import TransitionContainer from './TransitionContainer'
-import { resetState, setPlayStatus } from '../actions/localUser'
+import VoteResultModal from './VoteResultModal'
+import { resetState } from '../actions/localUser'
 
 import { voteClick } from '../../server/sound'
 
@@ -25,7 +26,6 @@ class GameRoom extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(setPlayStatus(true))
     this.props.socket.on('timer', time => {
       this.setState({
         time
@@ -59,16 +59,12 @@ class GameRoom extends React.Component {
 
     this.props.socket.on('voteFailed', () => {
       this.setState({
-        screen: 'Comms',
-        voteActive: false,
-        disableVote: false,
-        voteData: {
-          castVote: false,
-          receiveVote: false,
-          vote: '',
-          voter: ''
-        },
+        showModal: true,
       })
+
+      setTimeout(() => {
+        this.closeModal()
+      }, 3000)
     })
 
     this.props.socket.on('gameOver', ({ winner }) => {
@@ -120,6 +116,21 @@ class GameRoom extends React.Component {
     }))
   }
 
+  closeModal = e => {
+    this.setState({
+      showModal: false,
+      screen: 'Comms',
+      voteActive: false,
+      disableVote: false,
+      voteData: {
+        castVote: false,
+        receiveVote: false,
+        vote: '',
+        voter: ''
+      },
+    })
+  }
+
   render() {
     return (
       <>
@@ -146,13 +157,14 @@ class GameRoom extends React.Component {
 
 
         <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote || this.state.disableVote}>Vote</button>
+
+        <VoteResultModal showModal={this.state.showModal} closeModal={this.closeModal} />
       </>
     )
   }
 }
 
 function mapStateToProps(globalState) {
-  console.log('GameRoom: ', globalState)
   return {
     socket: globalState.localUser.socket,
     localUser: globalState.localUser,

@@ -31,9 +31,7 @@ class CreateRoom extends React.Component {
     const userData = {
       name: this.state.name,
       room: this.state.room,
-      play: false
     }
-    console.log(userData)
     this.props.dispatch(joinRoom(userData, this.props.socket))
     this.props.socket.emit('setRoomCategory', this.state.category)
     this.props.history.replace('/waiting')
