@@ -12,7 +12,6 @@ class GameRoom extends React.Component {
   state = {
     task: '',
     hint: '',
-    disabled: false,
     time: '5:00',
     screen: 'Comms',
     voteActive: false,
@@ -83,19 +82,6 @@ class GameRoom extends React.Component {
     })
 
     this.props.socket.on('finalScreen', endData => {
-
-      this.props.socket.removeAllListeners('receiveVote')
-      this.props.socket.removeAllListeners('disableVote')
-      this.props.socket.removeAllListeners('voteFailed')
-      this.props.socket.removeAllListeners('timer')
-      this.props.socket.removeAllListeners('finalScreen')
-      this.props.socket.removeAllListeners('gameOver')
-
-      this.props.socket.on('playAgain', () => {
-        this.props.dispatch(resetState())
-        this.props.history.replace('/waiting')
-      })
-
       this.props.history.replace({
         pathname: '/end',
         state: {
@@ -104,6 +90,20 @@ class GameRoom extends React.Component {
           time: this.state.time
         }
       })
+    })
+  }
+
+  componentWillUnmount() {
+    const callbacks = Object.keys(this.props.socket._callbacks)
+    callbacks.forEach(el => {
+      if (el != '$user') {
+        this.props.socket.removeAllListeners(el.substr(1))
+      }
+    });
+
+    this.props.socket.on('playAgain', () => {
+      this.props.dispatch(resetState())
+      this.props.history.replace('/waiting')
     })
   }
 
@@ -123,14 +123,13 @@ class GameRoom extends React.Component {
   render() {
     return (
       <>
-
         <h1 className="fancyHeader">You are {this.props.localUser.role}</h1>
         <span className='time-container'>
           <span className="timeUnderlay">8:88</span>
           <p className="time">{this.state.time}</p>
           {
             this.props.localUser.role === 'Alien' &&
-            <p>Tasks Completed: {this.props.localUser.completedTasks}</p>
+            <p className='task-count'>Tasks Completed: {this.props.localUser.completedTasks}</p>
           }
         </span>
 
@@ -140,12 +139,13 @@ class GameRoom extends React.Component {
             addEndListener={(node, done) => { node.addEventListener("transitionend", done, false) }}
             classNames="slide">
 
-            <TransitionContainer screen={this.state.screen} voteData={this.state.voteData} handleVote={this.handleVote} time={this.state.time}/>
+            <TransitionContainer screen={this.state.screen} voteData={this.state.voteData} handleVote={this.handleVote} time={this.state.time} />
 
           </CSSTransition>
         </SwitchTransition>
 
-        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote || this.state.screen === 'Votes' || this.state.disableVote}>Vote</button>
+
+        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote || this.state.disableVote}>Vote</button>
       </>
     )
   }

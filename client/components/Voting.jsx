@@ -33,7 +33,6 @@ class Voting extends React.Component {
 
   sendVote = vote => {
     this.setState({
-      vote: vote ? 'Affirmative' : 'Negative',
       cast: true
     })
 
