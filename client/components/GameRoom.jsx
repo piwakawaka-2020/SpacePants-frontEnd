@@ -140,7 +140,7 @@ class GameRoom extends React.Component {
           <p className="time">{this.state.time}</p>
           {
             this.props.localUser.role === 'Alien' &&
-            <p className='task-count'>Tasks Completed: {this.props.localUser.completedTasks}</p>
+            <p className='tagline'>Tasks Completed: {this.props.localUser.completedTasks}</p>
           }
         </span>
 
