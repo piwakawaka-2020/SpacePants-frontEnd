@@ -8,15 +8,16 @@ import { positiveClick, negativeClick } from '../../server/sound'
 class JoinRoom extends React.Component {
 
   componentDidMount() {
-    this.props.socket.on('usersWaiting', userArr => {
-      if (userArr.includes(this.state.name)) {
+    this.props.socket.on('usersWaiting', ({users, inProgress}) => {
+      
+      if (users.includes(this.state.name)) {
         this.setState({ usernameTaken: true })
         return
       } else {
 
         const userData = {
           name: this.state.name,
-          room: this.state.room,
+          room: inProgress ? `${this.state.room} - game in progress` : this.state.room,
         }
         this.props.dispatch(joinRoom(userData, this.props.socket))
         this.props.history.replace('/waiting')
