@@ -84,7 +84,7 @@ class JoinRoom extends React.Component {
           </span>
           <div className='btn-bar'>
             <button className="negative-btn" onClick={this.handleClick}>Return</button>
-            <input className='positive-btn' type="submit" value="Join" disabled={this.state.disableSubmit} />
+            <input className={`positive-btn ${this.state.disableSubmit ? 'disabled-btn' : undefined}`} type="submit" value="Join" disabled={this.state.disableSubmit} />
           </div>
         </form>
         {this.state.usernameTaken && <p className="tipText">{this.state.name} is already in this room. Enter a new name and try again.</p>}

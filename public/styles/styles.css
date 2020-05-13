@@ -312,6 +312,10 @@ body {
   z-index: 5;
 }
 
+.disabled-btn {
+  opacity: 0.3;
+}
+
 .description h1 {
   width: 100%;
   text-align: center;
