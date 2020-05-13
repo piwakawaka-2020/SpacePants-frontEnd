@@ -430,6 +430,13 @@ body {
           animation-fill-mode: backwards;
 }
 
+.pants {
+  -webkit-animation: zoomInLeft;
+          animation: zoomInLeft;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+}
+
 @-webkit-keyframes zoom {
   0% {
     width: auto;

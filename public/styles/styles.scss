@@ -54,7 +54,6 @@ body {
   &.main {
     position: relative;
     top: 68px;
-    
     font-size: 5rem;
     letter-spacing: .03rem;
     z-index: -1;
@@ -398,6 +397,13 @@ body {
   animation: opacity 3s cubic-bezier(0.5, 0.95, 0.95, 0.46) 2s infinite, 
     zoom 3s cubic-bezier(0.26, 0.75, 0.50, 0.95) 2s infinite;
   animation-fill-mode: backwards;
+}
+
+// SET DURATION FOR ANIMATE CSS
+
+.pants {
+  animation: zoomInLeft;
+  animation-duration: 5s;
 }
 
 @keyframes zoom {

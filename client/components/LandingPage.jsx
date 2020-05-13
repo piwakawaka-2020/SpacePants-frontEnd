@@ -110,11 +110,11 @@ class LandingPage extends React.Component {
        
         {this.state.shadowArr}
         <div className="btn-bar">
-          <button className='positive-btn' onClick={this.handleClick}>Create Game</button>
-          <button className='positive-btn' onClick={this.handleClick}>Join Game</button>
+          <button className='positive-btn animate__animated animate__zoomInLeft animate__delay-3s animate__slow' onClick={this.handleClick}>Create Game</button>
+          <button className='positive-btn animate__animated animate__zoomInRight animate__delay-3s animate__slow' onClick={this.handleClick}>Join Game</button>
         </div>
 
-        <p className="instructions-btn" onClick={this.toggleModal}>How to play</p>
+        <p className="instructions-btn animate__animated animate__slideInDown animate__delay-3s animate__slow" onClick={this.toggleModal}>How to play</p>
 
         <HowToModal showModal={this.state.showModal} closeModal={this.toggleModal} />
       </div>
