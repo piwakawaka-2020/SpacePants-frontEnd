@@ -4,7 +4,7 @@ import Voting from './Voting'
 import Comms from './Comms'
 
 class TransitionContainer extends React.Component {
-  
+
   state = {
     screen: this.props.screen
   }
@@ -12,11 +12,11 @@ class TransitionContainer extends React.Component {
   render() {
     return (
       <>
-        {this.state.screen === 'Comms' &&
-          <Comms time={this.props.time}/>
-        }
-        {this.state.screen === 'Votes' &&
-          <Voting {...this.props.voteData}  />
+        {
+          this.state.screen ?
+            <Voting {...this.props.voteData} />
+            :
+            <Comms time={this.props.time} />
         }
       </>
     )

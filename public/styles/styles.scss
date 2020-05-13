@@ -130,7 +130,7 @@ body {
   padding: 0;
   margin: 0;
   color: $pink;
-  text-shadow: 0px 1px 5px rgba(136, 88, 172, 0.8);
+  text-shadow: 0px 1px 10px rgba(136, 88, 172, 0.8);
 }
 
 @mixin display {
@@ -294,6 +294,10 @@ body {
   right: 28px;
   padding: 5px;
   z-index: 5;
+}
+
+.disabled-btn {
+  opacity: 0.3;
 }
 
 // HOW TO MODAL

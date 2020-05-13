@@ -14,12 +14,11 @@ class GameRoom extends React.Component {
     task: '',
     hint: '',
     time: '5:00',
-    screen: 'Comms',
-    voteActive: false,
-    disableVote: false,
+    voteScreenActive: false,
+    disableVoteBtn: false,
     voteData: {
-      castVote: false,
-      receiveVote: false,
+      hasCastVote: false,
+      hasReceivedVote: false,
       vote: '',
       voter: ''
     },
@@ -39,18 +38,17 @@ class GameRoom extends React.Component {
 
     this.props.socket.on('disableVote', () => {
       this.setState({
-        disableVote: true
+        disableVoteBtn: true
       })
     })
 
     this.props.socket.on('receiveVote', voteData => {
       navigator.vibrate([250])
       this.setState({
-        screen: 'Votes',
-        voteActive: true,
+        voteScreenActive: true,
         voteData: {
-          castVote: false,
-          receiveVote: true,
+          hasCastVote: false,
+          hasReceivedVote: true,
           voter: voteData.voter,
           vote: voteData.vote
         }
@@ -64,7 +62,7 @@ class GameRoom extends React.Component {
 
       setTimeout(() => {
         this.closeModal()
-      }, 3000)
+      }, 2000)
     })
 
     this.props.socket.on('gameOver', ({ winner }) => {
@@ -107,11 +105,10 @@ class GameRoom extends React.Component {
     voteClick.play()
     this.props.socket.emit('disableVote')
     this.setState(prevState => ({
-      voteActive: !this.state.voteActive,
-      screen: this.state.screen === 'Comms' ? 'Votes' : 'Comms',
+      voteScreenActive: true,
       voteData: {
         ...prevState.voteData,
-        castVote: true
+        hasCastVote: true
       }
     }))
   }
@@ -119,12 +116,11 @@ class GameRoom extends React.Component {
   closeModal = e => {
     this.setState({
       showModal: false,
-      screen: 'Comms',
-      voteActive: false,
-      disableVote: false,
+      voteScreenActive: false,
+      disableVoteBtn: false,
       voteData: {
-        castVote: false,
-        receiveVote: false,
+        hasCastVote: false,
+        hasReceivedVote: false,
         vote: '',
         voter: ''
       },
@@ -146,17 +142,22 @@ class GameRoom extends React.Component {
 
         <SwitchTransition mode={'out-in'}>
           <CSSTransition
-            key={this.state.voteActive}
+            key={this.state.voteScreenActive}
             addEndListener={(node, done) => { node.addEventListener("transitionend", done, false) }}
             classNames="slide">
 
-            <TransitionContainer screen={this.state.screen} voteData={this.state.voteData} handleVote={this.handleVote} time={this.state.time} />
+            <TransitionContainer screen={this.state.voteScreenActive} voteData={this.state.voteData} handleVote={this.handleVote} time={this.state.time} />
 
           </CSSTransition>
         </SwitchTransition>
 
 
-        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote || this.state.disableVote}>Vote</button>
+        <button
+          className={`fancy-btn ${!this.props.localUser.hasVote || this.state.disableVoteBtn ? 'disabled-btn' : undefined} `}
+          onClick={this.handleVote}
+          disabled={!this.props.localUser.hasVote || this.state.disableVoteBtn}>
+          Vote
+        </button>
 
         <VoteResultModal showModal={this.state.showModal} closeModal={this.closeModal} />
       </>

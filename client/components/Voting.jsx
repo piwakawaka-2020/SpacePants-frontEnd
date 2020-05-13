@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { useVote } from '../actions/localUser'
-import {voteClick} from '../../server/sound'
+import { voteClick } from '../../server/sound'
 
 class Voting extends React.Component {
 
@@ -55,7 +55,7 @@ class Voting extends React.Component {
     return (
       <div className='voteDisplay'>
         {
-          this.props.castVote &&
+          this.props.hasCastVote &&
           <>
             <p><strong>Who do you accuse?</strong></p>
             {this.props.users.map((user, i) => {
@@ -69,7 +69,7 @@ class Voting extends React.Component {
           </>
         }
         {
-          this.props.receiveVote &&
+          this.props.hasReceivedVote &&
           <>
             {this.props.voter === this.props.localUser.name ?
               <>

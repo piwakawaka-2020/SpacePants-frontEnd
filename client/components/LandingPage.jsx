@@ -2,7 +2,7 @@ import React from "react"
 import HowToModal from "./HowToModal"
 
 import { connect } from 'react-redux'
-import { positiveClick } from '../../server/sound'
+import { positiveClick, negativeClick } from '../../server/sound'
 
 
 
@@ -34,7 +34,7 @@ class LandingPage extends React.Component {
   }
 
   toggleModal = e => {
-    positiveClick.play()
+    this.state.showModal ? negativeClick.play() : positiveClick.play()
     this.setState({
       showModal: !this.state.showModal
     })

@@ -6,7 +6,7 @@ const initialState = {
   role: '',
   tasks: [],
   hints: [''],
-  vote: true,
+  hasVote: true,
   result: '',
   completedTasks: 0
 }
@@ -40,7 +40,7 @@ const localUser = (state = initialState, action) => {
       return state
 
     case USE_VOTE:
-      state.vote = false
+      state.hasVote = false
 
     case SET_RESULT:
       state.result = action.result
@@ -50,7 +50,7 @@ const localUser = (state = initialState, action) => {
       state.role = ''
       state.tasks = []
       state.hints = ['']
-      state.vote = true
+      state.hasVote = true
       state.result = ''
       state.completedTasks = 0
 

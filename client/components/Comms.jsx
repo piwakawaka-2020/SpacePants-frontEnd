@@ -55,7 +55,8 @@ class Comms extends React.Component {
 
     if (Number(seconds) < 31 && minutes == '0') {
       this.setState({
-        task: 'No more submissions needed!  You have successfully integrated into human culture.  Surely they won\'t discover you in the final few seconds...'
+        task: 'No more submissions needed!  You have successfully integrated into human culture.  Surely they won\'t discover you in the final few seconds...',
+        disabled: true
       })
     } else {
       this.props.dispatch(completeTask(this.props.socket, this.props.room))
@@ -76,8 +77,18 @@ class Comms extends React.Component {
               </span>
 
               <span className='btn-bar'>
-                <button className='negative-btn' onClick={this.handleSkip} disabled={this.state.disabled}>Skip</button>
-                <button className='positive-btn' onClick={this.handleComplete} disabled={this.state.disabled}>Complete</button>
+                <button
+                  className={`negative-btn ${this.state.disabled ? 'disabled-btn' : undefined}`}
+                  onClick={this.handleSkip}
+                  disabled={this.state.disabled}>
+                    Skip
+                </button>
+                <button
+                  className={`positive-btn ${this.state.disabled ? 'disabled-btn' : undefined}`}
+                  onClick={this.handleComplete}
+                  disabled={this.state.disabled}>
+                    Complete
+                </button>
               </span>
             </>
           }
