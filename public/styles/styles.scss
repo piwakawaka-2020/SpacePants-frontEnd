@@ -337,17 +337,7 @@ body {
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1;
-  animation: walking 0.8s linear infinite alternate;
-}
-
-@keyframes walking {
-  0% { 
-    content: url("../img/pants-lg-157-285.png");
-  }
-  100% {
-    content: url("../img/pants-step2-157-285.png");
-  }
+  z-index: -1;
 }
 
 //space animations
