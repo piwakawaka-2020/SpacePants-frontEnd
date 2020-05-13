@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { addRole } from '../actions/localUser'
+import { addRole, setPlayStatus } from '../actions/localUser'
 import { positiveClick, negativeClick } from '../../server/sound'
 
 
@@ -33,6 +33,7 @@ class WaitingRoom extends React.Component {
 
   startGame = e => {
     positiveClick.play()
+    this.props.dispatch(setPlayStatus(true))
     this.props.socket.emit('startGame', this.props.room)
   }
 
@@ -69,6 +70,7 @@ class WaitingRoom extends React.Component {
 }
 
 function mapStateToProps(globalState) {
+  console.log(globalState)
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers,

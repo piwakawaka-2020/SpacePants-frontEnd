@@ -4,7 +4,7 @@ export const SET_TASK = 'SET_TASK'
 export const SET_HINT = 'SET_HINT'
 export const SET_TASK_COMPLETE = 'SET_TASK_COMPLETE'
 export const SET_ROLE = 'SET_ROLE'
-export const SET_RESULT = 'SET_RESULT'
+export const SET_PLAY_STATUS = "SET_PLAY_STATUS"
 export const USE_VOTE = 'USE_VOTE'
 export const RESET_STATE = 'RESET_STATE'
 
@@ -51,10 +51,10 @@ export function useVote() {
   }
 }
 
-export function setVoteResult(result) {
+export function setPlayStatus(play) {
   return {
-    type: SET_RESULT,
-    result: result
+    type: SET_PLAY_STATUS,
+    play: play
   }
 }
 

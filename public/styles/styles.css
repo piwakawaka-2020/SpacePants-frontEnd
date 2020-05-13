@@ -58,13 +58,6 @@ body {
   color: transparent;
 }
 
-.time-container {
-  width: 100%;
-  text-align: center;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
 .toggle-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -79,16 +72,26 @@ body {
   margin-right: 10px;
 }
 
-.timeUnderlay {
+.time-container {
+  width: 100%;
+  text-align: center;
   padding: auto;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.timeUnderlay {
   display: block;
   position: absolute;
-  opacity: 0.2;
+  width: inherit;
+  left: 0;
+  right: 0;
+  opacity: 0.15;
 }
 
 .time, .timeUnderlay {
   font-family: "digi";
-  width: 100%;
+  width: inherit;
   font-size: 7rem;
   text-align: center;
   padding: 0;

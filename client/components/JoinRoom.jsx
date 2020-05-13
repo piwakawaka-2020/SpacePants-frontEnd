@@ -17,8 +17,10 @@ class JoinRoom extends React.Component {
         const userData = {
           name: this.state.name,
           room: this.state.room,
+          play: this.state.disableSubmit
         }
         this.props.dispatch(joinRoom(userData, this.props.socket))
+        console.log(userData)
         this.props.history.replace('/waiting')
       }
     })

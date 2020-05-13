@@ -3,7 +3,7 @@ import { CSSTransition, SwitchTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
 
 import TransitionContainer from './TransitionContainer'
-import { resetState } from '../actions/localUser'
+import { resetState, setPlayStatus } from '../actions/localUser'
 
 import { voteClick } from '../../server/sound'
 
@@ -25,6 +25,7 @@ class GameRoom extends React.Component {
   }
 
   componentDidMount() {
+    this.props.dispatch(setPlayStatus(true))
     this.props.socket.on('timer', time => {
       this.setState({
         time
@@ -113,7 +114,7 @@ class GameRoom extends React.Component {
 
         <h1 className="fancyHeader">You are {this.props.localUser.role}</h1>
         <span className='time-container'>
-          <span className="timeUnderlay">0:00</span>
+          <span className="timeUnderlay">8:88</span>
           <p className="time">{this.state.time}</p>
           {
             this.props.localUser.role === 'Alien' &&
@@ -140,6 +141,7 @@ class GameRoom extends React.Component {
 }
 
 function mapStateToProps(globalState) {
+  console.log('GameRoom: ', globalState)
   return {
     socket: globalState.localUser.socket,
     localUser: globalState.localUser,
