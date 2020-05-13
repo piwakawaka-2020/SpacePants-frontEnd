@@ -152,7 +152,12 @@ class GameRoom extends React.Component {
         </SwitchTransition>
 
 
-        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.hasVote || this.state.disableVoteBtn}>Vote</button>
+        <button
+          className={`fancy-btn ${!this.props.localUser.hasVote || this.state.disableVoteBtn ? 'disabled-btn' : undefined} `}
+          onClick={this.handleVote}
+          disabled={!this.props.localUser.hasVote || this.state.disableVoteBtn}>
+          Vote
+        </button>
 
         <VoteResultModal showModal={this.state.showModal} closeModal={this.closeModal} />
       </>
