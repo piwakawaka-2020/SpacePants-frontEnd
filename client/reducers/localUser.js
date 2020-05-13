@@ -50,7 +50,7 @@ const localUser = (state = initialState, action) => {
       state.role = ''
       state.tasks = []
       state.hints = ['']
-      state.vote = true
+      state.hasVote = true
       state.result = ''
       state.completedTasks = 0
 
