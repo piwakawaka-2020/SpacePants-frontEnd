@@ -1,7 +1,9 @@
 import React from 'react'
 
+import { resetState } from '../actions/localUser'
 import { connect } from 'react-redux'
 
+import { positiveClick, winnerSound } from '../../server/sound'
 
 class EndRoom extends React.Component {
 
@@ -11,7 +13,16 @@ class EndRoom extends React.Component {
     alienHistory: []
   }
 
+  componentDidMount() {
+    winnerSound.play()
+    this.props.socket.on('playAgain', () => {
+      this.props.dispatch(resetState())
+      this.props.history.replace('/waiting')
+    })
+  }
+
   playAgain = e => {
+    positiveClick.play()
     let room = this.props.localUser.room
     this.props.socket.emit('playAgain', room)
   }
