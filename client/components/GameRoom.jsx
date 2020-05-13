@@ -10,7 +10,6 @@ class GameRoom extends React.Component {
   state = {
     task: '',
     hint: '',
-    disabled: false,
     time: '5:00',
     screen: 'Comms',
     voteActive: false,
@@ -80,7 +79,6 @@ class GameRoom extends React.Component {
     })
 
     this.props.socket.on('finalScreen', endData => {
-
       this.props.history.replace({
         pathname: '/end',
         state: {
@@ -121,7 +119,6 @@ class GameRoom extends React.Component {
   render() {
     return (
       <>
-
         <h1 className="fancyHeader">You are {this.props.localUser.role}</h1>
         <span className='time-container'>
           <p className="time">{this.state.time}</p>

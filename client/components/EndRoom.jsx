@@ -30,7 +30,7 @@ class EndRoom extends React.Component {
           {
             (this.props.location.state.taskList.length == 1) ?
 
-              <p>No task has been skipped or completed</p> :
+              <p>No tasks were completed</p> :
 
               this.props.location.state.taskList.map((task, i) => {
                 return (
