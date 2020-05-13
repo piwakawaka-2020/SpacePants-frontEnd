@@ -47,8 +47,11 @@ body {
 
 .header.main {
   position: relative;
-  top: 50px;
+  top: 68px;
   font-size: 5rem;
+  letter-spacing: .03rem;
+  z-index: -1;
+  text-shadow: 3px 3px 0px #357baf, -3px -3px 0px #357baf;
 }
 
 .fancyHeader {
@@ -316,6 +319,10 @@ body {
   z-index: 5;
 }
 
+.disabled-btn {
+  opacity: 0.3;
+}
+
 .description h1 {
   width: 100%;
   text-align: center;
@@ -384,7 +391,7 @@ body {
 
 .pants {
   position: absolute;
-  top: 52%;
+  top: 59%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -427,19 +434,26 @@ body {
           animation-fill-mode: backwards;
 }
 
+.pants {
+  -webkit-animation: zoomInLeft;
+          animation: zoomInLeft;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+}
+
 @-webkit-keyframes zoom {
   0% {
     width: auto;
     height: 850%;
-    z-index: -8;
+    z-index: -100;
   }
   50% {
-    z-index: -6;
+    z-index: -98;
   }
   100% {
     width: auto;
     height: 0%;
-    z-index: -4;
+    z-index: -96;
   }
 }
 
@@ -447,15 +461,15 @@ body {
   0% {
     width: auto;
     height: 850%;
-    z-index: -8;
+    z-index: -100;
   }
   50% {
-    z-index: -6;
+    z-index: -98;
   }
   100% {
     width: auto;
     height: 0%;
-    z-index: -4;
+    z-index: -96;
   }
 }
 

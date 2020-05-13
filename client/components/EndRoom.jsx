@@ -31,9 +31,8 @@ class EndRoom extends React.Component {
 
     return (
       <>
-
         <p className='tagline'>The winner is...</p>
-        <h1 className='fancyHeader'>{this.props.location.state.winner}!</h1>
+        <h1 className='fancyHeader animate__animated animate__zoomIn'>{this.props.location.state.winner}!</h1>
 
         <p className='tagline'>Time Remaining: {this.props.location.state.time}</p>
 
