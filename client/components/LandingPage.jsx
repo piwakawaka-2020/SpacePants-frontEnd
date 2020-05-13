@@ -85,15 +85,14 @@ class LandingPage extends React.Component {
       shadowStyle = {
         ...shadowStyle,
         top: `${top+(i*1.3)}px`,
-        fontSize: `${fontSize-(i/40)}rem`,
-        opacity: shadowStyle.opacity-(i/((i+1)*50)),
-        color: `rgb(${colour-(i*1.5)},${colour-(i*4.5)},${colour-(i*2.75)})`,
+        fontSize: `${fontSize-(i/35)}rem`,
+        opacity: shadowStyle.opacity-(i/((i+1)*45)),
+        color: `rgb(${colour-(i*(3.2))},${colour-(i*6.2)},${colour-(i*5)})`,
         zIndex: shadowStyle.zIndex-1
-
       }
       shadowArr.push(<h1 key={i} style={shadowStyle}>SpacePants</h1>)
     }
-    // console.log(shadowArr)
+    // console.log(shadowArr) 186,67,133
     // console.log(shadowArr.map(item=> {return {color: item.props.style.color}}))
     this.setState({shadowArr})
   }
