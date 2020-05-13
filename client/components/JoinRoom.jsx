@@ -3,11 +3,13 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { joinRoom } from '../actions/localUser'
 
+import { positiveClick, negativeClick } from '../../server/sound'
+
 class JoinRoom extends React.Component {
 
   componentDidMount() {
     this.props.socket.on('usersWaiting', ({users, inProgress}) => {
-      
+    
       if (users.includes(this.state.name)) {
         this.setState({ usernameTaken: true })
         return
@@ -59,10 +61,12 @@ class JoinRoom extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    positiveClick.play()
     this.props.socket.emit('checkUsers', this.state.room)
   }
 
   handleClick = (e) => {
+    negativeClick.play()
     this.props.history.replace('/')
   }
   render() {
