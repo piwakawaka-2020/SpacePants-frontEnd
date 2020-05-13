@@ -45,6 +45,12 @@ body {
   font-size: 3.5rem;
 }
 
+.header.main {
+  position: relative;
+  top: 50px;
+  font-size: 5rem;
+}
+
 .fancyHeader {
   text-align: center;
   font-weight: 1000;
@@ -211,6 +217,10 @@ body {
   margin-bottom: 5px;
 }
 
+.task-count {
+  margin: 0px;
+}
+
 .btn-bar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -273,6 +283,16 @@ body {
   width: 100%;
   background-image: url("/img/wc1.png");
   background-size: cover;
+}
+
+.instructions-btn {
+  position: fixed;
+  color: #8858ac;
+  background-color: #23272a99;
+  top: -2rem;
+  right: 28px;
+  padding: 5px;
+  z-index: 5;
 }
 
 .description h1 {
@@ -454,23 +474,6 @@ body {
   to {
     opacity: 1;
   }
-}
-
-.instructions-btn {
-  position: fixed;
-  color: #8858ac;
-  background-color: #23272a99;
-  height: 3.2rem;
-  top: -1rem;
-  right: 28px;
-}
-
-.lp-btn-bar {
-  position: absolute;
-  bottom: 5%;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  width: 100%;
 }
 
 @-webkit-keyframes bgcolorchange {
