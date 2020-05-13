@@ -9,15 +9,9 @@ class LandingPage extends React.Component {
     showModal: false
   }
 
-  showModal = e => {
+  toggleModal = e => {
     this.setState({
-      showModal: true
-    })
-  }
-
-  closeModal = e => {
-    this.setState({
-      showModal: false
+      showModal: !this.state.showModal
     })
   }
 
@@ -29,21 +23,16 @@ class LandingPage extends React.Component {
         <img className='darkblue' src='./img/bg-darkblue-space.png' />
         <img className='purple' src='./img/bg-purple-space.png' />
 
-
-        <h1 className='header'>SpacePants</h1>
-
+        <h1 className='header main'>SpacePants</h1>
 
         <div className="btn-bar">
           <button className='positive-btn' onClick={() => this.props.history.push('/create')}>Create Game</button>
           <button className='positive-btn' onClick={() => this.props.history.push('/join')}>Join Game</button>
         </div>
 
-        <div className='instructions-btn'>
-          <p className="button" id="centered-toggle-button" onClick={this.showModal}>How to play</p>
-          <HowToModal showModal={this.state.showModal} closeModal={this.closeModal} />
-        </div>
+        <p className="instructions-btn" onClick={this.toggleModal}>How to play</p>
 
-
+        <HowToModal showModal={this.state.showModal} closeModal={this.toggleModal} />
       </div>
     )
   }

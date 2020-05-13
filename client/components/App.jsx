@@ -25,6 +25,10 @@ class App extends React.Component {
     subscriptions(socket, this.props)
   }
 
+  componentWillUnmount() {
+    this.props.socket.removeAllListeners()
+  }
+
   render() {
     return (
       <Router>

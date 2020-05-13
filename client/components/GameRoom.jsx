@@ -1,19 +1,20 @@
 import React from 'react'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
+import { connect } from 'react-redux'
 
 import TransitionContainer from './TransitionContainer'
-
-import { connect } from 'react-redux'
+import VoteResultModal from './VoteResultModal'
+import { resetState } from '../actions/localUser'
 
 class GameRoom extends React.Component {
 
   state = {
     task: '',
     hint: '',
-    disabled: false,
     time: '5:00',
     screen: 'Comms',
     voteActive: false,
+    disableVote: false,
     voteData: {
       castVote: false,
       receiveVote: false,
@@ -34,6 +35,12 @@ class GameRoom extends React.Component {
       }
     })
 
+    this.props.socket.on('disableVote', () => {
+      this.setState({
+        disableVote: true
+      })
+    })
+
     this.props.socket.on('receiveVote', voteData => {
       navigator.vibrate([250])
       this.setState({
@@ -50,15 +57,12 @@ class GameRoom extends React.Component {
 
     this.props.socket.on('voteFailed', () => {
       this.setState({
-        screen: 'Comms',
-        voteActive: false,
-        voteData: {
-          castVote: false,
-          receiveVote: false,
-          vote: '',
-          voter: ''
-        },
+        showModal: true,
       })
+
+      setTimeout(() => {
+        this.closeModal()
+      }, 3000)
     })
 
     this.props.socket.on('gameOver', ({ winner }) => {
@@ -72,8 +76,6 @@ class GameRoom extends React.Component {
     })
 
     this.props.socket.on('finalScreen', endData => {
-      this.props.socket.removeAllListeners()
-
       this.props.history.replace({
         pathname: '/end',
         state: {
@@ -85,7 +87,22 @@ class GameRoom extends React.Component {
     })
   }
 
+  componentWillUnmount() {
+    const callbacks = Object.keys(this.props.socket._callbacks)
+    callbacks.forEach(el => {
+      if (el != '$user') {
+        this.props.socket.removeAllListeners(el.substr(1))
+      }
+    });
+
+    this.props.socket.on('playAgain', () => {
+      this.props.dispatch(resetState())
+      this.props.history.replace('/waiting')
+    })
+  }
+
   handleVote = e => {
+    this.props.socket.emit('disableVote')
     this.setState(prevState => ({
       voteActive: !this.state.voteActive,
       screen: this.state.screen === 'Comms' ? 'Votes' : 'Comms',
@@ -96,16 +113,30 @@ class GameRoom extends React.Component {
     }))
   }
 
+  closeModal = e => {
+    this.setState({
+      showModal: false,
+      screen: 'Comms',
+      voteActive: false,
+      disableVote: false,
+      voteData: {
+        castVote: false,
+        receiveVote: false,
+        vote: '',
+        voter: ''
+      },
+    })
+  }
+
   render() {
     return (
       <>
-
         <h1 className="fancyHeader">You are {this.props.localUser.role}</h1>
         <span className='time-container'>
           <p className="time">{this.state.time}</p>
           {
             this.props.localUser.role === 'Alien' &&
-            <p>Tasks Completed: {this.props.localUser.completedTasks}</p>
+            <p className='task-count'>Tasks Completed: {this.props.localUser.completedTasks}</p>
           }
         </span>
 
@@ -115,13 +146,15 @@ class GameRoom extends React.Component {
             addEndListener={(node, done) => { node.addEventListener("transitionend", done, false) }}
             classNames="slide">
 
-            <TransitionContainer screen={this.state.screen} voteData={this.state.voteData} handleVote={this.handleVote} time={this.state.time}/>
+            <TransitionContainer screen={this.state.screen} voteData={this.state.voteData} handleVote={this.handleVote} time={this.state.time} />
 
           </CSSTransition>
         </SwitchTransition>
 
 
-        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote || this.state.screen === 'Votes'}>Vote</button>
+        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote || this.state.disableVote}>Vote</button>
+
+        <VoteResultModal showModal={this.state.showModal} closeModal={this.closeModal} />
       </>
     )
   }
