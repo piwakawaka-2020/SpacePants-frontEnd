@@ -53,7 +53,7 @@ export function useVote() {
 
 export function setVoteResult(result) {
   return {
-    type: SET_PLAY_STATUS,
+    type: SET_RESULT,
     result: result
   }
 }
