@@ -384,27 +384,7 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  z-index: 1;
-  -webkit-animation: walking 0.8s linear infinite alternate;
-          animation: walking 0.8s linear infinite alternate;
-}
-
-@-webkit-keyframes walking {
-  0% {
-    content: url("../img/pants-lg-157-285.png");
-  }
-  100% {
-    content: url("../img/pants-step2-157-285.png");
-  }
-}
-
-@keyframes walking {
-  0% {
-    content: url("../img/pants-lg-157-285.png");
-  }
-  100% {
-    content: url("../img/pants-step2-157-285.png");
-  }
+  z-index: -1;
 }
 
 .lightblue {
