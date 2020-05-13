@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
-import { addRole } from '../actions/localUser'
+import { addRole, joinRoom } from '../actions/localUser'
 
 
 //random user colours
@@ -10,13 +10,22 @@ import { addRole } from '../actions/localUser'
 class WaitingRoom extends React.Component {
 
   state = {
-    users: []
+    users: [],
+
   }
 
   componentDidMount() {
     this.props.socket.on('role', role => {
       this.props.dispatch(addRole(role))
       this.props.history.replace('/game')
+    })
+    this.props.socket.on('waitOver', newRoom => {
+
+      let oldRoom = this.props.room
+      let name = this.props.name
+      this.props.socket.emit('leaveRoom', oldRoom)
+      this.props.dispatch(joinRoom({name, room: newRoom}, this.props.socket)) // 
+
     })
   }
 
@@ -44,8 +53,9 @@ class WaitingRoom extends React.Component {
     this.props.history.replace('/')
   }
 
-  render() {
 
+  render() {
+    
     return (
       <>
 
@@ -62,7 +72,12 @@ class WaitingRoom extends React.Component {
         </div>
         <div className='btn-bar'>
           <button onClick={this.leaveGame} className='negative-btn'>Leave Game</button>
-          <button className="button" className='fancy-btn' onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
+          <button className="button" 
+            className='fancy-btn' 
+            onClick={this.startGame} 
+            disabled={this.props.room.includes('game in progress') || this.props.users.length < 1}>
+              Start Game
+          </button>
         </div>
       </>
     )
@@ -73,7 +88,8 @@ function mapStateToProps(globalState) {
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers,
-    room: globalState.localUser.room
+    room: globalState.localUser.room,
+    name: globalState.localUser.name
   }
 }
 

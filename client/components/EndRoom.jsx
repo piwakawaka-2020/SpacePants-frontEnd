@@ -12,7 +12,8 @@ class EndRoom extends React.Component {
   }
 
   playAgain = e => {
-    this.props.socket.emit('playAgain')
+    let room = this.props.localUser.room
+    this.props.socket.emit('playAgain', room)
   }
 
   render() {
