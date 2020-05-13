@@ -34,6 +34,11 @@ class JoinRoom extends React.Component {
     })
   }
 
+  componentWillUnmount() {
+    this.props.socket.removeAllListeners('roomList')
+    this.props.socket.removeAllListeners('usersWaiting')
+  }
+
   state = {
     name: '',
     room: '',

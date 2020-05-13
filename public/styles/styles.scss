@@ -231,7 +231,6 @@ body {
   transition: all 0.1s ease-in-out;
   animation: bgcolorchange 12s infinite;
   width: 90%;
-  @include box-sizing();
 }
 
 .positive-btn {
@@ -247,8 +246,8 @@ body {
 .fancy-btn {
   @extend %buttons;
   font-weight: bold;
-  @include box-sizing();
   width: 100%;
+  margin: auto;
   background-image: url("/img/wc1.png");
   background-size: cover;
 }
@@ -323,10 +322,10 @@ body {
 }
 
 @keyframes walking {
-  from { 
+  0% { 
     content: url("../img/pants-lg-157-285.png");
   }
-  to {
+  100% {
     content: url("../img/pants-step2-157-285.png");
   }
 }

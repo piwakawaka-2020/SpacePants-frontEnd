@@ -274,8 +274,6 @@ body {
   -webkit-animation: bgcolorchange 12s infinite;
           animation: bgcolorchange 12s infinite;
   width: 90%;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
 }
 
 .positive-btn {
@@ -288,9 +286,8 @@ body {
 
 .fancy-btn {
   font-weight: bold;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
   width: 100%;
+  margin: auto;
   background-image: url("/img/wc1.png");
   background-size: cover;
 }
@@ -373,19 +370,19 @@ body {
 }
 
 @-webkit-keyframes walking {
-  from {
+  0% {
     content: url("../img/pants-lg-157-285.png");
   }
-  to {
+  100% {
     content: url("../img/pants-step2-157-285.png");
   }
 }
 
 @keyframes walking {
-  from {
+  0% {
     content: url("../img/pants-lg-157-285.png");
   }
-  to {
+  100% {
     content: url("../img/pants-step2-157-285.png");
   }
 }

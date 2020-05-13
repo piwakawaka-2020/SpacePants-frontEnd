@@ -16,6 +16,7 @@ class GameRoom extends React.Component {
     time: '5:00',
     screen: 'Comms',
     voteActive: false,
+    disableVote: false,
     voteData: {
       castVote: false,
       receiveVote: false,
@@ -37,6 +38,12 @@ class GameRoom extends React.Component {
       }
     })
 
+    this.props.socket.on('disableVote', () => {
+      this.setState({
+        disableVote: true
+      })
+    })
+
     this.props.socket.on('receiveVote', voteData => {
       navigator.vibrate([250])
       this.setState({
@@ -55,6 +62,7 @@ class GameRoom extends React.Component {
       this.setState({
         screen: 'Comms',
         voteActive: false,
+        disableVote: false,
         voteData: {
           castVote: false,
           receiveVote: false,
@@ -77,8 +85,11 @@ class GameRoom extends React.Component {
     this.props.socket.on('finalScreen', endData => {
 
       this.props.socket.removeAllListeners('receiveVote')
+      this.props.socket.removeAllListeners('disableVote')
       this.props.socket.removeAllListeners('voteFailed')
       this.props.socket.removeAllListeners('timer')
+      this.props.socket.removeAllListeners('finalScreen')
+      this.props.socket.removeAllListeners('gameOver')
 
       this.props.socket.on('playAgain', () => {
         this.props.dispatch(resetState())
@@ -98,6 +109,7 @@ class GameRoom extends React.Component {
 
   handleVote = e => {
     voteClick.play()
+    this.props.socket.emit('disableVote')
     this.setState(prevState => ({
       voteActive: !this.state.voteActive,
       screen: this.state.screen === 'Comms' ? 'Votes' : 'Comms',
@@ -133,8 +145,7 @@ class GameRoom extends React.Component {
           </CSSTransition>
         </SwitchTransition>
 
-
-        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote || this.state.screen === 'Votes'}>Vote</button>
+        <button className='fancy-btn' onClick={this.handleVote} disabled={!this.props.localUser.vote || this.state.screen === 'Votes' || this.state.disableVote}>Vote</button>
       </>
     )
   }
