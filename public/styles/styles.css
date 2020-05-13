@@ -211,6 +211,10 @@ body {
   margin-bottom: 5px;
 }
 
+.task-count {
+  margin: 0px;
+}
+
 .btn-bar {
   display: -webkit-box;
   display: -ms-flexbox;
