@@ -82,8 +82,11 @@ class GameRoom extends React.Component {
     this.props.socket.on('finalScreen', endData => {
 
       this.props.socket.removeAllListeners('receiveVote')
+      this.props.socket.removeAllListeners('disableVote')
       this.props.socket.removeAllListeners('voteFailed')
       this.props.socket.removeAllListeners('timer')
+      this.props.socket.removeAllListeners('finalScreen')
+      this.props.socket.removeAllListeners('gameOver')
 
       this.props.socket.on('playAgain', () => {
         this.props.dispatch(resetState())
