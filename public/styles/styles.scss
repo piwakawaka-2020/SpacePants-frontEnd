@@ -12,7 +12,7 @@ $darkerBackground: #2c2f33;
 
 @font-face {
   font-family: "digi";
-  src: url("../fonts/DS-DIGIB.woff") format("woff");
+  src: url("../fonts/DS-ODEO.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -73,12 +73,6 @@ body {
   color: transparent;
 }
 
-.time-container {
-  width: 100%;
-  text-align: center;
-  @include box-sizing();
-}
-
 .toggle-container {
   display: flex;
   flex-direction: column;
@@ -88,10 +82,26 @@ body {
   }
 }
 
-.time {
-  font-family: "digi";
+.time-container {
   width: 100%;
-  font-size: 6rem;
+  text-align: center;
+  padding: auto;
+  @include box-sizing();
+}
+
+.timeUnderlay{
+  display: block;
+  position: absolute;
+  width: inherit;
+  left: 0;
+  right: 0;
+  opacity: 0.15;
+}
+
+.time, .timeUnderlay{
+  font-family: "digi";
+  width: inherit;
+  font-size: 7rem;
   text-align: center;
   padding: 0;
   margin: 0;
@@ -159,11 +169,20 @@ body {
   align-content: flex-start;
   text-align: center;
   overflow-y: scroll;
-
   p {
     width: 50%;
     font-size: 1.5rem;
   }
+}
+
+#alien{
+  background: center/100% url('../img/SpacePantsWC-3-hori.png');
+  text-shadow: 2px 2px $purple;
+}
+
+#human{
+  background: center/100% url('../img/SpacePantsWC-1.png');
+  text-shadow: 2px 2px $darkBlue;
 }
 
 .hint-list {
@@ -222,7 +241,6 @@ body {
   transition: all 0.1s ease-in-out;
   animation: bgcolorchange 12s infinite;
   width: 90%;
-  @include box-sizing();
 }
 
 .positive-btn {
@@ -238,8 +256,8 @@ body {
 .fancy-btn {
   @extend %buttons;
   font-weight: bold;
-  @include box-sizing();
   width: 100%;
+  margin: auto;
   background-image: url("/img/wc1.png");
   background-size: cover;
 }
@@ -321,17 +339,6 @@ body {
   transform: translate(-50%, -50%);
   z-index: -1;
 }
-  /* animation: walking 0.8s linear infinite alternate;
-}
-
-@keyframes walking {
-  from { 
-    content: url("../img/pants-lg-157-285.png");
-  }
-  to {
-    content: url("../img/pants-step2-157-285.png");
-  }
-} */
 
 //space animations
 .lightblue {

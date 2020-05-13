@@ -1,11 +1,15 @@
 import React from 'react'
 
 import { connect } from 'react-redux'
+
 import { addRole, joinRoom } from '../actions/localUser'
+
+import { positiveClick, negativeClick } from '../../server/sound'
+
+
 
 
 //random user colours
-
 
 class WaitingRoom extends React.Component {
 
@@ -45,10 +49,13 @@ class WaitingRoom extends React.Component {
   }
 
   startGame = e => {
+    positiveClick.play()
     this.props.socket.emit('startGame', this.props.room)
   }
 
   leaveGame = e => {
+    negativeClick.play()
+    this.props.socket.on('disconnect')
     this.props.socket.emit('leaveRoom', this.props.room)
     this.props.history.replace('/')
   }
