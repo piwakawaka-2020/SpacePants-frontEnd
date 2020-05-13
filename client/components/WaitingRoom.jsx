@@ -2,9 +2,10 @@ import React from 'react'
 
 import { connect } from 'react-redux'
 
+import { addRole, joinRoom } from '../actions/localUser'
+
 import { positiveClick, negativeClick } from '../../server/sound'
 
-import { addRole, joinRoom } from '../actions/localUser'
 
 
 

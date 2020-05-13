@@ -24,6 +24,9 @@ class LandingPage extends React.Component {
     } else {
       this.props.history.push('/join')
     }
+    this.setState({
+      showModal: !this.state.showModal
+    })
   }
 
   render() {
