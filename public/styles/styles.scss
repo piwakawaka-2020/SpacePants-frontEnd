@@ -53,9 +53,35 @@ body {
 
   &.main {
     position: relative;
-    top: 50px;
+    top: 68px;
+    
     font-size: 5rem;
-  }
+    letter-spacing: .03rem;
+    z-index: -1;
+    text-shadow: 3px 3px 0px #357baf, -3px -3px 0px #357baf,
+    
+
+    //   // -1px -1px 1px #efede3, 
+    //   0px 1px 0 #aeaeae, 
+    //   0px 2px 0 #ababab, 
+    //   0px 3px 0 #a8a8a8, 
+    //   0px 4px 0 #a3a3a3, 
+    //   0px 5px 0 #9e9e9e, 
+    //   0px 6px 0 #979797, 
+    //   0px 7px 0 #929292, 
+    //   0px 8px 0 #909090, 
+    //   0px 9px 0 #8c8c8c, 
+    //   0px 10px 0 #858585, 
+    //   0px 11px 0 #828282, 
+    //   0px 12px 0 #7e7e7e, 
+    //   0px 13px 0 #777777, 
+    //   0px 14px 0 #727272, 
+    //   0px 15px 0 #696969,
+      // 2px 20px 5px rgba(0, 0, 0, 0.9),
+      // 5px 23px 5px rgba(0, 0, 0, 0.3),
+      // 8px 27px 8px rgba(0, 0, 0, 0.5),
+      // 8px 28px 35px rgba(0, 0, 0, 0.9);
+   }
 }
 
 .fancyHeader {
@@ -278,6 +304,7 @@ body {
 
 // HOW TO MODAL
 .description {
+
   h1 {
     width: 100%;
     text-align: center;
@@ -338,7 +365,7 @@ body {
 //walking pants
 .pants {
   position: absolute;
-  top: 52%;
+  top: 59%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
@@ -377,13 +404,13 @@ body {
 
   0% {width: auto;
     height: 850%;
-  z-index: -8;}
+  z-index: -100;}
 
- 50% {z-index: -6}
+ 50% {z-index: -98}
 
   100% {width: auto;
     height: 0%;
-    z-index: -4;}
+    z-index: -96;}
 }
 
 @keyframes opacity {
