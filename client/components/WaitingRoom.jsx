@@ -81,7 +81,7 @@ class WaitingRoom extends React.Component {
           <button className="button" 
             className={`fancy-btn ${this.props.room.includes('game in progress') || this.props.users.length < 4 ? 'disabled-btn' : undefined}`}
             onClick={this.startGame} 
-            disabled={this.props.room.includes('game in progress') || this.props.users.length < 1}>
+            disabled={this.props.room.includes('game in progress') || this.props.users.length < 4}>
               Start Game
           </button>
         </div>
