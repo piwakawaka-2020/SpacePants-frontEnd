@@ -206,7 +206,7 @@ body {
   }
 }
 
-.task-count {
+.tagline {
   margin: 0px;
 }
 
@@ -220,7 +220,7 @@ body {
 }
 
 %buttons {
-  flex: 1 0 0px;
+  flex: 1 1 0px;
   padding: {
     left: $defaultPadding;
     right: $defaultPadding;
