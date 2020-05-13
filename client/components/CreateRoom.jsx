@@ -34,6 +34,7 @@ class CreateRoom extends React.Component {
     this.props.dispatch(joinRoom(userData, this.props.socket))
     this.props.socket.emit('setRoomCategory', this.state.category)
     this.props.history.replace('/waiting')
+    this.props.socket.emit('preloadTasks')
   }
 
   handleChange = (e) => {

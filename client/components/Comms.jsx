@@ -24,7 +24,7 @@ class Comms extends React.Component {
       })
 
       if (this.state.task == '') {
-        this.props.socket.emit('preloadTasks')
+        this.props.socket.emit('getTask')
       }
 
     } else {
