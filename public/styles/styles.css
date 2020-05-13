@@ -368,28 +368,19 @@ body {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   z-index: -1;
-  -webkit-animation: walking 0.8s linear infinite alternate;
-          animation: walking 0.8s linear infinite alternate;
 }
 
-@-webkit-keyframes walking {
-  from {
-    content: url("../img/pants-lg-157-285.png");
-  }
-  to {
-    content: url("../img/pants-step2-157-285.png");
-  }
+/* animation: walking 0.8s linear infinite alternate;
 }
 
 @keyframes walking {
-  from {
+  from { 
     content: url("../img/pants-lg-157-285.png");
   }
   to {
     content: url("../img/pants-step2-157-285.png");
   }
-}
-
+} */
 .lightblue {
   position: absolute;
   top: 50%;

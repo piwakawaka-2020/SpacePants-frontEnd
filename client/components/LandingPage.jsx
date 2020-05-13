@@ -4,9 +4,28 @@ import HowToModal from "./HowToModal"
 import { connect } from 'react-redux'
 
 class LandingPage extends React.Component {
+  componentDidMount() {
+    const img1 = '../img/pants-lg-157-285.png'
+    const img2 = '../img/pants-step2-157-285.png'
+    this.setState({pantsImage: img1})
+
+    let walkingPants = setInterval(() => {
+      if (this.state.pantsImage == img1) {
+        this.setState({pantsImage: img2})
+      } else (this.setState({pantsImage: img1}))
+    }, 500)
+
+    this.setState({walkingPants})
+
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.walkingPants)
+  }
 
   state = {
-    showModal: false
+    showModal: false,
+    pantsImage: ''
   }
 
   toggleModal = e => {
@@ -18,7 +37,7 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div className='wrapper'>
-        <img className='pants' />
+        <img className='pants' src={this.state.pantsImage} />
         <img className='lightblue' src='./img/bg-lightblue-space.png' />
         <img className='darkblue' src='./img/bg-darkblue-space.png' />
         <img className='purple' src='./img/bg-purple-space.png' />

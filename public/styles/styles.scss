@@ -320,7 +320,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  animation: walking 0.8s linear infinite alternate;
+}
+  /* animation: walking 0.8s linear infinite alternate;
 }
 
 @keyframes walking {
@@ -330,7 +331,7 @@ body {
   to {
     content: url("../img/pants-step2-157-285.png");
   }
-}
+} */
 
 //space animations
 .lightblue {
