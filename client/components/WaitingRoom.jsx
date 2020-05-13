@@ -10,13 +10,21 @@ import { addRole } from '../actions/localUser'
 class WaitingRoom extends React.Component {
 
   state = {
-    users: []
+    users: [],
+    disableStart: false
   }
 
   componentDidMount() {
     this.props.socket.on('role', role => {
       this.props.dispatch(addRole(role))
       this.props.history.replace('/game')
+    })
+    this.props.socket.on('waitOver', newRoom => {
+      let oldRoom = this.props.room
+      let name = this.props.name
+      this.props.socket.emit('leaveRoom', oldRoom)
+      this.props.socket.emit('user', {name, room: newRoom})
+      this.setState({disableStart: false})
     })
   }
 
@@ -40,8 +48,14 @@ class WaitingRoom extends React.Component {
     this.props.history.replace('/')
   }
 
-  render() {
+  disableStart = () => {
+    if (this.props.room.includes('game in progress') || this.props.users.length < 1) {
+      this.setState({disableStart: true})
+    } else {this.setState({disableStart: false})}
+  }
 
+  render() {
+    
     return (
       <>
 
@@ -58,7 +72,12 @@ class WaitingRoom extends React.Component {
         </div>
         <div className='btn-bar'>
           <button onClick={this.leaveGame} className='negative-btn'>Leave Game</button>
-          <button className="button" className='fancy-btn' onClick={this.startGame} disabled={this.props.users.length < 1}>Start Game</button>
+          <button className="button" 
+            className='fancy-btn' 
+            onClick={this.startGame} 
+            disabled={this.props.room.includes('game in progress') || this.props.users.length < 1}>
+              Start Game
+          </button>
         </div>
       </>
     )
@@ -69,7 +88,8 @@ function mapStateToProps(globalState) {
   return {
     socket: globalState.localUser.socket,
     users: globalState.externalUsers,
-    room: globalState.localUser.room
+    room: globalState.localUser.room,
+    name: globalState.localUser.name
   }
 }
 
