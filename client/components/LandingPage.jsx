@@ -68,10 +68,12 @@ class LandingPage extends React.Component {
   shadow = () => {
     let top = 76
     let fontSize = 5
-    let colour = 174
+    let colour1 = 53
+    let colour2 = 123
+    let colour3 = 175
     let shadowStyle = {
       textAlign: 'center',
-      color: `rgb(${colour},${colour},${colour})`,
+      color: `rgb(${colour1},${colour2},${colour3})`,
       margin: '0px',
       position: 'absolute',
       top: `${top}px`, 
@@ -87,7 +89,7 @@ class LandingPage extends React.Component {
         top: `${top+(i*1.3)}px`,
         fontSize: `${fontSize-(i/35)}rem`,
         opacity: shadowStyle.opacity-(i/((i+1)*40)),
-        color: `rgb(${colour-(i*(3.2))},${colour-(i*6.2)},${colour-(i*4.8)})`,
+        color: `rgb(${colour1-(i*(1.7))},${colour2-(i*4)},${colour3-(i*3)})`,
         zIndex: shadowStyle.zIndex-1
       }
       shadowArr.push(<h1 key={i} style={shadowStyle}>SpacePants</h1>)
@@ -97,7 +99,7 @@ class LandingPage extends React.Component {
     this.setState({shadowArr})
   }
   render() {
- 
+
     return (
       <div className='wrapper'>
         <img className='pants' src={this.state.pantsImage} />
@@ -105,6 +107,7 @@ class LandingPage extends React.Component {
         <img className='darkblue' src='./img/bg-darkblue-space.png' />
         <img className='purple' src='./img/bg-purple-space.png' />
         <h1 className='header main'>SpacePants</h1>
+       
         {this.state.shadowArr}
         <div className="btn-bar">
           <button className='positive-btn' onClick={this.handleClick}>Create Game</button>
