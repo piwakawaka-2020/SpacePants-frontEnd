@@ -1,8 +1,11 @@
 # SpacePants
 A fun game for fun alien-.... humans!  I meant humans.
 
-##The final product:
+## The final product:
 https://spacepants.herokuapp.com/#/
+
+## The back end:
+https://github.com/piwakawaka/SpacePants-BackEnd
 
 ## The game
 You are an alien who has recently arrived on planet Earth.  Our species looks nothing like humans, but fortunately a new technology has been developed to help you seamlessly blend in: SpacePants!  In disguise, you will be safe from the humans as long as you behave just like them. Luckily, you have a certified huminologist back on your ship, who is sending helpful 'behaviour directives' to your communication device.  Make sure to complete as many directives as you can before the time runs out.  But be careful, if the humans suspect anything is awry, they may vote to kick you off the planet!
@@ -92,12 +95,6 @@ This might change when we figure out how socket.io works
 | --- | --- | --- |
 | GET_HINT | hint | Gets a new hint for a human |
 
-
-## API
-
-Will figure this out when we understand how socket.io works
-
-
 ## DB
 
 ### GameData
@@ -119,5 +116,4 @@ Will figure this out when we understand how socket.io works
 | roomCode | string |
 | socketId | string |
 
-The back end repo can be found here:
-https://github.com/piwakawaka/SpacePants-BackEnd
+
